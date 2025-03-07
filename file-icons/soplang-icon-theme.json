@@ -1,0 +1,15 @@
+{
+    "iconDefinitions": {
+      "soplang-icon": {
+        "iconPath": "../images/soplang-icon.png"
+      }
+    },
+    "fileExtensions": {
+      "sp": "soplang-icon",
+      "sop": "soplang-icon"
+    },
+    "languageIds": {
+      "soplang": "soplang-icon"
+    }
+  }
+  

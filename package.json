@@ -3,23 +3,67 @@
   "displayName": "Soplang",
   "description": "VS Code syntax highlighting for Soplang",
   "version": "0.0.1",
+  "publisher": "Mr Sharafdin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourname/soplang-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourname/soplang-vscode/issues"
+  },
+  "homepage": "https://github.com/yourname/soplang-vscode",
   "engines": {
     "vscode": "^1.98.0"
   },
   "categories": [
     "Programming Languages"
   ],
+  "icon": "images/icon.png",
   "contributes": {
-    "languages": [{
-      "id": "soplang",
-      "aliases": ["Soplang", "soplang"],
-      "extensions": [".sp",".sop"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "soplang",
-      "scopeName": "source.soplang",
-      "path": "./syntaxes/soplang.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "soplang",
+        "aliases": [
+          "Soplang",
+          "soplang"
+        ],
+        "extensions": [
+          ".sp",
+          ".sop"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "soplang",
+        "scopeName": "source.soplang",
+        "path": "./syntaxes/soplang.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "soplang",
+        "path": "./snippets/soplang.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "soplang-file-icon",
+        "label": "Soplang File Icon",
+        "path": "./file-icons/soplang-icon-theme.json"
+      }
+    ],
+    "configurationDefaults": {
+      "workbench.iconTheme": "soplang-file-icon"
+    }
+  },
+  "scripts": {
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "vsce": "^2.12.0"
   }
 }

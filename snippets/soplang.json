@@ -1,0 +1,70 @@
+{
+    "Qor (Daabac)": {
+      "prefix": "q",
+      "body": [
+        "qor(${1:fariin})$0"
+      ],
+      "description": "Waxay daabacdaa fariin"
+    },
+  
+    "Haddii (If)": {
+      "prefix": "ha",
+      "body": [
+        "haddii (${1:shuruud}) {",
+        "\t$2",
+        "}"
+      ],
+      "description": "Haddii shuruuddu run tahay, fulin koodka"
+    },
+  
+    "Haddii_kale (Else If)": {
+      "prefix": "hk",
+      "body": [
+        "haddii_kale (${1:shuruud}) {",
+        "\t$2",
+        "}"
+      ],
+      "description": "Qayb kale (elif) oo shuruud ah"
+    },
+  
+    "Haddii_kalena (Else)": {
+      "prefix": "hkn",
+      "body": [
+        "haddii_kalena {",
+        "\t$1",
+        "}"
+      ],
+      "description": "Kale (else) marka shuruuduhu been noqdeen"
+    },
+  
+    "Ku Celi (Loop)": {
+      "prefix": "kc",
+      "body": [
+        "ku_celi ${1:isbeddel} min ${2:bilow} ilaa ${3:dhamaad} {",
+        "\t$4",
+        "}"
+      ],
+      "description": "Xisaab celin (loop) min ilaa"
+    },
+  
+    "Howl (Function)": {
+      "prefix": "hl",
+      "body": [
+        "howl ${1:magac}(${2:qiimayaal}) {",
+        "\t$3",
+        "}"
+      ],
+      "description": "Waxay abuureysaa howl (function) cusub"
+    },
+  
+    "Fasalka (Class)": {
+      "prefix": "fl",
+      "body": [
+        "fasalka ${1:MagacFasal} ka_dhaxal ${2:Waalid} {",
+        "\t$3",
+        "}"
+      ],
+      "description": "Waxay abuureysaa fasal (class), ka_dhaxal (inheritance) optional"
+    }
+  }
+  

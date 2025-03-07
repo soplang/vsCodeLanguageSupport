@@ -1,32 +1,83 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Soplang",
+	"scopeName": "source.soplang",
 	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
+	  { "include": "#comments" },
+	  { "include": "#keywords" },
+	  { "include": "#strings" },
+	  { "include": "#numbers" },
+	  { "include": "#identifiers" }
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.soplang",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
+	  "comments": {
+		"patterns": [
+		  {
+			"name": "comment.block.soplang",
+			"begin": "/\\*",
+			"end": "\\*/",
+			"captures": {
+			  "0": {
+				"name": "punctuation.definition.comment.soplang"
+			  }
+			}
+		  },
+		  {
+			"name": "comment.line.soplang",
+			"match": "//.*$"
+		  }
+		]
+	  },
+	  "keywords": {
+		"patterns": [
+		  {
+			"name": "keyword.control.soplang",
+			"match": "\\b(?:door|howl|soo_celi|qor|akhri|haddii|haddii_kale|haddii_kalena|ku_celi|inta_ay|jooji|sii_wad|isku_day|qabo|ka_keen|fasalka|ka_dhaxal|cusub|nafta|liis|shey|waxba|run|been)\\b"
+		  }
+		]
+	  },
+	  "strings": {
+		"patterns": [
+		  {
 			"name": "string.quoted.double.soplang",
 			"begin": "\"",
 			"end": "\"",
 			"patterns": [
-				{
-					"name": "constant.character.escape.soplang",
-					"match": "\\\\."
-				}
+			  {
+				"name": "constant.character.escape.soplang",
+				"match": "\\\\."
+			  }
 			]
-		}
-	},
-	"scopeName": "source.soplang"
-}
+		  },
+		  {
+			"name": "string.quoted.single.soplang",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+			  {
+				"name": "constant.character.escape.soplang",
+				"match": "\\\\."
+			  }
+			]
+		  }
+		]
+	  },
+	  "numbers": {
+		"patterns": [
+		  {
+			"name": "constant.numeric.soplang",
+			"match": "\\b\\d+(?:\\.\\d+)?\\b"
+		  }
+		]
+	  },
+	  "identifiers": {
+		"patterns": [
+		  {
+			"name": "variable.other.soplang",
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+		  }
+		]
+	  }
+	}
+  }
+  

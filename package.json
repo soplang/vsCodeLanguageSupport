@@ -1,0 +1,25 @@
+{
+  "name": "soplang",
+  "displayName": "Soplang",
+  "description": "VS Code syntax highlighting for Soplang",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "soplang",
+      "aliases": ["Soplang", "soplang"],
+      "extensions": [".sp",".sop"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "soplang",
+      "scopeName": "source.soplang",
+      "path": "./syntaxes/soplang.tmLanguage.json"
+    }]
+  }
+}

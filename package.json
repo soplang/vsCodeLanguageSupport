@@ -3,23 +3,23 @@
   "displayName": "Soplang",
   "description": "VS Code syntax highlighting for Soplang",
   "version": "0.0.1",
-  "publisher": "Mr Sharafdin",
+  "publisher": "soplang",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourname/soplang-vscode.git"
+    "url": "https://github.com/soplang/vsCodeLanguageSupport"
   },
   "bugs": {
-    "url": "https://github.com/yourname/soplang-vscode/issues"
+    "url": "https://github.com/soplang/vsCodeLanguageSupport/issues"
   },
-  "homepage": "https://github.com/yourname/soplang-vscode",
+  "homepage": "https://github.com/soplang/vsCodeLanguageSupport",
   "engines": {
-    "vscode": "^1.98.0"
+    "vscode": "^1.97.0"
   },
   "categories": [
     "Programming Languages"
   ],
-  "icon": "images/icon.png",
+  "icon": "images/soplang-icon.png",
   "contributes": {
     "languages": [
       {

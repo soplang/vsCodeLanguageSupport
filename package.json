@@ -29,7 +29,7 @@
           "soplang"
         ],
         "extensions": [
-          ".sp",
+          ".so",
           ".sop"
         ],
         "configuration": "./language-configuration.json"

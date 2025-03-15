@@ -56,14 +56,44 @@
       }
     ],
     "configurationDefaults": {
-      "workbench.iconTheme": "soplang-file-icon"
-    }
+      "workbench.iconTheme": "soplang-file-icon",
+      "cSpell.enableFiletypes": [
+        "soplang"
+      ],
+      "cSpell.enabled": true,
+      "cSpell.languageSettings": [
+        {
+          "languageId": "soplang",
+          "dictionaries": [
+            "soplang"
+          ]
+        }
+      ]
+    },
+    "cSpell.dictionaries": [
+      {
+        "name": "soplang",
+        "description": "Soplang programming language keywords and syntax terms.",
+        "path": "./dictionaries/soplang.txt"
+      }
+    ]
   },
+  "extensionPack": [
+    "streetsidesoftware.code-spell-checker"
+  ],
   "scripts": {
     "package": "vsce package",
     "publish": "vsce publish"
   },
   "devDependencies": {
-    "vsce": "^2.12.0"
-  }
+    "vsce": "^2.12.0",
+    "vscode": "^1.1.37"
+  },
+  "activationEvents": [
+    "onLanguage:soplang"
+  ],
+  "main": "./out/extension.js",
+  "files": [
+    "dictionaries/**"
+  ]
 }

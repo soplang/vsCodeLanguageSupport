@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 const vscode = require("vscode");
 const path = require("path");
+const { formatSoplangCode } = require("../src/formatter");
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -8,6 +9,50 @@ const path = require("path");
 function activate(context) {
   // Handle spell checker integration if it's installed
   setupSpellChecker(context);
+
+  // Register the formatter
+  setupFormatter(context);
+}
+
+/**
+ * Sets up the formatter for Soplang files
+ * @param {vscode.ExtensionContext} context
+ */
+function setupFormatter(context) {
+  // Register document formatting provider
+  context.subscriptions.push(
+    vscode.languages.registerDocumentFormattingEditProvider("soplang", {
+      provideDocumentFormattingEdits(document) {
+        return formatSoplangCode(document);
+      },
+    })
+  );
+
+  // Register selection formatting provider
+  context.subscriptions.push(
+    vscode.languages.registerDocumentRangeFormattingEditProvider("soplang", {
+      provideDocumentRangeFormattingEdits(document, range) {
+        // For simplicity, we're formatting the whole document
+        // You could enhance this to only format the selection if needed
+        return formatSoplangCode(document);
+      },
+    })
+  );
+
+  // Register format command
+  context.subscriptions.push(
+    vscode.commands.registerCommand("soplang.formatDocument", async () => {
+      const editor = vscode.window.activeTextEditor;
+      if (editor && editor.document.languageId === "soplang") {
+        const edits = formatSoplangCode(editor.document);
+        const edit = new vscode.WorkspaceEdit();
+        edit.set(editor.document.uri, edits);
+        await vscode.workspace.applyEdit(edit);
+      }
+    })
+  );
+
+  console.log("Soplang formatter registered successfully.");
 }
 
 /**

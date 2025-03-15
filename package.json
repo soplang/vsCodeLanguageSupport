@@ -32,7 +32,11 @@
           ".so",
           ".sop"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./images/soplang-icon.png",
+          "dark": "./images/soplang-icon.png"
+        }
       }
     ],
     "grammars": [
@@ -48,15 +52,7 @@
         "path": "./snippets/soplang.json"
       }
     ],
-    "iconThemes": [
-      {
-        "id": "soplang-file-icon",
-        "label": "Soplang File Icon",
-        "path": "./file-icons/soplang-icon-theme.json"
-      }
-    ],
     "configurationDefaults": {
-      "workbench.iconTheme": "soplang-file-icon",
       "cSpell.enableFiletypes": [
         "soplang"
       ],

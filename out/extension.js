@@ -6,6 +6,15 @@ const path = require("path");
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+  // Handle spell checker integration if it's installed
+  setupSpellChecker(context);
+}
+
+/**
+ * Sets up integration with the Code Spell Checker if it's installed
+ * @param {vscode.ExtensionContext} context
+ */
+function setupSpellChecker(context) {
   // Check if Code Spell Checker is installed
   const codeSpellCheckerExtension = vscode.extensions.getExtension(
     "streetsidesoftware.code-spell-checker"

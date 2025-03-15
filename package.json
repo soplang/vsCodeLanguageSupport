@@ -64,13 +64,22 @@
             "soplang"
           ]
         }
-      ]
+      ],
+      "[soplang]": {
+        "editor.formatOnSave": true
+      }
     },
     "cSpell.dictionaries": [
       {
         "name": "soplang",
         "description": "Soplang programming language keywords and syntax terms.",
         "path": "./dictionaries/soplang.txt"
+      }
+    ],
+    "commands": [
+      {
+        "command": "soplang.formatDocument",
+        "title": "Format Soplang Document"
       }
     ]
   },
@@ -90,6 +99,7 @@
   ],
   "main": "./out/extension.js",
   "files": [
-    "dictionaries/**"
+    "dictionaries/**",
+    "src/**"
   ]
 }

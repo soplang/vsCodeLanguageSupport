@@ -97,9 +97,5 @@
   "activationEvents": [
     "onLanguage:soplang"
   ],
-  "main": "./out/extension.js",
-  "files": [
-    "dictionaries/**",
-    "src/**"
-  ]
+  "main": "./out/extension.js"
 }

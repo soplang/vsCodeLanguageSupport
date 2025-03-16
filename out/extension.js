@@ -2,6 +2,7 @@
 const vscode = require("vscode");
 const path = require("path");
 const { formatSoplangCode } = require("../src/formatter");
+const { SoplangDiagnostics } = require("../src/diagnostics");
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -12,6 +13,21 @@ function activate(context) {
 
   // Register the formatter
   setupFormatter(context);
+
+  // Setup diagnostics for error detection
+  setupDiagnostics(context);
+}
+
+/**
+ * Sets up the diagnostics for error detection in Soplang files
+ * @param {vscode.ExtensionContext} context
+ */
+function setupDiagnostics(context) {
+  // Create and activate the diagnostics provider
+  const diagnostics = new SoplangDiagnostics();
+  diagnostics.activate(context);
+
+  console.log("Soplang diagnostics registered successfully.");
 }
 
 /**

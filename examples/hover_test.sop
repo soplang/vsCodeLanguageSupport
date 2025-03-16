@@ -1,0 +1,54 @@
+// Soplang Hover Demo
+// Hover over any of the keywords to see documentation and examples
+
+// Variable declarations
+door x = 10
+door y = 20
+door qoraalka = "Salaam, Adduunka!"
+
+// Function definition
+howl salaamo(magac) {
+    qor("Salaan, " + magac)
+    soo_celi "Salaan complete"
+}
+
+// Conditionals
+haddii (x > 5) {
+    qor("X waa weyn!")
+} haddii_kale (x < 0) {
+    qor("X waa laga!")
+} haddii_kalena {
+    qor("X waa dhexe!")
+}
+
+// Loops
+ku_celi i min 1 ilaa 5 {
+    qor("Tirinta: " + i)
+}
+
+door count = 0
+inta_ay (count < 5) {
+    qor("Count: " + count)
+    count = count + 1
+    
+    haddii (count == 3) {
+        sii_wad
+    }
+    
+    haddii (count == 4) {
+        jooji
+    }
+}
+
+// Exception handling
+isku_day {
+    door khalad = "No error"
+    qor(khalad)
+} qabo (e) {
+    qor("Error occurred: " + e)
+}
+
+// Data types
+tiro number = 42
+qoraal text = "Hello"
+boole isTrue = true 

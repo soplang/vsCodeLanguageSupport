@@ -1,9 +1,9 @@
 // The module 'vscode' contains the VS Code extensibility API
 const vscode = require("vscode");
 const path = require("path");
-const { formatSoplangCode } = require("../src/formatter");
-const { SoplangDiagnostics } = require("../src/diagnostics");
-const { SoplangHoverProvider } = require("../src/hoverProvider");
+const { formatSoplangCode } = require("./formatter");
+const { SoplangDiagnostics } = require("./diagnostics");
+const { SoplangHoverProvider } = require("./hoverProvider");
 
 /**
  * @param {vscode.ExtensionContext} context

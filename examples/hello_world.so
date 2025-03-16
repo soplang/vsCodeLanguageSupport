@@ -1,58 +1,23 @@
-// Hello World example in Soplang // Simple print statement
+// Simple Soplang Hello World program with .so extension
+// This will test our run functionality with .so files
 
-qor("Salaan, Adduunka!")
-// Hello, World! // Variables
+// Print a message to the console
+qor("Hello from .so file!");
 
-door magac = "Sharafdin"
-// Dynamic variable
-
-qoraal cinwaan = "Soplang Developer"
-// Static string variable
-
-tiro da = 18
-// Static integer variable // Using variables in a print statement
-
-qor("Magaca: " + magac)
-qor("Cinwaanka: " + cinwaan)
-qor("Da'da: " + qoraal(da))
-// Simple function definition
-
-howl salaanta(qofka) {
-    soo_celi "Salaan, " + qofka + "!"
+// Define a simple function
+howl multiply(a, b) {
+    soo_celi a * b;
 }
-// Function call
 
-qor(salaanta(magac))
-// Simple if statement
-// qog
+// Use the function and print the result
+door result = multiply(6, 7);
+qor("6 * 7 = " + result);
 
-haddii (da > 18) {
-    qor("Waa qof weyn")
-    // Is an adult
-
+// Simple conditional
+haddii (result > 40) {
+    qor("Result is greater than 40");
 } haddii_kalena {
-    qor("Waa qof yar")
-    // Is a child
-
-}
-// Simple for loop
-
-qor("Tirooyinka 1 ilaa 5:")
-// Numbers 1 to 5:
-
-ku_celi i min 1 ilaa 5 {
-    qor(i)
-}
-// Simple while loop
-
-qor("Tirooyinka 5 ilaa 1:")
-// Numbers 5 to 1:
-
-door j = 5
-inta_ay (j > 0) {
-    qor(j)
-    j = j - 1
+    qor("Result is less than or equal to 40");
 }
 
-qor("Dhammaad!")
-// End!
+qor("Test program with .so extension completed successfully!");

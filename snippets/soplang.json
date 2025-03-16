@@ -83,6 +83,15 @@
       "}"
     ],
     "description": "waxa ay joojineysa(break) shuruuda"
+  },
+  "SiiWad (Continue Statement)": {
+    "prefix": "sw",
+    "body": [
+      "haddii (${1:shuurud}) {",
+      "\tsiiWad",
+      "}"
+    ],
+    "description": "waxa ay sii wadeysa(Continue) shuruuda"
   }
   }
   

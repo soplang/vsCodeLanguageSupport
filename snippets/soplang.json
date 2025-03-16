@@ -118,6 +118,18 @@
     ],
     "description": "waxey ku qaboneysa(Catch) cilada"
   },
+  "isku_day Qabo (Try Catch Block)":{
+    "prefix": "isku_qabo",
+        "body": [
+            "isku_day {",
+            "    $1 ku qoro code kaga",
+            "} qabo (cilad) {",
+            "   qor(\"Cilada:\", cilad);",
+            "}"
+        ],
+        "description": "waxey isku qabaneysa isku_qabo(try-catch block) "
+
+  },
   "Keeno (Import Statement)": {
     "prefix": "kn",
     "body": [

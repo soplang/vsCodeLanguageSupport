@@ -124,6 +124,15 @@
       "keeno \"${1:module}\"$0"
     ],
     "description": "waxey kugo so dareysa(Import) module"
+  },
+  "Siidaayo (Export Statement)": {
+    "prefix": "sdy",
+    "body": [
+      "siidaayo howl ${1:magaca}(${2:qiimayaal}) {",
+      "\t$3",
+      "}"
+    ],
+    "description": "waxey ku siideynesa(export) howl"
   }
   }
   

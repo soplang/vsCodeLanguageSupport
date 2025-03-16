@@ -117,6 +117,13 @@
       "}"
     ],
     "description": "waxey ku qaboneysa(Catch) cilada"
+  },
+  "Keeno (Import Statement)": {
+    "prefix": "kn",
+    "body": [
+      "keeno \"${1:module}\"$0"
+    ],
+    "description": "waxey kugo so dareysa(Import) module"
   }
   }
   

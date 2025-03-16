@@ -74,6 +74,15 @@
       "}"
     ],
     "description": "Xisaab celin (loop) intaAy "
+  },
+  "Jooji (Break Statement)": {
+    "prefix": "jj",
+    "body": [
+      "haddii (${1:shuruud}) {",
+      "\tjooji",
+      "}"
+    ],
+    "description": "waxa ay joojineysa(break) shuruuda"
   }
   }
   

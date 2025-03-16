@@ -56,6 +56,37 @@
         "path": "./syntaxes/soplang.tmLanguage.json"
       }
     ],
+    "keybindings": [
+      {
+        "command": "soplang.runFile",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorLangId == soplang || resourceExtname == .sop || resourceExtname == .so"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceExtname == .sop || resourceExtname == .so",
+          "command": "soplang.runFile",
+          "group": "navigation"
+        }
+      ],
+      "editor/title": [
+        {
+          "when": "resourceExtname == .sop || resourceExtname == .so",
+          "command": "soplang.runFile",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "when": "resourceExtname == .sop || resourceExtname == .so",
+          "command": "soplang.runFile",
+          "group": "navigation"
+        }
+      ]
+    },
     "snippets": [
       {
         "language": "soplang",
@@ -90,6 +121,14 @@
       {
         "command": "soplang.formatDocument",
         "title": "Format Soplang Document"
+      },
+      {
+        "command": "soplang.runFile",
+        "title": "Run Soplang File",
+        "icon": {
+          "light": "./images/run-light.svg",
+          "dark": "./images/run-dark.svg"
+        }
       }
     ]
   },

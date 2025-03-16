@@ -20,6 +20,9 @@ function activate(context) {
 
   // Setup hover provider for keyword documentation
   setupHoverProvider(context);
+
+  // Setup Soplang execution
+  setupSoplangExecution(context);
 }
 
 /**
@@ -201,6 +204,78 @@ function setupSpellChecker(context) {
     console.log(
       "Code Spell Checker not installed. Soplang syntax highlighting will work, but spell checking features are not available."
     );
+  }
+}
+
+/**
+ * Sets up Soplang code execution functionality
+ * @param {vscode.ExtensionContext} context
+ */
+function setupSoplangExecution(context) {
+  // Register the runSoplangFile command
+  const runSoplangCommand = vscode.commands.registerCommand(
+    "soplang.runFile",
+    runSoplangFile
+  );
+  context.subscriptions.push(runSoplangCommand);
+
+  console.log("Soplang execution functionality registered successfully.");
+}
+
+/**
+ * Runs the currently active Soplang file
+ * This function:
+ * 1. Checks if the active file is a Soplang file
+ * 2. Saves the file automatically
+ * 3. Executes 'sop run' in the integrated terminal
+ */
+async function runSoplangFile() {
+  try {
+    // Get the active text editor
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      vscode.window.showErrorMessage(
+        "No active editor found. Please open a Soplang file."
+      );
+      return;
+    }
+
+    // Check if it's a Soplang file
+    const document = editor.document;
+    const fileName = document.fileName;
+    const fileExtension = path.extname(fileName).toLowerCase();
+
+    if (fileExtension !== ".sop" && fileExtension !== ".so") {
+      vscode.window.showErrorMessage(
+        "Current file is not a Soplang file. Only .sop and .so files can be executed."
+      );
+      return;
+    }
+
+    // Save the file automatically
+    await document.save();
+
+    // Get or create a terminal
+    let terminal = vscode.window.terminals.find(
+      (t) => t.name === "Soplang Execution"
+    );
+    if (!terminal) {
+      terminal = vscode.window.createTerminal("Soplang Execution");
+    }
+
+    // Show the terminal
+    terminal.show();
+
+    // Run the sop command with the file
+    terminal.sendText(`sop run "${fileName}"`);
+
+    // Provide feedback to the user
+    vscode.window.setStatusBarMessage("Running Soplang file...", 3000);
+  } catch (error) {
+    vscode.window.showErrorMessage(
+      `Failed to run Soplang file: ${error.message}`
+    );
+    console.error("Error running Soplang file:", error);
   }
 }
 

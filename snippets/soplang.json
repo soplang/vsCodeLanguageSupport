@@ -108,6 +108,15 @@
       "}"
     ],
     "description": " waxey isku dayeysa(Try) qeyb(block)"
+  },
+  "Qabo (Catch Block)": {
+    "prefix": "qb",
+    "body": [
+      "qabo (${1:cilad}) {",
+      "\t$2",
+      "}"
+    ],
+    "description": "waxey ku qaboneysa(Catch) cilada"
   }
   }
   

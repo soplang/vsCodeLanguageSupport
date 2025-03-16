@@ -37,6 +37,15 @@ function setupHoverProvider(context) {
  * @param {vscode.ExtensionContext} context
  */
 function setupDiagnostics(context) {
+  // Check if diagnostics are enabled in configuration
+  const config = vscode.workspace.getConfiguration("soplang");
+  const diagnosticsEnabled = config.get("enableDiagnostics", false);
+
+  if (!diagnosticsEnabled) {
+    console.log("Soplang diagnostics are disabled via configuration.");
+    return;
+  }
+
   // Create and activate the diagnostics provider
   const diagnostics = new SoplangDiagnostics();
   diagnostics.activate(context);

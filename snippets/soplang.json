@@ -92,6 +92,13 @@
       "}"
     ],
     "description": "waxa ay sii wadeysa(Continue) shuruuda"
+  },
+  "Soo_celi (Return Statement)": {
+    "prefix": "sc",
+    "body": [
+      "soo_celi ${1:qiimaha}$0"
+    ],
+    "description": "waxey so celineysa(return) qiimo"
   }
   }
   

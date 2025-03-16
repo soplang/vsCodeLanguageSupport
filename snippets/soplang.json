@@ -99,6 +99,15 @@
       "soo_celi ${1:qiimaha}$0"
     ],
     "description": "waxey so celineysa(return) qiimo"
+  },
+  "Isku_day (Try Block)": {
+    "prefix": "ikd",
+    "body": [
+      "isku_day {",
+      "\t$1",
+      "}"
+    ],
+    "description": " waxey isku dayeysa(Try) qeyb(block)"
   }
   }
   

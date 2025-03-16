@@ -1,0 +1,33 @@
+// Soplang Type Validation Test File
+// This file tests the validation of data types with quoted values
+
+// Numeric types with quoted values (should show errors)
+tiro number1 = '12'             // ❌ Error: Quoted numeric string in number variable
+tiro number2 = "45"             // ❌ Error: Quoted numeric string in number variable
+tiro number3 = 'abc'            // ❌ Error: Quoted non-numeric string in number variable
+tiro validNumber = 42           // ✅ Valid: Unquoted numeric value
+
+// Float types with quoted values (should show errors)
+jajab decimal1 = '3.14'         // ❌ Error: Quoted numeric string in float variable
+jajab decimal2 = "2.718"        // ❌ Error: Quoted numeric string in float variable
+jajab decimal3 = 'pi'           // ❌ Error: Quoted non-numeric string in float variable
+jajab validDecimal = 3.14159    // ✅ Valid: Unquoted decimal value
+
+// Boolean types with quoted values (should show errors)
+boole flag1 = 'run'             // ❌ Error: Quoted boolean value in boolean variable
+boole flag2 = "been"            // ❌ Error: Quoted boolean value in boolean variable
+boole flag3 = 'true'            // ❌ Error: Quoted boolean value in boolean variable
+boole validFlag = run           // ✅ Valid: Unquoted boolean value
+
+// String types
+qoraal text1 = "Hello"          // ✅ Valid: Quoted string in string variable
+qoraal text2 = 'World'          // ✅ Valid: Quoted string in string variable
+
+// Mixed type issues
+tiro wrongType1 = true          // ❌ Error: Boolean in number variable
+jajab wrongType2 = run          // ❌ Error: Boolean in float variable
+boole wrongType3 = 42           // ❌ Error: Number in boolean variable
+qoraal wrongType4 = 123         // ✅ Valid: Numbers can be converted to strings
+
+// Test without initializing
+tiro uninitNumber;             // Should be fine but will raise a warning if used before initialization 

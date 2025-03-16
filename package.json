@@ -21,6 +21,16 @@
   ],
   "icon": "images/soplang-icon.png",
   "contributes": {
+    "configuration": {
+      "title": "Soplang",
+      "properties": {
+        "soplang.enableDiagnostics": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/disable diagnostic error detection for Soplang files"
+        }
+      }
+    },
     "languages": [
       {
         "id": "soplang",

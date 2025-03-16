@@ -420,47 +420,6 @@ class SoplangDiagnostics {
         },
       },
 
-      // Return statements without semicolons
-      {
-        pattern: /\b(soo_celi)\b[^;]*$/g,
-        validate: (match, line) => {
-          // If the line doesn't end with a semicolon
-          if (!line.trim().endsWith(";")) {
-            return {
-              isInvalid: true,
-              message: `Missing semicolon after return statement. Example: 'soo_celi value;'`,
-              code: "missing-semicolon",
-              suggestion: `${line.trim()};`,
-              startPos: match.index,
-              endPos: line.length,
-              originalText: line.trim(),
-            };
-          }
-          return null;
-        },
-      },
-
-      // Variable declarations without semicolons
-      {
-        pattern:
-          /\b(door|tiro|qoraal|boole)\s+[a-zA-Z_][a-zA-Z0-9_]*\s*=\s*[^;{]*$/g,
-        validate: (match, line) => {
-          // If the line doesn't end with a semicolon
-          if (!line.trim().endsWith(";")) {
-            return {
-              isInvalid: true,
-              message: `Missing semicolon after variable declaration. Example: '${match[1]} variable = value;'`,
-              code: "missing-semicolon",
-              suggestion: `${line.trim()};`,
-              startPos: match.index,
-              endPos: line.length,
-              originalText: line.trim(),
-            };
-          }
-          return null;
-        },
-      },
-
       // Print statements using non-Soplang syntax
       {
         pattern: /\b(console\.log|print|echo|log)\s*\(/g,
@@ -497,7 +456,201 @@ class SoplangDiagnostics {
         },
       },
 
-      // New pattern to detect string escape sequence errors
+      // Improved: Strict check for qoraal (string) variables to require quotes
+      {
+        pattern:
+          /\b(qoraal)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*([^'"][^;]*?)(?:$|;)/g,
+        validate: (match, line) => {
+          // Skip if it's already a properly quoted string
+          if (/=\s*['"]/.test(match[0])) {
+            return null;
+          }
+
+          // Get the value to quote it properly
+          const value = match[3].trim();
+
+          return {
+            isInvalid: true,
+            message: `Type mismatch: 'qoraal' (string) variables must have string values enclosed in quotes.`,
+            code: "missing-string-quotes",
+            suggestion: `qoraal ${match[2]} = "${value}"`,
+            startPos: match.index,
+            endPos: match.index + match[0].length,
+            originalText: match[0],
+          };
+        },
+      },
+
+      // Improved: Type check for tiro (number) variables
+      {
+        pattern: /\b(tiro)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+?)(?:$|;)/g,
+        validate: (match, line) => {
+          const value = match[3].trim();
+
+          // Check if the value is enclosed in quotes (either single or double)
+          if (/(^['"].*['"]$)/.test(value)) {
+            return {
+              isInvalid: true,
+              message: `Type mismatch: 'tiro' (number) variables cannot have string values (enclosed in quotes).`,
+              code: "type-mismatch-number",
+              suggestion: `tiro ${match[2]} = ${value.replace(/['"]/g, "")}`,
+              startPos: match.index,
+              endPos: match.index + match[0].length,
+              originalText: match[0],
+            };
+          }
+
+          // If it's a numeric value, it's valid
+          if (/^-?\d+(\.\d+)?$/.test(value)) {
+            return null;
+          }
+
+          // If it looks like a string or other non-numeric value
+          return {
+            isInvalid: true,
+            message: `Type mismatch: 'tiro' (number) variables must have numeric values.`,
+            code: "type-mismatch-number",
+            suggestion: `tiro ${match[2]} = 0`,
+            startPos: match.index,
+            endPos: match.index + match[0].length,
+            originalText: match[0],
+          };
+        },
+      },
+
+      // Improved: Type check for jajab (float) variables
+      {
+        pattern: /\b(jajab)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+?)(?:$|;)/g,
+        validate: (match, line) => {
+          const value = match[3].trim();
+
+          // Check if the value is enclosed in quotes (either single or double)
+          if (/(^['"].*['"]$)/.test(value)) {
+            return {
+              isInvalid: true,
+              message: `Type mismatch: 'jajab' (float) variables cannot have string values (enclosed in quotes).`,
+              code: "type-mismatch-float",
+              suggestion: `jajab ${match[2]} = ${value.replace(/['"]/g, "")}`,
+              startPos: match.index,
+              endPos: match.index + match[0].length,
+              originalText: match[0],
+            };
+          }
+
+          // If it's a numeric value, it's valid
+          if (/^-?\d+(\.\d+)?$/.test(value)) {
+            return null;
+          }
+
+          // If it looks like a string or other non-numeric value
+          return {
+            isInvalid: true,
+            message: `Type mismatch: 'jajab' (float) variables must have numeric values.`,
+            code: "type-mismatch-float",
+            suggestion: `jajab ${match[2]} = 0.0`,
+            startPos: match.index,
+            endPos: match.index + match[0].length,
+            originalText: match[0],
+          };
+        },
+      },
+
+      // Improved: Type check for boole/labadaran (boolean) variables
+      {
+        pattern:
+          /\b(boole|labadaran)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+?)(?:$|;)/g,
+        validate: (match, line) => {
+          const value = match[3].trim();
+
+          // Check if the value is enclosed in quotes (either single or double)
+          if (/(^['"].*['"]$)/.test(value)) {
+            return {
+              isInvalid: true,
+              message: `Type mismatch: '${match[1]}' (boolean) variables cannot have string values (enclosed in quotes).`,
+              code: "type-mismatch-boolean",
+              suggestion: `${match[1]} ${match[2]} = run`,
+              startPos: match.index,
+              endPos: match.index + match[0].length,
+              originalText: match[0],
+            };
+          }
+
+          // If it's a valid boolean value, it's valid
+          if (/^(run|been|true|false)$/.test(value)) {
+            return null;
+          }
+
+          // If it's not a valid boolean value
+          return {
+            isInvalid: true,
+            message: `Type mismatch: '${match[1]}' (boolean) variables must have boolean values (run/been).`,
+            code: "type-mismatch-boolean",
+            suggestion: `${match[1]} ${match[2]} = run`,
+            startPos: match.index,
+            endPos: match.index + match[0].length,
+            originalText: match[0],
+          };
+        },
+      },
+
+      // Check for malformed string literals with open/close quotes mismatch
+      {
+        pattern: /=\s*(['"])(?:(?!\1).)*[^\\]\1\1/g,
+        validate: (match, line) => {
+          return {
+            isInvalid: true,
+            message: `Malformed string literal. Don't repeat quote characters. Use single or double quotes consistently.`,
+            code: "malformed-string",
+            suggestion: match[0].replace(/(['"])\1$/, "$1"),
+            startPos: match.index,
+            endPos: match.index + match[0].length,
+            originalText: match[0],
+          };
+        },
+      },
+
+      // Check for proper use of door vs. typed declaration
+      {
+        pattern:
+          /\b(door)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(['"].*['"]|true|false|run|been|\d+\.\d+)/g,
+        validate: (match, line) => {
+          // Detect what kind of value it is
+          let suggestedType = "door";
+          let reason = "";
+
+          if (match[3].startsWith('"') || match[3].startsWith("'")) {
+            suggestedType = "qoraal";
+            reason = "string";
+          } else if (["true", "false", "run", "been"].includes(match[3])) {
+            suggestedType = "boole";
+            reason = "boolean";
+          } else if (match[3].includes(".")) {
+            suggestedType = "jajab";
+            reason = "decimal";
+          } else if (/^\d+$/.test(match[3])) {
+            suggestedType = "tiro";
+            reason = "integer";
+          }
+
+          // Only suggest if we found a more specific type
+          if (suggestedType !== "door") {
+            return {
+              isInvalid: false, // This is just a suggestion, not an error
+              message: `Consider using '${suggestedType}' instead of 'door' for ${reason} values.`,
+              code: "type-suggestion",
+              suggestion: `${suggestedType} ${match[2]} = ${match[3]}`,
+              startPos: match.index,
+              endPos: match.index + match[1].length,
+              originalText: match[1],
+              severity: vscode.DiagnosticSeverity.Information,
+            };
+          }
+
+          return null;
+        },
+      },
+
+      // New pattern to detect invalid escape sequence errors
       {
         pattern: /"(?:[^"\\]|\\[^"\\/btnfr])+"/g,
         validate: (match, line) => {
@@ -1223,6 +1376,18 @@ class SoplangCodeActionProvider {
           case "invalid-escape":
             this.createInvalidEscapeFix(document, diagnostic, actions);
             break;
+
+          case "invalid-string-format":
+          case "malformed-string":
+          case "type-mismatch-number":
+          case "type-mismatch-boolean":
+          case "type-mismatch-string":
+            this.createSimpleReplacementFix(document, diagnostic, actions);
+            break;
+
+          case "type-suggestion":
+            this.createTypeImprovement(document, diagnostic, actions);
+            break;
         }
       }
     }
@@ -1471,6 +1636,32 @@ class SoplangCodeActionProvider {
 
       fix.edit = new vscode.WorkspaceEdit();
       fix.edit.replace(document.uri, diagnostic.range, `${paramName}_2`);
+      fix.diagnostics = [diagnostic];
+      fix.isPreferred = true;
+      actions.push(fix);
+    }
+  }
+
+  /**
+   * Create a fix for type improvement suggestions
+   */
+  createTypeImprovement(document, diagnostic, actions) {
+    if (diagnostic.data && diagnostic.data.suggestion) {
+      const fixTitle = `Use more specific type: ${
+        diagnostic.data.suggestion.split(" ")[0]
+      }`;
+
+      const fix = new vscode.CodeAction(
+        fixTitle,
+        vscode.CodeActionKind.QuickFix
+      );
+
+      fix.edit = new vscode.WorkspaceEdit();
+      fix.edit.replace(
+        document.uri,
+        diagnostic.range,
+        diagnostic.data.suggestion.split(" ")[0] // Just the type name
+      );
       fix.diagnostics = [diagnostic];
       fix.isPreferred = true;
       actions.push(fix);

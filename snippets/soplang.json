@@ -37,7 +37,7 @@
       "description": "Kale (else) marka shuruuduhu been noqdeen"
     },
   
-    "Ku Celi (Loop)": {
+    "Ku_Celi (Loop)": {
       "prefix": "kc",
       "body": [
         "ku_celi ${1:isbeddel} min ${2:bilow} ilaa ${3:dhamaad} {",
@@ -65,6 +65,86 @@
         "}"
       ],
       "description": "Waxay abuureysaa fasal (class), ka_dhaxal (inheritance) optional"
-    }
+    },
+    "Inta_ay (While Loop)": {
+    "prefix": "it",
+    "body": [
+      "inta_ay (${1:shurrud}) {",
+      "\t$2",
+      "}"
+    ],
+    "description": "Xisaab celin (loop) intaAy "
+  },
+  "Jooji (Break Statement)": {
+    "prefix": "jj",
+    "body": [
+      "haddii (${1:shuruud}) {",
+      "\tjooji",
+      "}"
+    ],
+    "description": "waxa ay joojineysa(break) shuruuda"
+  },
+  "Sii_Wad (Continue Statement)": {
+    "prefix": "sw",
+    "body": [
+      "haddii (${1:shuurud}) {",
+      "\tsii_wad",
+      "}"
+    ],
+    "description": "waxa ay sii wadeysa(Continue) shuruuda"
+  },
+  "Soo_celi (Return Statement)": {
+    "prefix": "sc",
+    "body": [
+      "soo_celi ${1:qiimaha}$0"
+    ],
+    "description": "waxey so celineysa(return) qiimo"
+  },
+  "Isku_day (Try Block)": {
+    "prefix": "ikd",
+    "body": [
+      "isku_day {",
+      "\t$1",
+      "}"
+    ],
+    "description": " waxey isku dayeysa(Try) qeyb(block)"
+  },
+  "Qabo (Catch Block)": {
+    "prefix": "qb",
+    "body": [
+      "qabo (${1:cilad}) {",
+      "\t$2",
+      "}"
+    ],
+    "description": "waxey ku qaboneysa(Catch) cilada"
+  },
+  "isku_day Qabo (Try Catch Block)":{
+    "prefix": "isku_qabo",
+        "body": [
+            "isku_day {",
+            "    $1 ku qoro code kaga",
+            "} qabo (cilad) {",
+            "   qor(\"Cilada:\", cilad);",
+            "}"
+        ],
+        "description": "waxey isku qabaneysa isku_qabo(try-catch block) "
+
+  },
+  "Keeno (Import Statement)": {
+    "prefix": "kn",
+    "body": [
+      "keeno \"${1:module}\"$0"
+    ],
+    "description": "waxey kugo so dareysa(Import) module"
+  },
+  "Siidaayo (Export Statement)": {
+    "prefix": "sdy",
+    "body": [
+      "siidaayo howl ${1:magaca}(${2:qiimayaal}) {",
+      "\t$3",
+      "}"
+    ],
+    "description": "waxey ku siideynesa(export) howl"
+  }
   }
   

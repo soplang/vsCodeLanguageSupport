@@ -66,10 +66,10 @@
       ],
       "description": "Waxay abuureysaa fasal (class), ka_dhaxal (inheritance) optional"
     },
-    "IntaAy (While Loop)": {
+    "Inta_ay (While Loop)": {
     "prefix": "it",
     "body": [
-      "intaAy (${1:shurrud}) {",
+      "inta_ay (${1:shurrud}) {",
       "\t$2",
       "}"
     ],

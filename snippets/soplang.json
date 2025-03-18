@@ -37,7 +37,7 @@
       "description": "Kale (else) marka shuruuduhu been noqdeen"
     },
   
-    "Ku Celi (Loop)": {
+    "Ku_Celi (Loop)": {
       "prefix": "kc",
       "body": [
         "ku_celi ${1:isbeddel} min ${2:bilow} ilaa ${3:dhamaad} {",

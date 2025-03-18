@@ -84,11 +84,11 @@
     ],
     "description": "waxa ay joojineysa(break) shuruuda"
   },
-  "SiiWad (Continue Statement)": {
+  "Sii_Wad (Continue Statement)": {
     "prefix": "sw",
     "body": [
       "haddii (${1:shuurud}) {",
-      "\tsiiWad",
+      "\tsii_wad",
       "}"
     ],
     "description": "waxa ay sii wadeysa(Continue) shuruuda"

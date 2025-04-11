@@ -126,8 +126,8 @@
         "command": "soplang.runFile",
         "title": "Run Soplang File",
         "icon": {
-          "light": "images/soplang-icon.png",
-          "dark": "images/soplang-icon.png"
+          "light": "./images/run-light.svg",
+          "dark": "./images/run-dark.svg"
         }
       }
     ]

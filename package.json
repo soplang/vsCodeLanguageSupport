@@ -44,8 +44,8 @@
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "light": "images/soplang-logo.svg",
-          "dark": "images/soplang-logo.svg"
+          "light": "images/run-light.svg",
+          "dark": "images/run-dark.svg"
         }
       }
     ],

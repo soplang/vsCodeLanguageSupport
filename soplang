@@ -1,14 +1,9 @@
 #!/bin/bash
 
-# Mock implementation of the sop command
+# Mock implementation of the soplang command
 # This script simply prints the file content with some formatting
 
-if [ "$1" != "run" ]; then
-    echo "Usage: sop run <filename>"
-    exit 1
-fi
-
-FILENAME=$2
+FILENAME=$1
 
 if [ ! -f "$FILENAME" ]; then
     echo "Error: File '$FILENAME' not found."
@@ -16,7 +11,7 @@ if [ ! -f "$FILENAME" ]; then
 fi
 
 echo "========================================="
-echo "Soplang Interpreter (Mock)"
+echo "Soplang Interpreter"
 echo "Running file: $FILENAME"
 echo "========================================="
 echo ""

@@ -227,7 +227,7 @@ function setupSoplangExecution(context) {
  * This function:
  * 1. Checks if the active file is a Soplang file
  * 2. Saves the file automatically
- * 3. Executes 'sop run' in the integrated terminal
+ * 3. Executes 'soplang' in the integrated terminal
  */
 async function runSoplangFile() {
   try {
@@ -266,8 +266,8 @@ async function runSoplangFile() {
     // Show the terminal
     terminal.show();
 
-    // Run the sop command with the file
-    terminal.sendText(`sop run "${fileName}"`);
+    // Run the soplang command with the file
+    terminal.sendText(`soplang "${fileName}"`);
 
     // Provide feedback to the user
     vscode.window.setStatusBarMessage("Running Soplang file...", 3000);

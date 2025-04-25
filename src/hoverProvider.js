@@ -12,105 +12,197 @@ class SoplangHoverProvider {
       // Core keywords
       door: {
         description:
-          "Variable Declaration - Used to declare variables in Soplang.",
+          "Doorsoome Caddeyn - Waxaad u adeegsan kartaa inaad ku qeexdo doorsoome cusub.",
         example: 'door x = 10\ndoor magac = "Sharafdin"',
-        usage: "Declare variables with any type (numbers, strings, booleans).",
+        usage: "Qor doorsoome nooc kasta leh (tiro, qoraal, run_mise_been).",
       },
       howl: {
-        description: "Function Declaration - Defines a function in Soplang.",
+        description: "Hawlgal Caddeyn - Wuxuu qeexayaa shaqo cusub.",
         example: 'howl salaam(magac) {\n    qor("Salaan, " + magac)\n}',
-        usage: 'To call the function: salaam("Sharafdin")',
+        usage: 'Si aad u isticmaasho: salaam("Sharafdin")',
       },
       qor: {
-        description: "Print Statement - Outputs text to the console.",
-        example: 'qor("Hello, World!")\nqor("Value: " + x)',
-        usage: "Can print strings, variables, or expressions.",
+        description: "Daabacaad - Wuxuu daabacayaa qoraal.",
+        example: 'qor("Salaam, Adduunka!")\nqor("Qiimaha: " + x)',
+        usage: "Waxay daabici kartaa qoraal, doorsoome, ama xisaab.",
       },
       akhri: {
-        description: "Input Function - Reads user input from the console.",
+        description: "Gelinta - Wuxuu akhriyaa wixii isticmaaluhu geliyo.",
         example: 'door magac = akhri("Fadlan gali magacaaga: ")',
-        usage: "Stores the input value in a variable.",
+        usage: "Wuxuu kaydiyaa qiimaha la geliyo.",
       },
       soo_celi: {
-        description: "Return Statement - Returns a value from a function.",
+        description: "Soo Celin - Waxay soo celisaa qiime ka yimid shaqo.",
         example: "howl isuDar(a, b) {\n    soo_celi a + b\n}",
-        usage: "Used to return values from functions.",
+        usage: "Waxaa loo isticmaalaa in lagu soo celiyo qiimayaal.",
       },
 
       // Control flow
       haddii: {
-        description: "If Statement - Used for conditionals in Soplang.",
-        example: 'haddii (x > 5) {\n    qor("X waa weyn!")\n}',
-        usage: "Executes code block if the condition is true.",
+        description: "Hadday suurtogal tahay - Wuxuu hubiyaa shuruud.",
+        example: 'haddii (x > 5) {\n    qor("X waa weyn yahay")\n}',
+        usage: "Waxay fulisaa koodka haddii shuruuddu run tahay.",
       },
       haddii_kale: {
         description:
-          "Else If Statement - Secondary condition after an if statement.",
+          "Haddii kale - Shuruud kale kadib marka shuruuddii hore been noqoto.",
         example:
-          'haddii (x > 10) {\n    qor("X aad buu weyn yahay!")\n} haddii_kale (x > 5) {\n    qor("X waa weyn!")\n}',
-        usage: "Used for multiple conditions in sequence.",
+          'haddii (x > 10) {\n    qor("X aad bay u weyn tahay")\n} haddii_kale (x > 5) {\n    qor("X waa dhex dhexaad")\n}',
+        usage: "Waxaa loo isticmaalaa shuruudo badan oo isku xiga.",
       },
       haddii_kalena: {
-        description: "Else Statement - Alternative when if condition is false.",
+        description:
+          "Haddii kalena - Waxa la isticmaalaa markaad hubto in shuruudaha kale been yihiin.",
         example:
-          'haddii (x > 5) {\n    qor("X waa weyn!")\n} haddii_kalena {\n    qor("X waa yar!")\n}',
-        usage: "Executes when no other conditions are true.",
+          'haddii (x > 5) {\n    qor("X waa weyn yahay")\n} haddii_kalena {\n    qor("X waa yar yahay")\n}',
+        usage: "Waxaa la fuliyaa marka shuruudaha kale oo dhan been yihiin.",
       },
 
       // Loops
       ku_celi: {
-        description: "For Loop - Iterates a specific number of times.",
+        description:
+          "Soo celcelis - Waxay soo celcelisaa tallaabooyin gaar ah marto inta u dhaxeysa laba qiimo.",
         example: 'ku_celi i min 1 ilaa 5 {\n    qor("Tirinta: " + i)\n}',
-        usage: "Loops from start value to end value.",
+        usage: "Waxay soo celcelisaa billow ilaa dhammaad.",
       },
       inta_ay: {
-        description: "While Loop - Executes as long as a condition is true.",
+        description:
+          "Inta ay - Waxay soo celcelisaa ilaa shuruuddu been noqoto.",
         example: "door i = 0\ninta_ay (i < 5) {\n    qor(i)\n    i = i + 1\n}",
-        usage: "Continues looping while the condition remains true.",
+        usage: "Waxay sii wadataa xisaabinta ilaa shuruuddu been noqoto.",
       },
       jooji: {
-        description: "Break Statement - Exits the current loop.",
+        description: "Jooji - Waxay ka baxdaa xisaabinta hadda socota.",
         example:
           "ku_celi i min 1 ilaa 10 {\n    haddii (i == 5) {\n        jooji\n    }\n    qor(i)\n}",
-        usage: "Immediately exits the enclosing loop.",
+        usage: "Isla markiiba waxay ka baxdaa xisaabinta.",
       },
       sii_wad: {
-        description:
-          "Continue Statement - Skips to the next iteration of a loop.",
+        description: "Sii wad - Waxay u gudbaa xisaabinta soo socota.",
         example:
-          "ku_celi i min 1 ilaa 5 {\n    haddii (i == 3) {\n        sii_wad\n    }\n    qor(i) // Skips printing 3\n}",
-        usage: "Skips the rest of the current iteration.",
+          "ku_celi i min 1 ilaa 5 {\n    haddii (i == 3) {\n        sii_wad\n    }\n    qor(i) // Waxay ka booddaa daabacaadda 3\n}",
+        usage: "Waxay ka booddaa inta hadda ka hartay ee xisaabinta.",
       },
 
       // Data types
       tiro: {
-        description: "Number Type - Declares a numeric variable.",
+        description: "Tiro - Waxay sheegaysaa doorsoome tiro ah.",
         example: "tiro x = 10\ntiro y = 3.14",
-        usage: "Used for both integers and floating-point numbers.",
+        usage: "Waxaa loo isticmaalaa labadaba tirada iyo jajabka tobanle.",
       },
       qoraal: {
-        description: "String Type - Declares a text variable.",
+        description: "Qoraal - Waxay sheegaysaa doorsoome qoraal ah.",
         example: 'qoraal magac = "Sharafdin"\nqoraal fariin = "Salaan!"',
-        usage: "Used for text and character data.",
+        usage: "Waxaa loo isticmaalaa qoraal iyo xaraf.",
       },
-      boole: {
-        description: "Boolean Type - Declares a true/false variable.",
-        example: "boole run_ah = true\nboole khalad_ah = false",
-        usage: "Used for conditional logic with true or false values.",
+      run_mise_been: {
+        description:
+          "Run_mise_been - Waxay sheegaysaa doorsoome run ama been ah.",
+        example: "run_mise_been runbaa = run\nrun_mise_been beenbaa = been",
+        usage: "Waxaa loo isticmaalaa qiimo run ama been ah.",
       },
-
       // Keywords from the dictionary
       isku_day: {
-        description: "Try Block - Used for exception handling.",
+        description: "Isku day - Waxaa loo isticmaalaa maaraynta cilladaha.",
         example:
-          'isku_day {\n    // Code that might cause errors\n} qabo (khalad) {\n    qor("Khalad: " + khalad)\n}',
-        usage: "Catches and handles errors during execution.",
+          'isku_day {\n    // Koodka laga yaabo inuu cillad keeno\n} qabo (khalad) {\n    qor("Khalad: " + khalad)\n}',
+        usage: "Waxay qabtaa oo maareysaa cilladaha marka la isticmaalayo.",
       },
       qabo: {
-        description: "Catch Block - Handles exceptions from a try block.",
+        description: "Qabo - Waxay maareysaa cilladaha ka yimaada isku day.",
         example:
-          'isku_day {\n    // Code that might cause errors\n} qabo (khalad) {\n    qor("Khalad: " + khalad)\n}',
-        usage: "Used with isku_day to handle errors.",
+          'isku_day {\n    // Koodka laga yaabo inuu cillad keeno\n} qabo (khalad) {\n    qor("Khalad: " + khalad)\n}',
+        usage: "Waxaa la isticmaalaa isku_day si loo maareeyo cilladaha.",
+      },
+
+      // Additional keywords
+      min: {
+        description:
+          "Min (Ka billow) - Waxaa loo isticmaalaa ku_celi si loo sheego halka laga billaabayo.",
+        example: "ku_celi i min 1 ilaa 5 {\n    qor(i)\n}",
+        usage: "Waxay qeexaysaa qiimaha bilowga ah ee xisaabinta.",
+      },
+      ilaa: {
+        description:
+          "Ilaa (Ilaa) - Waxaa loo isticmaalaa ku_celi si loo sheego halka loogu talagalay.",
+        example: "ku_celi i min 1 ilaa 5 {\n    qor(i)\n}",
+        usage: "Waxay qeexaysaa qiimaha dhamaadka ee xisaabinta.",
+      },
+      keeno: {
+        description: "Keeno - Waxay soo dejisaa qaybo dibadda ah.",
+        example: 'keeno "module"\nkeeno "path"',
+        usage:
+          "Waxaa loo isticmaalaa in lagu soo jiido code dibadeed iyo maktabado.",
+      },
+      siidaayo: {
+        description:
+          "Siidaayo - Waxay sii daayaa code si loogu isticmaalo qaybaha kale.",
+        example: "siidaayo howl kuDar(a, b) {\n    soo_celi a + b\n}",
+        usage:
+          "Waxay ka dhigaysaa shaqooyin, doorsoome, ama fasal inay u furan yihiin qaybaha kale.",
+      },
+      fasalka: {
+        description: "Fasalka - Waxay abuuraysaa fasal cusub.",
+        example:
+          'fasalka Xayawaan {\n    howl sameeQayl() {\n        qor("Cod")\n    }\n}',
+        usage: "Waxaa loo isticmaalaa barnaamij ka kooban waxyaabo.",
+      },
+      ka_dhaxal: {
+        description: "Ka_dhaxal - Waxay ballaarisaa fasal.",
+        example:
+          'fasalka Bisad ka_dhaxal Xayawaan {\n    howl sameeQayl() {\n        qor("Miyaaw")\n    }\n}',
+        usage:
+          "Waxaa loo isticmaalaa in laga dhaxlo sifooyinka iyo hab-dhaqanka fasalka waalidka ah.",
+      },
+      liis: {
+        description: "Liis - Waxay sheegaysaa liis walxaha ah.",
+        example:
+          'liis lambarrada = [1, 2, 3, 4, 5]\nliis magacyada = ["Cali", "Cumar", "Xasan"]',
+        usage:
+          "Waxaa loo isticmaalaa in lagu abuuro oo lagu maareeyo urur walxaha ah.",
+      },
+      nafta: {
+        description: "Nafta - Waxay tixraaceysaa shayga hadda jira.",
+        example:
+          'fasalka Qof {\n    door magac = ""\n    howl magacdhig(magaccusub) {\n        nafta.magac = magaccusub\n    }\n}',
+        usage:
+          "Waxay u dhigantaa 'this' luuqadaha kale, waxay tixraaceysaa shayga hadda jira.",
+      },
+      shey: {
+        description: "Shey - Waxay sheegaysaa doorsoome shay ah.",
+        example: 'shey qof = {\n    magac: "Cali",\n    da: 30\n}',
+        usage:
+          "Waxaa loo isticmaalaa in lagu abuuro oo lagu shaqeeyo sheyo Soplang gudaheeda.",
+      },
+      kudar: {
+        description: "Kudar - Waxay kudartaa qiimayaal.",
+        example: "door wadarta = kudar(5, 3)",
+        usage: "Nooc shaqo ah oo lagu daro.",
+      },
+      kadhaaf: {
+        description: "Kadhaaf - Waxay ka dhaafaysaa qiimayaal.",
+        example: "door farqiga = kadhaaf(10, 5)",
+        usage: "Nooc shaqo ah oo lagu kala jaro.",
+      },
+      kukobci: {
+        description: "Kukobci - Waxay isku dhufataa qiimayaal.",
+        example: "door isudhufasho = kukobci(4, 6)",
+        usage: "Nooc shaqo ah oo lagu kobciyo.",
+      },
+      uqeybi: {
+        description: "Uqeybi - Waxay u qaybisaa qiimayaal.",
+        example: "door qaybinta = uqeybi(20, 4)",
+        usage: "Nooc shaqo ah oo lagu qeybiyo.",
+      },
+      run: {
+        description: "Run - Waa qiime sheegaya run.",
+        example: "door runbaa = run",
+        usage: "Waxaa loo isticmaalaa marka la sheegayo qiime runa ah.",
+      },
+      been: {
+        description: "Been - Waa qiime sheegaya been.",
+        example: "door beenbaa = been",
+        usage: "Waxaa loo isticmaalaa marka la sheegayo qiime been ah.",
       },
     };
   }
@@ -162,12 +254,12 @@ class SoplangHoverProvider {
 
         // Add example with syntax highlighting
         markdown.appendMarkdown(
-          `#### Example:\n\`\`\`soplang\n${keywordInfo.example}\n\`\`\`\n\n`
+          `#### Tusaale:\n\`\`\`soplang\n${keywordInfo.example}\n\`\`\`\n\n`
         );
 
         // Add usage information
         if (keywordInfo.usage) {
-          markdown.appendMarkdown(`**Note:** ${keywordInfo.usage}\n`);
+          markdown.appendMarkdown(`**Xasuusin:** ${keywordInfo.usage}\n`);
         }
 
         // Enable syntax highlighting in code blocks

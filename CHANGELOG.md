@@ -4,6 +4,17 @@ All notable changes to the "soplang" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.2.0] - 2025-04-25
+### Minor Release Improvements
+
+### Added
+- Added hover documentation support for the `labadaran` (boolean) keyword
+
+### Changed
+- Updated execution command from `sop run` to `soplang` for better consistency
+- Updated file icons to use Soplang logo for .so and .sop files
+- Fixed missing keyword documentation
+
 ## [0.1.0] - 2025-04-11
 ### Beta Release
 

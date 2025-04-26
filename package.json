@@ -2,7 +2,7 @@
   "name": "soplang",
   "displayName": "Soplang",
   "description": "VS Code syntax highlighting for Soplang",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "soplang",
   "license": "MIT",
   "repository": {

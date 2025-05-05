@@ -69,7 +69,42 @@ function registerAutoComplete(context) {
       kind:vscode.CompletionItemKind.Keyword,
       detail:"Else statement"
     },
-    
+    {
+      key:"ku_cel",
+      body:"ku_cel",
+      kind:vscode.CompletionItemKind.Keyword,
+      detail:"for statement"
+    },
+    {
+      key:"inta_ay",
+      body:"inta_ay",
+      kind:vscode.CompletionItemKind.Keyword,
+      detail:"while statement"
+    },
+    {
+      key:"jooji",
+      body:"jooji",
+      kind:vscode.CompletionItemKind.Keyword,
+      detail:"break statement"
+    },
+    {
+      key:"sii_wad",
+      body:"sii_wad",
+      kind:vscode.CompletionItemKind.Keyword,
+      detail:"continue statement"
+    },
+    {
+      key:"min",
+      body:"min",
+      kind:vscode.CompletionItemKind.Keyword,
+      detail:"From (in for loops)"
+    },
+    {
+        key:"ilaa",
+        body:"ilaa",
+        kind:vscode.CompletionItemKind.Keyword,
+        detail:"To (in for loops) "
+    },
     
   ];
 

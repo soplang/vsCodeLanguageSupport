@@ -128,6 +128,24 @@ function registerAutoComplete(context) {
       body:"qabo",
       kind:vscode.CompletionItemKind.Keyword,
       detail:"catch statement"
+    },
+    {
+      key:"fasal",
+      body:"fasal",
+      kind:vscode.CompletionItemKind.Class,
+      detail:"class declaration"
+    },
+    {
+      key:"this",
+      body:"this",
+      kind:vscode.CompletionItemKind.Variable,
+      detail:"this keyword"
+    },
+    {
+      key:"dhaxal",
+      body:"dhaxal",
+      kind:vscode.CompletionItemKind.Variable,
+      detail:"extends keyword"
     }
     
   ];

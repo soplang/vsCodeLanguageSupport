@@ -116,10 +116,23 @@ function registerAutoComplete(context) {
       body:"soo_celi",
       kind:vscode.CompletionItemKind.Function,
       detail:"return statement"
+    },
+    {
+      key:"isku_day",
+      body:"isku_day",
+      kind:vscode.CompletionItemKind.Keyword,
+      detail:"try statement"
+    },
+    {
+      key:"qabo",
+      body:"qabo",
+      kind:vscode.CompletionItemKind.Keyword,
+      detail:"catch statement"
     }
     
   ];
 
+ 
   const provider = vscode.languages.registerCompletionItemProvider(
     { language: "soplang", scheme: "file" },
     {

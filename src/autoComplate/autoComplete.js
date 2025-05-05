@@ -196,6 +196,37 @@ function registerAutoComplete(context) {
       kind:vscode.CompletionItemKind.Function,
       detail:"Boolean function"
     },
+    {
+      key:"kudar",
+      body:"kudar()",
+      kind:vscode.CompletionItemKind.Function,
+      detail:"push function"
+    },
+    {
+      key:"kasaar",
+      body:"kasaar()",
+      kind:vscode.CompletionItemKind.Function,
+      detail:"pop function"
+    },
+   {
+    key:"dherer",
+    body:"dherer()",
+    kind:vscode.CompletionItemKind.Function,
+    detail:"length function"
+   },
+   {
+    key:"iskuxir",
+    body:"iskuxir()",
+    kind:vscode.CompletionItemKind.Function,
+    detail:"concat function"
+   },
+   {
+    key:"ka_kooban",
+    body:"ka_kooban()",
+    kind:vscode.CompletionItemKind.Function,
+    detail:"contains function"
+   }
+   
     
   ];
 

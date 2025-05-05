@@ -2,7 +2,7 @@
   "name": "soplang",
   "displayName": "Soplang",
   "description": "VS Code syntax highlighting for Soplang",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "publisher": "soplang",
   "license": "MIT",
   "repository": {
@@ -14,13 +14,23 @@
   },
   "homepage": "https://github.com/soplang/vsCodeLanguageSupport",
   "engines": {
-    "vscode": "^1.97.0"
+    "vscode": "^1.95.0"
   },
   "categories": [
     "Programming Languages"
   ],
   "icon": "images/soplang-icon.png",
   "contributes": {
+    "configuration": {
+      "title": "Soplang",
+      "properties": {
+        "soplang.enableDiagnostics": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/disable diagnostic error detection for Soplang files"
+        }
+      }
+    },
     "languages": [
       {
         "id": "soplang",
@@ -34,8 +44,8 @@
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "light": "./images/soplang-icon.png",
-          "dark": "./images/soplang-icon.png"
+          "light": "images/soplang-logo.svg",
+          "dark": "images/soplang-logo.svg"
         }
       }
     ],
@@ -46,6 +56,37 @@
         "path": "./syntaxes/soplang.tmLanguage.json"
       }
     ],
+    "keybindings": [
+      {
+        "command": "soplang.runFile",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorLangId == soplang || resourceExtname == .sop || resourceExtname == .so"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceExtname == .sop || resourceExtname == .so",
+          "command": "soplang.runFile",
+          "group": "navigation"
+        }
+      ],
+      "editor/title": [
+        {
+          "when": "resourceExtname == .sop || resourceExtname == .so",
+          "command": "soplang.runFile",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "when": "resourceExtname == .sop || resourceExtname == .so",
+          "command": "soplang.runFile",
+          "group": "navigation"
+        }
+      ]
+    },
     "snippets": [
       {
         "language": "soplang",
@@ -80,6 +121,14 @@
       {
         "command": "soplang.formatDocument",
         "title": "Format Soplang Document"
+      },
+      {
+        "command": "soplang.runFile",
+        "title": "Run Soplang File",
+        "icon": {
+          "light": "./images/run-light.svg",
+          "dark": "./images/run-dark.svg"
+        }
       }
     ]
   },
@@ -97,9 +146,11 @@
   "activationEvents": [
     "onLanguage:soplang"
   ],
+
   "main": "./out/extension.js",
   "files": [
     "dictionaries/**",
     "src/**"
   ]
 }
+

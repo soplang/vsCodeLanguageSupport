@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Mock implementation of the soplang command
+# This script simply prints the file content with some formatting
+
+FILENAME=$1
+
+if [ ! -f "$FILENAME" ]; then
+    echo "Error: File '$FILENAME' not found."
+    exit 1
+fi
+
+echo "========================================="
+echo "Soplang Interpreter"
+echo "Running file: $FILENAME"
+echo "========================================="
+echo ""
+
+# Print file content
+cat "$FILENAME" | grep -v "^\/\/"
+
+echo ""
+echo "========================================="
+echo "Mock Execution Result:"
+echo "----------------------------------------"
+echo "Simulating actual execution..."
+echo "Hello, Soplang World!"
+echo "5 + 3 = 8"
+echo "Result is greater than 7"
+echo "Test program completed successfully!"
+echo "========================================="
+echo "Execution completed successfully." 

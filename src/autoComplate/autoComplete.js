@@ -51,6 +51,26 @@ function registerAutoComplete(context) {
       kind: vscode.CompletionItemKind.Value,
       detail: "Null type",
     },
+    {
+      key:"haddii",
+      body:"haddii",
+      kind:vscode.CompletionItemKind.Keyword,
+      detail:"if statement"
+    },
+    {
+        key:"haddii_kale",
+        body:"haddii_kale",
+        kind:vscode.CompletionItemKind.Keyword,
+        detail:"else if statement"
+    },
+    {
+      key:"Haddii_kalena",
+      body:"Haddii_kalena",
+      kind:vscode.CompletionItemKind.Keyword,
+      detail:"Else statement"
+    },
+    
+    
   ];
 
   const provider = vscode.languages.registerCompletionItemProvider(

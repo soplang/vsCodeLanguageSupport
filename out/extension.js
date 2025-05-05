@@ -2,6 +2,8 @@
 const vscode = require("vscode");
 const path = require("path");
 const { formatSoplangCode } = require("../src/formatter");
+const { registerAutoComplete } = require("../src/autoComplate/autoComplete");
+
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -12,6 +14,8 @@ function activate(context) {
 
   // Register the formatter
   setupFormatter(context);
+  //Auto complete
+  registerAutoComplete(context);
 }
 
 /**

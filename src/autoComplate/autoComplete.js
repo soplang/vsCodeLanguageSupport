@@ -105,6 +105,18 @@ function registerAutoComplete(context) {
         kind:vscode.CompletionItemKind.Keyword,
         detail:"To (in for loops) "
     },
+    {
+      key:"howl",
+      body:"howl",
+      kind:vscode.CompletionItemKind.Function,
+      detail:"function declaration"
+    },
+    {
+      key:"soo_celi",
+      body:"soo_celi",
+      kind:vscode.CompletionItemKind.Function,
+      detail:"return statement"
+    }
     
   ];
 

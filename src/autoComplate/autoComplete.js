@@ -225,6 +225,30 @@ function registerAutoComplete(context) {
     body:"ka_kooban()",
     kind:vscode.CompletionItemKind.Function,
     detail:"contains function"
+   },
+   {
+    key:"furaha",
+    body:"furaha()",
+    kind:vscode.CompletionItemKind.Function,
+    detail:"keys function"
+   },
+   {
+    key:"haystaa",
+    body:"haystaa()",
+    kind:vscode.CompletionItemKind.Function,
+    detail:"has function"
+   },
+   {
+    key:"tirtir",
+    body:"tirtir()",
+    kind:vscode.CompletionItemKind.Function,
+    detail:"Delete function"
+   },
+   {
+    key:"iskudar",
+    body:"iskudar()",
+    kind:vscode.CompletionItemKind.Function,
+    detail:"merge function"
    }
    
     

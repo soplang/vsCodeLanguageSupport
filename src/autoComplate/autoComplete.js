@@ -158,7 +158,44 @@ function registerAutoComplete(context) {
       body:"dhaxal",
       kind:vscode.CompletionItemKind.Variable,
       detail:"extends keyword"
-    }
+    },
+    {
+      key:"qor",
+      body:"qor()",
+      kind:vscode.CompletionItemKind.Function,
+      detail:"Print function"
+    },
+    {
+      key:"Akhri",
+      body:"Akhri()",
+      kind:vscode.CompletionItemKind.Function,
+      detail:"Input function"
+
+    },
+    {
+      key:"nuuc",
+      body:"nuuc()",
+      kind:vscode.CompletionItemKind.Function,
+      detail:"TypeOf function"
+    },
+    {
+      key:"qoraal",
+      body:"qoraal()",
+      kind:vscode.CompletionItemKind.Function,
+      detail:"String function"
+    },
+    {
+      key:"tiro",
+      body:"tiro()",
+      kind:vscode.CompletionItemKind.Function,
+      detail:"Integer function"
+    },
+    {
+      key:"labadaran",
+      body:"labadaran()",
+      kind:vscode.CompletionItemKind.Function,
+      detail:"Boolean function"
+    },
     
   ];
 

@@ -52,6 +52,18 @@ function registerAutoComplete(context) {
       detail: "Null type",
     },
     {
+      key: "run",
+      body: "run",
+      kind: vscode.CompletionItemKind.Value,
+      detail: "True type",
+    },
+    {
+      key: "been",
+      body: "been",
+      kind: vscode.CompletionItemKind.Value,
+      detail: "False type",
+    },
+    {
       key:"haddii",
       body:"haddii",
       kind:vscode.CompletionItemKind.Keyword,

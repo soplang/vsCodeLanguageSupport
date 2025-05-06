@@ -140,11 +140,17 @@
     "publish": "vsce publish"
   },
   "devDependencies": {
-    "vsce": "^2.12.0",
-    "vscode": "^1.1.37"
+    "vsce": "^1.97.0",
+    "vscode": "^1.1.34"
   },
   "activationEvents": [
     "onLanguage:soplang"
   ],
-  "main": "./out/extension.js"
+
+  "main": "./out/extension.js",
+  "files": [
+    "dictionaries/**",
+    "src/**"
+  ]
 }
+

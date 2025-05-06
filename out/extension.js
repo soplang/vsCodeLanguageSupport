@@ -2,8 +2,13 @@
 const vscode = require("vscode");
 const path = require("path");
 const { formatSoplangCode } = require("../src/formatter");
+
+const { registerAutoComplete } = require("../src/autoComplate/autoComplete");
+
+
 const { SoplangDiagnostics } = require("../src/diagnostics");
 const { SoplangHoverProvider } = require("../src/hoverProvider");
+
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -14,6 +19,10 @@ function activate(context) {
 
   // Register the formatter
   setupFormatter(context);
+
+  //Auto complete
+  registerAutoComplete(context);
+
 
   // Setup diagnostics for error detection
   setupDiagnostics(context);
@@ -54,6 +63,7 @@ function setupDiagnostics(context) {
   diagnostics.activate(context);
 
   console.log("Soplang diagnostics registered successfully.");
+
 }
 
 /**

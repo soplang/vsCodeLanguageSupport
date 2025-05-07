@@ -14,7 +14,7 @@ class SoplangHoverProvider {
         description:
           "Doorsoome Caddeyn - Waxaad u adeegsan kartaa inaad ku qeexdo doorsoome cusub.",
         example: 'door x = 10\ndoor magac = "Sharafdin"',
-        usage: "Bandhig doorsoome nooc kasta leh (tiro, bandhigaal, run_mise_been).",
+        usage: "Bandhig doorsoome nooc kasta leh (tiro, qoraal, run_mise_been).",
       },
       hawl: {
         description: "Hawlgal Caddeyn - Wuxuu qeexayaa shaqo cusub.",

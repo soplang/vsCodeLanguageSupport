@@ -7,7 +7,7 @@ tiro number_var = 42
 bandhig("  Number (tiro): " + number_var)
 // String (qoraal)
 
-bandhigaal string_var = "Soplang waa luqad wacan"
+qoraa string_var = "Soplang waa luqad wacan"
 bandhig("  String (qoraal): " + string_var)
 // Boolean (bool)
 

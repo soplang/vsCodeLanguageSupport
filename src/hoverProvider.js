@@ -65,10 +65,10 @@ class SoplangHoverProvider {
         example: 'ku_celi i min 1 ilaa 5 {\n    bandhig("Tirinta: " + i)\n}',
         usage: "Waxay soo celcelisaa billow ilaa dhammaad.",
       },
-      inta_ay: {
+      intay: {
         description:
           "Inta ay - Waxay soo celcelisaa ilaa shuruuddu been noqoto.",
-        example: "door i = 0\ninta_ay (i < 5) {\n    bandhig(i)\n    i = i + 1\n}",
+        example: "door i = 0\nintay (i < 5) {\n    bandhig(i)\n    i = i + 1\n}",
         usage: "Waxay sii wadataa xisaabinta ilaa shuruuddu been noqoto.",
       },
       jooji: {

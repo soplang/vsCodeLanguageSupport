@@ -1,128 +1,118 @@
-// Muuqaalada cusub ee luuqadda Soplang
-// Faylkan wuxuu tusaaleeynayaa muuqaalada luuqadda, sharraxaadda, iyo tusaalooyinka
+// Muuqaalada cusub ee luuqadda Soplang // Faylkan wuxuu tusaaleeynayaa muuqaalada luuqadda, sharraxaadda, iyo tusaalooyinka //  ----- Isbeddelo noocyo kala duwan leh ----- door x = 10;
+// Isbeddel aasaasi ah
 
-// ----- Isbeddelo noocyo kala duwan leh -----
-door x = 10;                      // Isbeddel aasaasi ah
-tiro number = 42;                 // Nooca tiro
-qoraal fariin = "Salaam Soplang"; // Nooca qoraal
-run_mise_been run_baa = run;      // Run - sax ah
-run_mise_been been_baa = been;    // Been - qalad ah
+tiro number = 42;
+// Nooca tiro qoraal fariin = "Salaam Soplang";
+// Nooca qoraal run_mise_been run_baa = run;
+// Run - sax ah
 
-// ----- Isbeddel aan la bilaabin -----
-door isbeddel_aan_la_bilaabin;
+run_mise_been been_baa = been;
+// Been - qalad ah //  ----- Isbeddel aan la bilaabin ----- door isbeddel_aan_la_bilaabin;
+//  ----- Noocyo urur ah ----- liis tirada = [1, 2, 3, 4, 5];
+// Liis / Safaf
 
-// ----- Noocyo urur ah -----
-liis tirada = [1, 2, 3, 4, 5];             // Liis/Safaf
-liis magacyo = ["Cali", "Cumar", "Xasan"];     // Liiska qoraalka
-shey qof = {                             // Nooca shayga
-  magac: "Cabdi",
-  da: 30,
-  waa_arday: run
-};
+liis magacyo = ["Cali", "Cumar", "Xasan"];
+// Liiska qoraalka
 
-// ----- Xisaabta -----
-door isugeyn = kudar(5, 10);          // Isku dar
-door kalajar = kadhaaf(20, 5);        // Kala jar
-door isudhuf = kukobci(4, 5);         // Isku dhufasho  
-door qaybinta = uqeybi(20, 4);        // Qaybinta
+shey qof = {
+    // Nooca shayga
+    magac: "Cabdi", da: 30, waa_arday: run
+}
 
-// ----- Daabacaadda -----
-bandhig("Salaam, Adduunka!");             // Daabacaad caadiga
+;
+//  ----- Xisaabta ----- door isugeyn = kudar(5, 10);
+// Isku dar
 
-// ----- Gelinta -----
-// door galin = akhri("Gali magacaaga: ");
+door kalajar = kadhaaf(20, 5);
+// Kala jar
 
-// ----- Shuruudaha -----
-haddii (x > 5) {
-  bandhig("X waa ka weyn yahay 5");
+door isudhuf = kukobci(4, 5);
+// Isku dhufasho
+
+door qaybinta = uqeybi(20, 4);
+// Qaybinta //  ----- Daabacaadda ----- bandhig("Salaam, Adduunka!");
+// Daabacaad caadiga //  ----- Gelinta -----  // door galin = akhri("Gali magacaaga: ");
+//  ----- Shuruudaha ----- haddii (x > 5) {
+    bandhig("X waa ka weyn yahay 5");
 } haddii_kale (x == 5) {
-  bandhig("X waa la mid yahay 5");
+    bandhig("X waa la mid yahay 5");
 } haddii_kalena {
-  bandhig("X waa ka yar yahay 5");
+    bandhig("X waa ka yar yahay 5");
 }
+//  ----- Xisaabaadka -----  // For loop (ku_celi)
 
-// ----- Xisaabaadka -----
-// For loop (ku_celi)
 ku_celi i min 1 ilaa 5 {
-  bandhig("Wareeg: " + i);
+    bandhig("Wareeg: " + i);
 }
+// While loop (intay)
 
-// While loop (inta_ay)
 door tiriye = 0;
-inta_ay (tiriye < 3) {
-  bandhig("Tiriye: " + tiriye);
-  tiriye = tiriye + 1;
-}
 
+intay (tiriye < 3) {
+    bandhig("Tiriye: " + tiriye);
+    tiriye = tiriye + 1;
+}
 // Break iyo continue
+
 door j = 0;
-inta_ay (j < 10) {
-  j = j + 1;
-  
-  haddii (j == 3) {
-    sii_wad;  // Ka bood wareegga 3
-  }
-  
-  haddii (j == 7) {
-    jooji;    // Ka bax wareegga 7-aad
-  }
-  
-  bandhig("J: " + j);
-}
 
-// ----- Qeexida shaqooyinka -----
-howl salaan(magac) {
-  bandhig("Salaam, " + magac);
-  soo_celi "Salaamidda waa dhammaatay";
-}
+intay (j < 10) {
+    j = j + 1;
+    haddii (j == 3) {
+        sii_wad;
+// Ka bood wareegga 3
+    }haddii (j == 7) {
+        jooji;
+// Ka bax wareegga 7 - aad
+    }
 
-// ----- Shaqo leh dhoor qiimo -----
-howl xisaabi(a, b, howlgal) {
-  haddii (howlgal == "dar") {
-    soo_celi kudar(a, b);
-  } haddii_kale (howlgal == "jar") {
-    soo_celi kadhaaf(a, b);
-  } haddii_kale (howlgal == "dhuf") {
-    soo_celi kukobci(a, b);
-  } haddii_kalena {
-    soo_celi uqeybi(a, b);
-  }
+    bandhig("J: " + j);
 }
-
-// ----- Qeexida fasalka -----
-fasalka Xayawaan {
-  door nooc = "Lama yaqaan";
-  door cod = "...";
-  
-  howl sameeQayl() {
-    bandhig(nafta.cod);  // Isticmaalka tixraaca nafta
-  }
+//  ----- Qeexida shaqooyinka ----- howl salaan(magac) {
+    bandhig("Salaam, " + magac);
+    soo_celi "Salaamidda waa dhammaatay";
 }
-
-// ----- Fasal leh dhaxal gal -----
-fasalka Bisad ka_dhaxal Xayawaan {
-  // Shaqo-bilaabid oo la mid ah constructor
-  howl bilow() {
-    nafta.nooc = "Bisad";
-    nafta.cod = "Miyaaw";
-  }
-  
-  // Override-garaynta shaqada waalidka
-  howl sameeQayl() {
-    bandhig(nafta.nooc + " waxay leedahay cod: " + nafta.cod);
-  }
+//  ----- Shaqo leh dhoor qiimo ----- howl xisaabi(a, b, howlgal) {
+    haddii (howlgal == "dar") {
+        soo_celi kudar(a, b);
+    } haddii_kale (howlgal == "jar") {
+        soo_celi kadhaaf(a, b);
+    } haddii_kale (howlgal == "dhuf") {
+        soo_celi kukobci(a, b);
+    } haddii_kalena {
+        soo_celi uqeybi(a, b);
+    }
 }
-
-// ----- Maareynta modulka -----
-// keeno "module_dibadeed";
+//  ----- Qeexida fasalka ----- fasalka Xayawaan {
+    door nooc = "Lama yaqaan";
+    door cod = "...";
+    howl sameeQayl() {
+        bandhig(nafta.cod);
+// Isticmaalka tixraaca nafta
+    }
+}
+//  ----- Fasal leh dhaxal gal ----- fasalka Bisad ka_dhaxal Xayawaan {
+    // Shaqo - bilaabid oo la mid ah constructor
+    howl bilow() {
+        nafta.nooc = "Bisad";
+        nafta.cod = "Miyaaw";
+    }
+// Override - garaynta shaqada waalidka
+    howl sameeQayl() {
+        bandhig(nafta.nooc + " waxay leedahay cod: " + nafta.cod);
+    }
+}
+//  ----- Maareynta modulka -----  // keeno "module_dibadeed";
 // siidaayo howl shaqo_daahirsan() {
-//   bandhig("Shaqadan waa la siidaayay");
-// }
+    // bandhig("Shaqadan waa la siidaayay");
+//
+}
+//  ----- Maareynta Cilladaha ----- isku_day {
+    door natiijada = uqeybi(10, 0);
+// Qaybinta eber
+    bandhig("Natiijada: " + natiijada);
+}
 
-// ----- Maareynta Cilladaha -----
-isku_day {
-  door natiijada = uqeybi(10, 0);  // Qaybinta eber
-  bandhig("Natiijada: " + natiijada);
-} qabo (cillad) {
-  bandhig("Cillad ayaa dhacday: " + cillad);
-} 
+qabo (cillad) {
+    bandhig("Cillad ayaa dhacday: " + cillad);
+}

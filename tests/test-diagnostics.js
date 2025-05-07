@@ -74,7 +74,7 @@ const soplangKeywords = [
   "haddii_kale",
   "haddii_kalena",
   "ku_celi",
-  "inta_ay",
+  "intay",
   "jooji",
   "sii_wad",
   "isku_day",

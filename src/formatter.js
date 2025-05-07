@@ -305,7 +305,7 @@ function formatSoplangStatements(text) {
   let result = text
     .replace(/;\s*/g, ";\n") // Ensure semicolon newlines
     .replace(/(door|tiro|qoraal|boole|waxa|liis|fadhi)\s+/g, "$1 ") // Format variable declarations
-    .replace(/(haddii|intaAy|kuCeli|inta_ay|ku_celi)\s*\(/g, "$1 (") // Format control statements
+    .replace(/(haddii|intaAy|kuCeli|intay|ku_celi)\s*\(/g, "$1 (") // Format control statements
     .replace(/\b(soo_celi|bandhig|akhri)\s*\(/g, "$1(") // Format function calls
     .replace(/\/\*[\s\S]*?\*\/\s*/g, (match) => match.trim() + "\n\n") // Format multiline comments
     .replace(/}\s*([^h\s}])/g, "}\n$1"); // Ensure newline after closing brace if followed by code

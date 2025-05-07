@@ -88,8 +88,8 @@ function registerAutoComplete(context) {
       detail:"for statement"
     },
     {
-      key:"inta_ay",
-      body:"inta_ay",
+      key:"intay",
+      body:"intay",
       kind:vscode.CompletionItemKind.Keyword,
       detail:"while statement"
     },

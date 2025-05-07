@@ -1,53 +1,54 @@
-/* This Soplang file contains syntax-based errors to test the improved diagnostics */
-
+/* This Soplang file contains syntax - based errors to test the improved diagnostics */
 // Incorrect conditional statement (should use "haddii")
+
 howl (da > 18) {
     bandhig("Waa qof weyn")
     // Is an adult
-}
 
+}
 // Using a variable declaration keyword as a conditional
+
 door (umur > 21) {
     bandhig("Waa qof weyn oo sharci ah")
 }
-
 // Correct conditional statements for comparison
+
 haddii (da < 18) {
     bandhig("Waa qof yar")
 } haddii_kale {
     bandhig("Waa qof weyn")
 }
-
 // Incorrect loop statement (should use "ku_celi")
+
 looping i min 1 ilaa 5 {
     bandhig("Tirinta: " + i)
 }
-
 // Incorrect variable declaration (should use "door")
-magac = "Sharafdin"
 
+magac = "Sharafdin"
 // Incorrect function declaration (should use "howl")
+
 function salamBixin(magac) {
     bandhig("Salaan " + magac)
 }
-
 // Correct function
+
 howl isuDar(a, b) {
     soo_celi a + b
 }
-
 // Incorrect return statement (should use "soo_celi")
+
 howl kabaa(a, b) {
     return a - b
 }
+// Incorrect while loop (should use "intay")
 
-// Incorrect while loop (should use "inta_ay")
 myloop (count < 5) {
     bandhig("count: " + count)
     count = count + 1
 }
-
 // Various correct syntax examples to ensure they don't trigger false positives
+
 door x = 10
 door y = 20
 ku_celi i min 1 ilaa 3 {
@@ -55,9 +56,9 @@ ku_celi i min 1 ilaa 3 {
         bandhig("i = " + i + ", j = " + j)
     }
 }
-
 // Test function calls that shouldn't be flagged as errors
+
 howl testFunction() {
     door result = isuDar(5, 10)
     bandhig("Result: " + result)
-} 
+}

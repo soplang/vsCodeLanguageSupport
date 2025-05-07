@@ -42,7 +42,7 @@ const commonKeywordMappings = {
   "else if": "haddii_kale",
   elif: "haddii_kale",
   for: "ku_celi",
-  while: "inta_ay",
+  while: "intay",
   continue: "sii_wad",
   break: "jooji",
   return: "soo_celi",
@@ -256,7 +256,7 @@ class SoplangDiagnostics {
       // Assignment operator in conditionals (= instead of ==)
       {
         pattern:
-          /\b(haddii|haddii_kale|inta_ay)\s*\([^)]*?([^=!<>])=[^=][^)]*?\)/g,
+          /\b(haddii|haddii_kale|intay)\s*\([^)]*?([^=!<>])=[^=][^)]*?\)/g,
         validate: (match, line) => {
           const assignIndex = match[0].indexOf("=", match[1].length);
           if (assignIndex !== -1) {
@@ -318,7 +318,7 @@ class SoplangDiagnostics {
 
       // While loops without braces
       {
-        pattern: /\b(inta_ay)\s*\(([^)]*)\)(?!\s*{)/g,
+        pattern: /\b(intay)\s*\(([^)]*)\)(?!\s*{)/g,
         validate: (match, line) => {
           // Don't flag if the next non-whitespace character after the closing parenthesis is semicolon
           const afterParen = line
@@ -328,7 +328,7 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `Missing '{}' after 'inta_ay'. Example: 'inta_ay (${match[2]}) { ... }'`,
+            message: `Missing '{}' after 'intay'. Example: 'intay (${match[2]}) { ... }'`,
             code: "missing-braces",
             suggestion: `${match[1]} (${match[2]}) {`,
             startPos: match.index,
@@ -344,9 +344,9 @@ class SoplangDiagnostics {
         validate: (match, line) => {
           const keywordMap = {
             for: "ku_celi",
-            while: "inta_ay",
+            while: "intay",
             looping: "ku_celi",
-            myloop: "inta_ay",
+            myloop: "intay",
           };
 
           const incorrectKeyword = match[1];

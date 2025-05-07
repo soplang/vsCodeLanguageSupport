@@ -67,10 +67,10 @@
     ],
     "description": "Waxay abuurtaa fasal (class), ka_dhaxal waa doorasho"
   },
-  "Inta_ay": {
+  "intay": {
     "prefix": "it",
     "body": [
-      "inta_ay (${1:shurrud}) {",
+      "intay (${1:shurrud}) {",
       "\t$2",
       "}"
     ],

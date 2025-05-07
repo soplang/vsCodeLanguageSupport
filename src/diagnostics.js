@@ -45,7 +45,7 @@ const commonKeywordMappings = {
   while: "intay",
   continue: "soco",
   break: "jooji",
-  return: "soo_celi",
+  return: "celi",
   try: "isku_day",
   catch: "qabo",
 
@@ -410,9 +410,9 @@ class SoplangDiagnostics {
         validate: (match, line) => {
           return {
             isInvalid: true,
-            message: `'return' is not a valid keyword in Soplang. Did you mean 'soo_celi'?`,
+            message: `'return' is not a valid keyword in Soplang. Did you mean 'celi'?`,
             code: "incorrect-keyword",
-            suggestion: "soo_celi",
+            suggestion: "celi",
             startPos: match.index,
             endPos: match.index + match[1].length,
             originalText: "return",

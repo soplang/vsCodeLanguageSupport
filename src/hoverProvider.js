@@ -31,9 +31,9 @@ class SoplangHoverProvider {
         example: 'door magac = akhri("Fadlan gali magacaaga: ")',
         usage: "Wuxuu kaydiyaa qiimaha la geliyo.",
       },
-      soo_celi: {
+      celi: {
         description: "Soo Celin - Waxay soo celisaa qiime ka yimid shaqo.",
-        example: "hawl isuDar(a, b) {\n    soo_celi a + b\n}",
+        example: "hawl isuDar(a, b) {\n    celi a + b\n}",
         usage: "Waxaa loo isticmaalaa in lagu soo celiyo qiimayaal.",
       },
 
@@ -136,7 +136,7 @@ class SoplangHoverProvider {
       siidaayo: {
         description:
           "Siidaayo - Waxay sii daayaa code si loogu isticmaalo qaybaha kale.",
-        example: "siidaayo hawl kuDar(a, b) {\n    soo_celi a + b\n}",
+        example: "siidaayo hawl kuDar(a, b) {\n    celi a + b\n}",
         usage:
           "Waxay ka dhigaysaa shaqooyin, doorsoome, ama fasal inay u furan yihiin qaybaha kale.",
       },

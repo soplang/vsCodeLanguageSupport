@@ -34,9 +34,9 @@ function salamBixin(magac) {
 // Correct function
 
 hawl isuDar(a, b) {
-    soo_celi a + b
+    celi a + b
 }
-// Incorrect return statement (should use "soo_celi")
+// Incorrect return statement (should use "celi")
 
 hawl kabaa(a, b) {
     return a - b

@@ -94,10 +94,10 @@
     ],
     "description": "Waxay u gudbaa xisaabinta soo socota ee wareegga"
   },
-  "Soo_celi": {
+  "celi": {
     "prefix": "sc",
     "body": [
-      "soo_celi ${1:qiimaha}$0"
+      "celi ${1:qiimaha}$0"
     ],
     "description": "Waxay soo celisaa qiimo ka timaado shaqo"
   },

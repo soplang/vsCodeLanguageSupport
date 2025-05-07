@@ -124,8 +124,8 @@ function registerAutoComplete(context) {
       detail:"function declaration"
     },
     {
-      key:"soo_celi",
-      body:"soo_celi",
+      key:"celi",
+      body:"celi",
       kind:vscode.CompletionItemKind.Function,
       detail:"return statement"
     },

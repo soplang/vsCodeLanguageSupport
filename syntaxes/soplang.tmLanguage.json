@@ -42,7 +42,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.soplang",
-					"match": "\\b(?:door|hawl|soo_celi|bandhig|akhri|haddii|haddii_kale|haddii_kalena|kuceli|intay|jooji|soco|isku_day|qabo|ka_keen|fasalka|ka_dhaxal|cusub|nafta|liis|walax|maran|run|been|tiro|qoraal|boole|waxa|fadhi|waxaba|kuCeli|intaAy|min|ilaa|fasal|this|dhaxal|keeno|siidaayo|nooc|dherer|bool|magac|maran|xisaab|sawir|mishiin|shaqo|habdhis|kudar|kadhaaf|kukobci|uqeybi|kadhig|tijaabi|tirada|qoraalka|run_mise_been|eber|koobiyee|daabac|ururka|dhammaadka|tusmeeyaha|qaado|bilow|isticmaal|fasalkeyga|celcelis|iskudar|furitaanka|qaybta|mid|mid_kale|kama_dhicin|tirtir|samee|dib_u_dhig|muddo|ku_sii_socdo|si_deg_deg_ah|kala_saar|adeegsiga|soondheer|erayga)\\b"
+					"match": "\\b(?:door|hawl|celi|bandhig|akhri|haddii|haddii_kale|haddii_kalena|kuceli|intay|jooji|soco|isku_day|qabo|ka_keen|fasalka|ka_dhaxal|cusub|nafta|liis|walax|maran|run|been|tiro|qoraal|boole|waxa|fadhi|waxaba|kuCeli|intaAy|min|ilaa|fasal|this|dhaxal|keeno|siidaayo|nooc|dherer|bool|magac|maran|xisaab|sawir|mishiin|shaqo|habdhis|kudar|kadhaaf|kukobci|uqeybi|kadhig|tijaabi|tirada|qoraalka|run_mise_been|eber|koobiyee|daabac|ururka|dhammaadka|tusmeeyaha|qaado|bilow|isticmaal|fasalkeyga|celcelis|iskudar|furitaanka|qaybta|mid|mid_kale|kama_dhicin|tirtir|samee|dib_u_dhig|muddo|ku_sii_socdo|si_deg_deg_ah|kala_saar|adeegsiga|soondheer|erayga)\\b"
 				}
 			]
 		},

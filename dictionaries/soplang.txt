@@ -1,6 +1,6 @@
 door
 hawl
-soo_celi
+celi
 bandhig
 akhri
 haddii

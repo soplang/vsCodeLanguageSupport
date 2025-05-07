@@ -18,5 +18,5 @@ kuceli i min 1 ilaa 5 {
 // Testing a function definition
 
 hawl isuDar(a, b) {
-    soo_celi a + b;
+    celi a + b;
 }

@@ -70,17 +70,17 @@ intay (j < 10) {
 }
 //  ----- Qeexida shaqooyinka ----- hawl salaan(magac) {
     bandhig("Salaam, " + magac);
-    soo_celi "Salaamidda waa dhammaatay";
+    celi "Salaamidda waa dhammaatay";
 }
 //  ----- Shaqo leh dhoor qiimo ----- hawl xisaabi(a, b, hawlgal) {
     haddii (hawlgal == "dar") {
-        soo_celi kudar(a, b);
+        celi kudar(a, b);
     } haddii_kale (hawlgal == "jar") {
-        soo_celi kadhaaf(a, b);
+        celi kadhaaf(a, b);
     } haddii_kale (hawlgal == "dhuf") {
-        soo_celi kukobci(a, b);
+        celi kukobci(a, b);
     } haddii_kalena {
-        soo_celi uqeybi(a, b);
+        celi uqeybi(a, b);
     }
 }
 //  ----- Qeexida fasalka ----- fasalka Xayawaan {

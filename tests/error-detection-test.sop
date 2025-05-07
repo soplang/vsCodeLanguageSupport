@@ -3,7 +3,7 @@
 
 fun testFunction(a, b) {
     return a + b;
-// should be "soo_celi"
+// should be "celi"
 
 }
 // Incorrect variable declaration (should be "door")

@@ -67,7 +67,7 @@ const vscode = {
 const soplangKeywords = [
   "door",
   "hawl",
-  "soo_celi",
+  "celi",
   "bandhig",
   "akhri",
   "haddii",
@@ -231,8 +231,8 @@ const expectedErrors = [
   },
   {
     line: 41,
-    message: "Invalid return statement. Did you mean 'soo_celi'?",
-    suggestion: "soo_celi",
+    message: "Invalid return statement. Did you mean 'celi'?",
+    suggestion: "celi",
   },
   {
     line: 45,

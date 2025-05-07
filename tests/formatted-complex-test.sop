@@ -39,7 +39,7 @@ hawl testFunction(a, b) {
         }
     }
 
-    soo_celi sum;
+    celi sum;
 }
 // This should also be at root level
 

@@ -100,8 +100,8 @@ function registerAutoComplete(context) {
       detail:"break statement"
     },
     {
-      key:"sii_wad",
-      body:"sii_wad",
+      key:"soco",
+      body:"soco",
       kind:vscode.CompletionItemKind.Keyword,
       detail:"continue statement"
     },

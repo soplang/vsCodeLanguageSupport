@@ -43,7 +43,7 @@ const commonKeywordMappings = {
   elif: "haddii_kale",
   for: "kuceli",
   while: "intay",
-  continue: "sii_wad",
+  continue: "soco",
   break: "jooji",
   return: "soo_celi",
   try: "isku_day",

@@ -28,7 +28,7 @@ counter = 0
 intay (counter < 5) {
     counter = counter + 1
     haddii (counter % 2 == 0) {
-        sii_wad
+        soco
     }
 
     bandhig("    Odd count: " + counter)

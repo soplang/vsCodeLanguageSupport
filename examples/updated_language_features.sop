@@ -59,7 +59,7 @@ door j = 0;
 intay (j < 10) {
     j = j + 1;
     haddii (j == 3) {
-        sii_wad;
+        soco;
 // Ka bood wareegga 3
     }haddii (j == 7) {
         jooji;

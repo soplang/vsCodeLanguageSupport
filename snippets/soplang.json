@@ -85,11 +85,11 @@
     ],
     "description": "Waxay joojisaa xisaabinta socota"
   },
-  "Sii_Wad": {
+  "soco": {
     "prefix": "sw",
     "body": [
       "haddii (${1:shuurud}) {",
-      "\tsii_wad",
+      "\tsoco",
       "}"
     ],
     "description": "Waxay u gudbaa xisaabinta soo socota ee wareegga"

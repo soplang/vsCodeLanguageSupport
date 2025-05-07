@@ -77,10 +77,10 @@ class SoplangHoverProvider {
           "kuceli i min 1 ilaa 10 {\n    haddii (i == 5) {\n        jooji\n    }\n    bandhig(i)\n}",
         usage: "Isla markiiba waxay ka baxdaa xisaabinta.",
       },
-      sii_wad: {
+      soco: {
         description: "Sii wad - Waxay u gudbaa xisaabinta soo socota.",
         example:
-          "kuceli i min 1 ilaa 5 {\n    haddii (i == 3) {\n        sii_wad\n    }\n    bandhig(i) // Waxay ka booddaa daabacaadda 3\n}",
+          "kuceli i min 1 ilaa 5 {\n    haddii (i == 3) {\n        soco\n    }\n    bandhig(i) // Waxay ka booddaa daabacaadda 3\n}",
         usage: "Waxay ka booddaa inta hadda ka hartay ee xisaabinta.",
       },
 

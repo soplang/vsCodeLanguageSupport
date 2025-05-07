@@ -6,19 +6,19 @@ door z = 30;
 // Multiple nested conditional blocks
 
 haddii (x > 5) {
-    qor("x is greater than 5");
+    bandhig("x is greater than 5");
     haddii (y > 15) {
-        qor("y is also greater than 15");
+        bandhig("y is also greater than 15");
         haddii (z > 25) {
-            qor("z is greater than 25 too!");
+            bandhig("z is greater than 25 too!");
         } haddii_kale {
-            qor("z is not greater than 25");
+            bandhig("z is not greater than 25");
         }
     } haddii_kale {
-        qor("y is not greater than 15");
+        bandhig("y is not greater than 15");
     }
 } haddii_kale {
-    qor("x is not greater than 5");
+    bandhig("x is not greater than 5");
 }
 // This should be at the root level
 
@@ -28,13 +28,13 @@ door a = 5;
 howl testFunction(a, b) {
     door sum = a + b;
     haddii (sum > 10) {
-        qor("Sum is greater than 10");
+        bandhig("Sum is greater than 10");
         haddii (a > b) {
-            qor("a is greater than b");
+            bandhig("a is greater than b");
         } haddii_kale {
-            qor("a is not greater than b");
+            bandhig("a is not greater than b");
             haddii (a == b) {
-                qor("a equals b");
+                bandhig("a equals b");
             }
         }
     }
@@ -43,12 +43,12 @@ howl testFunction(a, b) {
 }
 // This should also be at root level
 
-qor("Testing nested loops:");
+bandhig("Testing nested loops:");
 // Nested loops
 
 ku_celi i min 1 ilaa 3 {
-    qor("Outer loop: " + i);
+    bandhig("Outer loop: " + i);
     ku_celi j min 1 ilaa 2 {
-        qor("  Inner loop: " + j);
+        bandhig("  Inner loop: " + j);
     }
 }

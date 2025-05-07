@@ -27,30 +27,30 @@ door isudhuf = kukobci(4, 5);         // Isku dhufasho
 door qaybinta = uqeybi(20, 4);        // Qaybinta
 
 // ----- Daabacaadda -----
-qor("Salaam, Adduunka!");             // Daabacaad caadiga
+bandhig("Salaam, Adduunka!");             // Daabacaad caadiga
 
 // ----- Gelinta -----
 // door galin = akhri("Gali magacaaga: ");
 
 // ----- Shuruudaha -----
 haddii (x > 5) {
-  qor("X waa ka weyn yahay 5");
+  bandhig("X waa ka weyn yahay 5");
 } haddii_kale (x == 5) {
-  qor("X waa la mid yahay 5");
+  bandhig("X waa la mid yahay 5");
 } haddii_kalena {
-  qor("X waa ka yar yahay 5");
+  bandhig("X waa ka yar yahay 5");
 }
 
 // ----- Xisaabaadka -----
 // For loop (ku_celi)
 ku_celi i min 1 ilaa 5 {
-  qor("Wareeg: " + i);
+  bandhig("Wareeg: " + i);
 }
 
 // While loop (inta_ay)
 door tiriye = 0;
 inta_ay (tiriye < 3) {
-  qor("Tiriye: " + tiriye);
+  bandhig("Tiriye: " + tiriye);
   tiriye = tiriye + 1;
 }
 
@@ -67,12 +67,12 @@ inta_ay (j < 10) {
     jooji;    // Ka bax wareegga 7-aad
   }
   
-  qor("J: " + j);
+  bandhig("J: " + j);
 }
 
 // ----- Qeexida shaqooyinka -----
 howl salaan(magac) {
-  qor("Salaam, " + magac);
+  bandhig("Salaam, " + magac);
   soo_celi "Salaamidda waa dhammaatay";
 }
 
@@ -95,7 +95,7 @@ fasalka Xayawaan {
   door cod = "...";
   
   howl sameeQayl() {
-    qor(nafta.cod);  // Isticmaalka tixraaca nafta
+    bandhig(nafta.cod);  // Isticmaalka tixraaca nafta
   }
 }
 
@@ -109,20 +109,20 @@ fasalka Bisad ka_dhaxal Xayawaan {
   
   // Override-garaynta shaqada waalidka
   howl sameeQayl() {
-    qor(nafta.nooc + " waxay leedahay cod: " + nafta.cod);
+    bandhig(nafta.nooc + " waxay leedahay cod: " + nafta.cod);
   }
 }
 
 // ----- Maareynta modulka -----
 // keeno "module_dibadeed";
 // siidaayo howl shaqo_daahirsan() {
-//   qor("Shaqadan waa la siidaayay");
+//   bandhig("Shaqadan waa la siidaayay");
 // }
 
 // ----- Maareynta Cilladaha -----
 isku_day {
   door natiijada = uqeybi(10, 0);  // Qaybinta eber
-  qor("Natiijada: " + natiijada);
+  bandhig("Natiijada: " + natiijada);
 } qabo (cillad) {
-  qor("Cillad ayaa dhacday: " + cillad);
+  bandhig("Cillad ayaa dhacday: " + cillad);
 } 

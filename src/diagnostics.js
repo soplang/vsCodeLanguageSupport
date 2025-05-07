@@ -50,11 +50,11 @@ const commonKeywordMappings = {
   catch: "qabo",
 
   // Output
-  print: "qor",
-  console: "qor",
-  log: "qor",
-  write: "qor",
-  echo: "qor",
+  print: "bandhig",
+  console: "bandhig",
+  log: "bandhig",
+  write: "bandhig",
+  echo: "bandhig",
 
   // Input
   input: "akhri",
@@ -244,7 +244,7 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `Missing '{}' after '${match[1]}'. Example: '${match[1]} (${match[2]}) { qor("example") }'`,
+            message: `Missing '{}' after '${match[1]}'. Example: '${match[1]} (${match[2]}) { bandhig("example") }'`,
             code: "missing-braces",
             suggestion: `${match[1]} (${match[2]}) {`,
             startPos: match.index,
@@ -428,9 +428,9 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `'${incorrectKeyword}' is not a valid function in Soplang. Did you mean 'qor'?`,
+            message: `'${incorrectKeyword}' is not a valid function in Soplang. Did you mean 'bandhig'?`,
             code: "incorrect-function",
-            suggestion: "qor",
+            suggestion: "bandhig",
             startPos: match.index,
             endPos: match.index + incorrectKeyword.length,
             originalText: incorrectKeyword,

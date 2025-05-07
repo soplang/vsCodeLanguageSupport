@@ -1,8 +1,8 @@
 {
-  "Qor": {
+  "BANDHIG": {
     "prefix": "q",
     "body": [
-      "qor(${1:fariin})$0"
+      "bandhig(${1:fariin})$0"
     ],
     "description": "Waxay daabacdaa"
   },
@@ -125,7 +125,7 @@
       "isku_day {",
       "    $1",
       "} qabo (cilad) {",
-      "   qor(\"Cilada: \" + cilad);",
+      "   bandhig(\"Cilada: \" + cilad);",
       "}"
     ],
     "description": "Waxay isku qabtaa cilladaha ka dhasha koodka"

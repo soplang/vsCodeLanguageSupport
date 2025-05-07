@@ -68,7 +68,7 @@ All Soplang keywords are properly highlighted:
 
 - `door` - Variable declaration
 - `howl` - Function declaration
-- `qor` - Print statement
+- `bandhig` - Print statement
 - `akhri` - Read input
 - `haddii`, `haddii_kale`, `haddii_kalena` - Conditionals
 - `ku_celi`, `inta_ay` - Loops

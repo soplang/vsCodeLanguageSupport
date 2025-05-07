@@ -160,8 +160,8 @@ function registerAutoComplete(context) {
       detail:"extends keyword"
     },
     {
-      key:"qor",
-      body:"qor()",
+      key:"bandhig",
+      body:"bandhig()",
       kind:vscode.CompletionItemKind.Function,
       detail:"Print function"
     },

@@ -12,14 +12,14 @@ const z = 30;
 
 // Incorrect control flow (should be "haddii", "haddii_kale")
 if (x > 5) {
-    print("x is greater than 5");  // should be "qor"
+    print("x is greater than 5");  // should be "bandhig"
 } else {
     print("x is not greater than 5");
 }
 
 // Incorrect loop syntax (should be "ku_celi")
 for (i = 0; i < 10; i++) {
-    console.log(i);  // should be "qor"
+    console.log(i);  // should be "bandhig"
 }
 
 // Duplicated variable in same scope
@@ -28,11 +28,11 @@ door abc = 200;  // This should be detected as duplicated
 
 // Misspelled keyword with no direct mapping (used Levenshtein distance)
 kowl greet() {
-    qor("Hello, World!");
+    bandhig("Hello, World!");
 }
 
 // Correct Soplang code for comparison
 door correctVar = 42;
 haddii (correctVar > 40) {
-    qor("This is correct Soplang code");
+    bandhig("This is correct Soplang code");
 } 

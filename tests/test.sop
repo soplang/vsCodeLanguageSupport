@@ -3,13 +3,13 @@
 door   x= 10+5;
 door y=20;
 
-haddii(x>5){qor("Waa weyn!");} 
-haddii_kale(x==5) {qor("Waa shan!");}
-haddii_kalena{qor("Waa yar yahay!");}
+haddii(x>5){bandhig("Waa weyn!");} 
+haddii_kale(x==5) {bandhig("Waa shan!");}
+haddii_kalena{bandhig("Waa yar yahay!");}
 
 // Testing a loop
 ku_celi i min 1 ilaa 5{
-qor("Number: "+i);
+bandhig("Number: "+i);
 }
 
 // Testing a function definition

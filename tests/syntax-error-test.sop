@@ -2,25 +2,25 @@
 
 // Incorrect conditional statement (should use "haddii")
 howl (da > 18) {
-    qor("Waa qof weyn")
+    bandhig("Waa qof weyn")
     // Is an adult
 }
 
 // Using a variable declaration keyword as a conditional
 door (umur > 21) {
-    qor("Waa qof weyn oo sharci ah")
+    bandhig("Waa qof weyn oo sharci ah")
 }
 
 // Correct conditional statements for comparison
 haddii (da < 18) {
-    qor("Waa qof yar")
+    bandhig("Waa qof yar")
 } haddii_kale {
-    qor("Waa qof weyn")
+    bandhig("Waa qof weyn")
 }
 
 // Incorrect loop statement (should use "ku_celi")
 looping i min 1 ilaa 5 {
-    qor("Tirinta: " + i)
+    bandhig("Tirinta: " + i)
 }
 
 // Incorrect variable declaration (should use "door")
@@ -28,7 +28,7 @@ magac = "Sharafdin"
 
 // Incorrect function declaration (should use "howl")
 function salamBixin(magac) {
-    qor("Salaan " + magac)
+    bandhig("Salaan " + magac)
 }
 
 // Correct function
@@ -43,7 +43,7 @@ howl kabaa(a, b) {
 
 // Incorrect while loop (should use "inta_ay")
 myloop (count < 5) {
-    qor("count: " + count)
+    bandhig("count: " + count)
     count = count + 1
 }
 
@@ -52,12 +52,12 @@ door x = 10
 door y = 20
 ku_celi i min 1 ilaa 3 {
     ku_celi j min 1 ilaa 2 {
-        qor("i = " + i + ", j = " + j)
+        bandhig("i = " + i + ", j = " + j)
     }
 }
 
 // Test function calls that shouldn't be flagged as errors
 howl testFunction() {
     door result = isuDar(5, 10)
-    qor("Result: " + result)
+    bandhig("Result: " + result)
 } 

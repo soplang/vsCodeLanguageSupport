@@ -68,7 +68,7 @@ const soplangKeywords = [
   "door",
   "howl",
   "soo_celi",
-  "qor",
+  "bandhig",
   "akhri",
   "haddii",
   "haddii_kale",

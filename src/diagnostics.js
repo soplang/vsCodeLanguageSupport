@@ -555,10 +555,10 @@ class SoplangDiagnostics {
         },
       },
 
-      // Improved: Type check for boole/labadaran (boolean) variables
+      // Improved: Type check for boole/bool (boolean) variables
       {
         pattern:
-          /\b(boole|labadaran)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+?)(?:$|;)/g,
+          /\b(boole|bool)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+?)(?:$|;)/g,
         validate: (match, line) => {
           const value = match[3].trim();
 

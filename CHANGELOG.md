@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Minor Release Improvements
 
 ### Added
-- Added hover documentation support for the `labadaran` (boolean) keyword
+- Added hover documentation support for the `bool` (boolean) keyword
 
 ### Changed
 - Updated execution command from `sop run` to `soplang` for better consistency

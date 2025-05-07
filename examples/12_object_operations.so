@@ -1,107 +1,110 @@
-// Test: Object Operations
-// This test checks if object operations work properly
+// Test: Object Operations // This test checks if object operations work properly
 
 bandhig("Testing object operations:")
-
 // Creating objects
-shey empty_obj = {}
+
+shey empty_obj = { }
+
 shey person = {
-    magac: "Asha",
-    da: 30,
-    magaalo: "Muqdisho"
+    magac: "Asha", da: 30, magaalo: "Muqdisho"
 }
 
 bandhig("  Empty object: " + empty_obj)
 bandhig("  Person object: " + person)
 bandhig("  Type of person: " + nooc(person))
-
 // Accessing properties
+
 bandhig("  Name: " + person.magac)
 bandhig("  Age: " + person.da)
 bandhig("  City: " + person.magaalo)
-
 // Modifying properties using dot notation
+
 person.da = 31
 bandhig("  After changing age: " + person)
-
 // Adding new properties using dot notation
+
 person.shaqo = "Barnaamij Samayne"
 bandhig("  After adding job: " + person)
-
 // Nested objects
+
 shey address = {
-    city: "Muqdisho",
-    country: "Soomaaliya",
-    district: "Hodan"
+    city: "Muqdisho", country: "Soomaaliya", district: "Hodan"
 }
 
 shey employee = {
-    name: "Mohamed",
-    age: 28,
-    address: address
+    name: "Mohamed", age: 28, address: address
 }
 
 bandhig("  Employee with nested address: " + employee)
 bandhig("  Employee's district: " + employee.address.district)
-
 // Object keys
+
 door keys = person.furaha()
 bandhig("  Object keys: " + keys)
 bandhig("  Type of keys: " + nooc(keys))
-
 // Debug - Print first few keys if they exist
+
 haddii (keys.dherer() > 0) {
     bandhig("  First key: " + keys[0])
 }
-
 // Check if property exists
-labadaran has_job = person.haystaa("shaqo")
+
+bool has_job = person.haystaa("shaqo")
 bandhig("  Does person have 'shaqo'? " + has_job)
 
-labadaran has_email = person.haystaa("email")
+bool has_email = person.haystaa("email")
 bandhig("  Does person have 'email'? " + has_email)
-
 // Removing properties
+
 person.tirtir("shaqo")
 bandhig("  After removing job: " + person)
-
 // Merging objects
-shey obj1 = {a: 1, b: 2}
-shey obj2 = {c: 3, d: 4}
+
+shey obj1 = {
+    a: 1, b: 2
+}
+
+shey obj2 = {
+    c: 3, d: 4
+}
+
 shey merged = obj1.iskudar(obj2)
 bandhig("  obj1: " + obj1)
 bandhig("  obj2: " + obj2)
 bandhig("  Merged object: " + merged)
-
 // Testing additional nested property access
-bandhig("\nTesting additional nested property access:")
 
+bandhig("\nTesting additional nested property access:")
 // Create a company object with nested properties
+
 shey company = {
-    name: "Somali Tech",
-    location: {
-        city: "Mogadishu",
-        address: "Innovation Avenue"
+    name: "Somali Tech", location: {
+        city: "Mogadishu", address: "Innovation Avenue"
     }
 }
-
 // Test accessing nested properties
+
 bandhig("  Company name: " + company.name)
 bandhig("  Company city: " + company.location.city)
 bandhig("  Company address: " + company.location.address)
-
 // Test updating nested properties using dot notation
+
 company.location.city = "Hargeisa"
 bandhig("  Updated city: " + company.location.city)
-
 // Test object with array
+
 shey team = {
-    members: [
-        {name: "Ali", role: "Developer"},
-        {name: "Fatima", role: "Designer"}
+    members: [ {
+        name: "Ali", role: "Developer"
+    }
+
+    , {
+        name: "Fatima", role: "Designer"
+    }
+
     ]
 }
-
 // Access array elements in object
+
 bandhig("  First team member: " + team.members[0].name)
 bandhig("  Second team member role: " + team.members[1].role)

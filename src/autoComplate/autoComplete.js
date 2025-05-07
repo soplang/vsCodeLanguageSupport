@@ -28,8 +28,8 @@ function registerAutoComplete(context) {
       detail: "Float type",
     },
     {
-      key: "labadaran",
-      body: "labadaran",
+      key: "bool",
+      body: "bool",
       kind: vscode.CompletionItemKind.Variable,
       detail: "boolean type",
     },
@@ -191,8 +191,8 @@ function registerAutoComplete(context) {
       detail:"Integer function"
     },
     {
-      key:"labadaran",
-      body:"labadaran()",
+      key:"bool",
+      body:"bool()",
       kind:vscode.CompletionItemKind.Function,
       detail:"Boolean function"
     },

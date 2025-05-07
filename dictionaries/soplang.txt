@@ -39,7 +39,7 @@ keeno
 siidaayo
 nooc
 dherer
-labadaran
+bool
 magac
 waxba
 xisaab

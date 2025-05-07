@@ -101,9 +101,9 @@ class SoplangHoverProvider {
         example: "run_mise_been runbaa = run\nrun_mise_been beenbaa = been",
         usage: "Waxaa loo isticmaalaa qiimo run ama been ah.",
       },
-      labadaran: {
-        description: "Labadaran - Waxay sheegaysaa doorsoome boolean ah.",
-        example: "labadaran runbaa = run\nlabadaran beenbaa = been",
+      bool: {
+        description: "bool - Waxay sheegaysaa doorsoome boolean ah.",
+        example: "bool runbaa = run\nbool beenbaa = been",
         usage: "Waxaa loo isticmaalaa qiime boolean ah (run ama been).",
       },
       // Keywords from the dictionary

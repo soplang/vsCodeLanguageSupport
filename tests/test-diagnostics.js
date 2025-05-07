@@ -66,7 +66,7 @@ const vscode = {
 // Create a mock for keyword loading
 const soplangKeywords = [
   "door",
-  "howl",
+  "hawl",
   "soo_celi",
   "bandhig",
   "akhri",
@@ -226,8 +226,8 @@ const expectedErrors = [
   {
     line: 30,
     message:
-      "Invalid function declaration. Did you mean 'howl salamBixin(...) {...}'?",
-    suggestion: "howl",
+      "Invalid function declaration. Did you mean 'hawl salamBixin(...) {...}'?",
+    suggestion: "hawl",
   },
   {
     line: 41,

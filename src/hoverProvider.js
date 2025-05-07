@@ -16,9 +16,9 @@ class SoplangHoverProvider {
         example: 'door x = 10\ndoor magac = "Sharafdin"',
         usage: "Bandhig doorsoome nooc kasta leh (tiro, bandhigaal, run_mise_been).",
       },
-      howl: {
+      hawl: {
         description: "Hawlgal Caddeyn - Wuxuu qeexayaa shaqo cusub.",
-        example: 'howl salaam(magac) {\n    bandhig("Salaan, " + magac)\n}',
+        example: 'hawl salaam(magac) {\n    bandhig("Salaan, " + magac)\n}',
         usage: 'Si aad u isticmaasho: salaam("Sharafdin")',
       },
       bandhig: {
@@ -33,7 +33,7 @@ class SoplangHoverProvider {
       },
       soo_celi: {
         description: "Soo Celin - Waxay soo celisaa qiime ka yimid shaqo.",
-        example: "howl isuDar(a, b) {\n    soo_celi a + b\n}",
+        example: "hawl isuDar(a, b) {\n    soo_celi a + b\n}",
         usage: "Waxaa loo isticmaalaa in lagu soo celiyo qiimayaal.",
       },
 
@@ -136,20 +136,20 @@ class SoplangHoverProvider {
       siidaayo: {
         description:
           "Siidaayo - Waxay sii daayaa code si loogu isticmaalo qaybaha kale.",
-        example: "siidaayo howl kuDar(a, b) {\n    soo_celi a + b\n}",
+        example: "siidaayo hawl kuDar(a, b) {\n    soo_celi a + b\n}",
         usage:
           "Waxay ka dhigaysaa shaqooyin, doorsoome, ama fasal inay u furan yihiin qaybaha kale.",
       },
       fasalka: {
         description: "Fasalka - Waxay abuuraysaa fasal cusub.",
         example:
-          'fasalka Xayawaan {\n    howl sameeQayl() {\n        bandhig("Cod")\n    }\n}',
+          'fasalka Xayawaan {\n    hawl sameeQayl() {\n        bandhig("Cod")\n    }\n}',
         usage: "Waxaa loo isticmaalaa barnaamij ka kooban waxyaabo.",
       },
       ka_dhaxal: {
         description: "Ka_dhaxal - Waxay ballaarisaa fasal.",
         example:
-          'fasalka Bisad ka_dhaxal Xayawaan {\n    howl sameeQayl() {\n        bandhig("Miyaaw")\n    }\n}',
+          'fasalka Bisad ka_dhaxal Xayawaan {\n    hawl sameeQayl() {\n        bandhig("Miyaaw")\n    }\n}',
         usage:
           "Waxaa loo isticmaalaa in laga dhaxlo sifooyinka iyo hab-dhaqanka fasalka waalidka ah.",
       },
@@ -163,7 +163,7 @@ class SoplangHoverProvider {
       nafta: {
         description: "Nafta - Waxay tixraaceysaa shayga hadda jira.",
         example:
-          'fasalka Qof {\n    door magac = ""\n    howl magacdhig(magaccusub) {\n        nafta.magac = magaccusub\n    }\n}',
+          'fasalka Qof {\n    door magac = ""\n    hawl magacdhig(magaccusub) {\n        nafta.magac = magaccusub\n    }\n}',
         usage:
           "Waxay u dhigantaa 'this' luuqadaha kale, waxay tixraaceysaa shayga hadda jira.",
       },

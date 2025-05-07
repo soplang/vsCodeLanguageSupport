@@ -19,13 +19,13 @@ try {
  */
 const commonKeywordMappings = {
   // Function declarations
-  fun: "howl",
-  function: "howl",
-  func: "howl",
-  def: "howl",
-  fn: "howl",
-  method: "howl",
-  kowl: "howl",
+  fun: "hawl",
+  function: "hawl",
+  func: "hawl",
+  def: "hawl",
+  fn: "hawl",
+  method: "hawl",
+  kowl: "hawl",
 
   // Variable declarations
   let: "door",
@@ -366,7 +366,7 @@ class SoplangDiagnostics {
 
       // Function declarations without braces
       {
-        pattern: /\b(howl)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\([^)]*\)(?!\s*{)/g,
+        pattern: /\b(hawl)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\([^)]*\)(?!\s*{)/g,
         validate: (match, line) => {
           // Don't flag if the function is followed by a semicolon (might be a forward declaration)
           const afterMatch = line
@@ -376,7 +376,7 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `Missing '{}' in function definition. Example: 'howl ${match[2]}(...) { ... }'`,
+            message: `Missing '{}' in function definition. Example: 'hawl ${match[2]}(...) { ... }'`,
             code: "missing-braces",
             suggestion: `${match[0]} {`,
             startPos: match.index,
@@ -394,9 +394,9 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `'${incorrectKeyword}' is not a valid keyword in Soplang. Did you mean 'howl'?`,
+            message: `'${incorrectKeyword}' is not a valid keyword in Soplang. Did you mean 'hawl'?`,
             code: "incorrect-keyword",
-            suggestion: "howl",
+            suggestion: "hawl",
             startPos: match.index,
             endPos: match.index + incorrectKeyword.length,
             originalText: incorrectKeyword,
@@ -784,7 +784,7 @@ class SoplangDiagnostics {
       const { maskedLine, stringMap } = this.maskStringLiterals(line);
 
       // Track function declarations to collect parameters
-      const funcPattern = /\bhowl\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(([^)]*)\)/g;
+      const funcPattern = /\bhawl\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(([^)]*)\)/g;
       let funcMatch;
 
       while ((funcMatch = funcPattern.exec(maskedLine)) !== null) {
@@ -987,7 +987,7 @@ class SoplangDiagnostics {
     }
 
     // Function parameters and names
-    const funcParamRegex = /\b(howl)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(([^)]*)\)/g;
+    const funcParamRegex = /\b(hawl)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(([^)]*)\)/g;
     let funcMatch;
     while ((funcMatch = funcParamRegex.exec(maskedLine)) !== null) {
       // Add function name

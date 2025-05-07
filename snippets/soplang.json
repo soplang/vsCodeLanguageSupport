@@ -49,10 +49,10 @@
     ],
     "description": "Waxay soo celcelisaa koodka marto meel ilaa meel"
   },
-  "Howl": {
+  "hawl": {
     "prefix": "hl",
     "body": [
-      "howl ${1:magac}(${2:qiimayaal}) {",
+      "hawl ${1:magac}(${2:qiimayaal}) {",
       "\t$3",
       "}"
     ],
@@ -140,7 +140,7 @@
   "Siidaayo": {
     "prefix": "sdy",
     "body": [
-      "siidaayo howl ${1:magaca}(${2:qiimayaal}) {",
+      "siidaayo hawl ${1:magaca}(${2:qiimayaal}) {",
       "\t$3",
       "}"
     ],

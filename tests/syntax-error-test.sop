@@ -1,7 +1,7 @@
 /* This Soplang file contains syntax - based errors to test the improved diagnostics */
 // Incorrect conditional statement (should use "haddii")
 
-howl (da > 18) {
+hawl (da > 18) {
     bandhig("Waa qof weyn")
     // Is an adult
 
@@ -26,19 +26,19 @@ looping i min 1 ilaa 5 {
 // Incorrect variable declaration (should use "door")
 
 magac = "Sharafdin"
-// Incorrect function declaration (should use "howl")
+// Incorrect function declaration (should use "hawl")
 
 function salamBixin(magac) {
     bandhig("Salaan " + magac)
 }
 // Correct function
 
-howl isuDar(a, b) {
+hawl isuDar(a, b) {
     soo_celi a + b
 }
 // Incorrect return statement (should use "soo_celi")
 
-howl kabaa(a, b) {
+hawl kabaa(a, b) {
     return a - b
 }
 // Incorrect while loop (should use "intay")
@@ -58,7 +58,7 @@ kuceli i min 1 ilaa 3 {
 }
 // Test function calls that shouldn't be flagged as errors
 
-howl testFunction() {
+hawl testFunction() {
     door result = isuDar(5, 10)
     bandhig("Result: " + result)
 }

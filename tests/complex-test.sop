@@ -25,7 +25,7 @@ haddii (x > 5) {
 door a = 5;
 // A function with multiple nested blocks
 
-howl testFunction(a, b) {
+hawl testFunction(a, b) {
     door sum = a + b;
     haddii (sum > 10) {
         bandhig("Sum is greater than 10");

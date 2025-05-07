@@ -17,6 +17,6 @@ kuceli i min 1 ilaa 5 {
 }
 // Testing a function definition
 
-howl isuDar(a, b) {
+hawl isuDar(a, b) {
     soo_celi a + b;
 }

@@ -136,7 +136,7 @@ function reformatEntireDocument(text) {
     const isCommentLine = line.startsWith("//") || inMultiLineComment;
     const isDeclaration =
       line.startsWith("door") ||
-      line.startsWith("howl") ||
+      line.startsWith("hawl") ||
       line.startsWith("bandhig") ||
       line.startsWith("kuceli");
 
@@ -206,7 +206,7 @@ function reformatEntireDocument(text) {
     // If this is a root-level construct
     if (
       line.startsWith("door") ||
-      line.startsWith("howl") ||
+      line.startsWith("hawl") ||
       line.startsWith("bandhig") ||
       line.startsWith("kuceli") ||
       line.startsWith("//")

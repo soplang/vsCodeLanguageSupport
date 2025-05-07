@@ -68,16 +68,16 @@ intay (j < 10) {
 
     bandhig("J: " + j);
 }
-//  ----- Qeexida shaqooyinka ----- howl salaan(magac) {
+//  ----- Qeexida shaqooyinka ----- hawl salaan(magac) {
     bandhig("Salaam, " + magac);
     soo_celi "Salaamidda waa dhammaatay";
 }
-//  ----- Shaqo leh dhoor qiimo ----- howl xisaabi(a, b, howlgal) {
-    haddii (howlgal == "dar") {
+//  ----- Shaqo leh dhoor qiimo ----- hawl xisaabi(a, b, hawlgal) {
+    haddii (hawlgal == "dar") {
         soo_celi kudar(a, b);
-    } haddii_kale (howlgal == "jar") {
+    } haddii_kale (hawlgal == "jar") {
         soo_celi kadhaaf(a, b);
-    } haddii_kale (howlgal == "dhuf") {
+    } haddii_kale (hawlgal == "dhuf") {
         soo_celi kukobci(a, b);
     } haddii_kalena {
         soo_celi uqeybi(a, b);
@@ -86,24 +86,24 @@ intay (j < 10) {
 //  ----- Qeexida fasalka ----- fasalka Xayawaan {
     door nooc = "Lama yaqaan";
     door cod = "...";
-    howl sameeQayl() {
+    hawl sameeQayl() {
         bandhig(nafta.cod);
 // Isticmaalka tixraaca nafta
     }
 }
 //  ----- Fasal leh dhaxal gal ----- fasalka Bisad ka_dhaxal Xayawaan {
     // Shaqo - bilaabid oo la mid ah constructor
-    howl bilow() {
+    hawl bilow() {
         nafta.nooc = "Bisad";
         nafta.cod = "Miyaaw";
     }
 // Override - garaynta shaqada waalidka
-    howl sameeQayl() {
+    hawl sameeQayl() {
         bandhig(nafta.nooc + " waxay leedahay cod: " + nafta.cod);
     }
 }
 //  ----- Maareynta modulka -----  // keeno "module_dibadeed";
-// siidaayo howl shaqo_daahirsan() {
+// siidaayo hawl shaqo_daahirsan() {
     // bandhig("Shaqadan waa la siidaayay");
 //
 }

@@ -1,5 +1,5 @@
 /* This Soplang file contains intentional errors to test error detection */
-// Incorrect function keyword (should be "howl")
+// Incorrect function keyword (should be "hawl")
 
 fun testFunction(a, b) {
     return a + b;

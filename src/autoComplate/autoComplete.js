@@ -118,8 +118,8 @@ function registerAutoComplete(context) {
         detail:"To (in for loops) "
     },
     {
-      key:"howl",
-      body:"howl",
+      key:"hawl",
+      body:"hawl",
       kind:vscode.CompletionItemKind.Function,
       detail:"function declaration"
     },

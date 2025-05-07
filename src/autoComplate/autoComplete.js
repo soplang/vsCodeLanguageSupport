@@ -227,8 +227,8 @@ function registerAutoComplete(context) {
     detail:"contains function"
    },
    {
-    key:"furaha",
-    body:"furaha()",
+    key:"fure",
+    body:"fure()",
     kind:vscode.CompletionItemKind.Function,
     detail:"keys function"
    },

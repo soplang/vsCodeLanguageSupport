@@ -39,7 +39,7 @@ bandhig("  Employee with nested address: " + employee)
 bandhig("  Employee's district: " + employee.address.district)
 // Object keys
 
-door keys = person.furaha()
+door keys = person.fure()
 bandhig("  Object keys: " + keys)
 bandhig("  Type of keys: " + nooc(keys))
 // Debug - Print first few keys if they exist

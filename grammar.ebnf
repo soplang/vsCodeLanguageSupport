@@ -240,7 +240,7 @@ ListMethod ::= "kudar"       // push
 ObjectMethod ::= "fure"    // keys
                | "haystaa"   // has
                | "tirtir"    // remove
-               | "iskudar"   // merge
+               | "kudar"   // merge
 ```
 
 ## Error Messages

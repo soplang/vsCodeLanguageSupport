@@ -245,8 +245,8 @@ function registerAutoComplete(context) {
     detail:"Delete function"
    },
    {
-    key:"iskudar",
-    body:"iskudar()",
+    key:"kudar",
+    body:"kudar()",
     kind:vscode.CompletionItemKind.Function,
     detail:"merge function"
    }

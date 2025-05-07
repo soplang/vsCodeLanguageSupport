@@ -3,14 +3,12 @@
 door x = 10;
 door y = 20;
 door z = 30;
-
 // Multiple nested conditional blocks
+
 haddii (x > 5) {
     bandhig("x is greater than 5");
-    
     haddii (y > 15) {
         bandhig("y is also greater than 15");
-        
         haddii (z > 25) {
             bandhig("z is greater than 25 too!");
         } haddii_kale {
@@ -22,39 +20,35 @@ haddii (x > 5) {
 } haddii_kale {
     bandhig("x is not greater than 5");
 }
-
 // This should be at the root level
-door a = 5;
 
+door a = 5;
 // A function with multiple nested blocks
+
 howl testFunction(a, b) {
     door sum = a + b;
-    
     haddii (sum > 10) {
         bandhig("Sum is greater than 10");
-        
         haddii (a > b) {
             bandhig("a is greater than b");
         } haddii_kale {
             bandhig("a is not greater than b");
-            
             haddii (a == b) {
                 bandhig("a equals b");
             }
         }
     }
-    
+
     soo_celi sum;
 }
-
 // This should also be at root level
-bandhig("Testing nested loops:");
 
+bandhig("Testing nested loops:");
 // Nested loops
-ku_celi i min 1 ilaa 3 {
+
+kuceli i min 1 ilaa 3 {
     bandhig("Outer loop: " + i);
-    
-    ku_celi j min 1 ilaa 2 {
+    kuceli j min 1 ilaa 2 {
         bandhig("  Inner loop: " + j);
     }
-} 
+}

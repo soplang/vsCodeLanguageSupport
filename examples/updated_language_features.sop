@@ -39,9 +39,9 @@ door qaybinta = uqeybi(20, 4);
 } haddii_kalena {
     bandhig("X waa ka yar yahay 5");
 }
-//  ----- Xisaabaadka -----  // For loop (ku_celi)
+//  ----- Xisaabaadka -----  // For loop (kuceli)
 
-ku_celi i min 1 ilaa 5 {
+kuceli i min 1 ilaa 5 {
     bandhig("Wareeg: " + i);
 }
 // While loop (intay)

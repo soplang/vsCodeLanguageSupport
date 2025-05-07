@@ -40,10 +40,10 @@
     ],
     "description": "Waxay fulisaa koodka haddii shuruudihii hore been ahaayeen"
   },
-  "Ku_Celi": {
+  "kuceli": {
     "prefix": "kc",
     "body": [
-      "ku_celi ${1:doorsoome} min ${2:bilow} ilaa ${3:dhamaad} {",
+      "kuceli ${1:doorsoome} min ${2:bilow} ilaa ${3:dhamaad} {",
       "\t$4",
       "}"
     ],

@@ -41,7 +41,7 @@ const commonKeywordMappings = {
   else: "haddii_kale",
   "else if": "haddii_kale",
   elif: "haddii_kale",
-  for: "ku_celi",
+  for: "kuceli",
   while: "intay",
   continue: "sii_wad",
   break: "jooji",
@@ -302,11 +302,11 @@ class SoplangDiagnostics {
 
       // For loops without required 'min' keyword
       {
-        pattern: /\b(ku_celi)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+(?!min)/g,
+        pattern: /\b(kuceli)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+(?!min)/g,
         validate: (match, line) => {
           return {
             isInvalid: true,
-            message: `Missing 'min' keyword in for loop. Example: 'ku_celi ${match[2]} min 1 ilaa 10 { ... }'`,
+            message: `Missing 'min' keyword in for loop. Example: 'kuceli ${match[2]} min 1 ilaa 10 { ... }'`,
             code: "missing-min-keyword",
             suggestion: `${match[1]} ${match[2]} min`,
             startPos: match.index,
@@ -343,9 +343,9 @@ class SoplangDiagnostics {
         pattern: /\b(for|while|looping|myloop)\b/g,
         validate: (match, line) => {
           const keywordMap = {
-            for: "ku_celi",
+            for: "kuceli",
             while: "intay",
-            looping: "ku_celi",
+            looping: "kuceli",
             myloop: "intay",
           };
 
@@ -1004,7 +1004,7 @@ class SoplangDiagnostics {
     }
 
     // Loop variables
-    const loopVarRegex = /\b(ku_celi)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+min/g;
+    const loopVarRegex = /\b(kuceli)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+min/g;
     let loopMatch;
     while ((loopMatch = loopVarRegex.exec(maskedLine)) !== null) {
       validIdentifiers.add(loopMatch[2]);

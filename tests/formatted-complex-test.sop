@@ -46,9 +46,9 @@ howl testFunction(a, b) {
 bandhig("Testing nested loops:");
 // Nested loops
 
-ku_celi i min 1 ilaa 3 {
+kuceli i min 1 ilaa 3 {
     bandhig("Outer loop: " + i);
-    ku_celi j min 1 ilaa 2 {
+    kuceli j min 1 ilaa 2 {
         bandhig("  Inner loop: " + j);
     }
 }

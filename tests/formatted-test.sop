@@ -12,7 +12,7 @@ haddii (x > 5) {
 }
 // Testing a loop
 
-ku_celi i min 1 ilaa 5 {
+kuceli i min 1 ilaa 5 {
     bandhig("Number: " + i);
 }
 // Testing a function definition

@@ -59,10 +59,10 @@ class SoplangHoverProvider {
       },
 
       // Loops
-      ku_celi: {
+      kuceli: {
         description:
           "Soo celcelis - Waxay soo celcelisaa tallaabooyin gaar ah marto inta u dhaxeysa laba qiimo.",
-        example: 'ku_celi i min 1 ilaa 5 {\n    bandhig("Tirinta: " + i)\n}',
+        example: 'kuceli i min 1 ilaa 5 {\n    bandhig("Tirinta: " + i)\n}',
         usage: "Waxay soo celcelisaa billow ilaa dhammaad.",
       },
       intay: {
@@ -74,13 +74,13 @@ class SoplangHoverProvider {
       jooji: {
         description: "Jooji - Waxay ka baxdaa xisaabinta hadda socota.",
         example:
-          "ku_celi i min 1 ilaa 10 {\n    haddii (i == 5) {\n        jooji\n    }\n    bandhig(i)\n}",
+          "kuceli i min 1 ilaa 10 {\n    haddii (i == 5) {\n        jooji\n    }\n    bandhig(i)\n}",
         usage: "Isla markiiba waxay ka baxdaa xisaabinta.",
       },
       sii_wad: {
         description: "Sii wad - Waxay u gudbaa xisaabinta soo socota.",
         example:
-          "ku_celi i min 1 ilaa 5 {\n    haddii (i == 3) {\n        sii_wad\n    }\n    bandhig(i) // Waxay ka booddaa daabacaadda 3\n}",
+          "kuceli i min 1 ilaa 5 {\n    haddii (i == 3) {\n        sii_wad\n    }\n    bandhig(i) // Waxay ka booddaa daabacaadda 3\n}",
         usage: "Waxay ka booddaa inta hadda ka hartay ee xisaabinta.",
       },
 
@@ -123,14 +123,14 @@ class SoplangHoverProvider {
       // Additional keywords
       min: {
         description:
-          "Min (Ka billow) - Waxaa loo isticmaalaa ku_celi si loo sheego halka laga billaabayo.",
-        example: "ku_celi i min 1 ilaa 5 {\n    bandhig(i)\n}",
+          "Min (Ka billow) - Waxaa loo isticmaalaa kuceli si loo sheego halka laga billaabayo.",
+        example: "kuceli i min 1 ilaa 5 {\n    bandhig(i)\n}",
         usage: "Waxay qeexaysaa qiimaha bilowga ah ee xisaabinta.",
       },
       ilaa: {
         description:
-          "Ilaa (Ilaa) - Waxaa loo isticmaalaa ku_celi si loo sheego halka loogu talagalay.",
-        example: "ku_celi i min 1 ilaa 5 {\n    bandhig(i)\n}",
+          "Ilaa (Ilaa) - Waxaa loo isticmaalaa kuceli si loo sheego halka loogu talagalay.",
+        example: "kuceli i min 1 ilaa 5 {\n    bandhig(i)\n}",
         usage: "Waxay qeexaysaa qiimaha dhamaadka ee xisaabinta.",
       },
       keeno: {

@@ -138,7 +138,7 @@ function reformatEntireDocument(text) {
       line.startsWith("door") ||
       line.startsWith("howl") ||
       line.startsWith("bandhig") ||
-      line.startsWith("ku_celi");
+      line.startsWith("kuceli");
 
     // Decrease indentation for closing braces (before adding the line)
     if (line.startsWith("}")) {
@@ -208,7 +208,7 @@ function reformatEntireDocument(text) {
       line.startsWith("door") ||
       line.startsWith("howl") ||
       line.startsWith("bandhig") ||
-      line.startsWith("ku_celi") ||
+      line.startsWith("kuceli") ||
       line.startsWith("//")
     ) {
       // If it's a comment after a root-level code, add spacing
@@ -305,7 +305,7 @@ function formatSoplangStatements(text) {
   let result = text
     .replace(/;\s*/g, ";\n") // Ensure semicolon newlines
     .replace(/(door|tiro|qoraal|boole|waxa|liis|fadhi)\s+/g, "$1 ") // Format variable declarations
-    .replace(/(haddii|intaAy|kuCeli|intay|ku_celi)\s*\(/g, "$1 (") // Format control statements
+    .replace(/(haddii|intaAy|kuCeli|intay|kuceli)\s*\(/g, "$1 (") // Format control statements
     .replace(/\b(soo_celi|bandhig|akhri)\s*\(/g, "$1(") // Format function calls
     .replace(/\/\*[\s\S]*?\*\/\s*/g, (match) => match.trim() + "\n\n") // Format multiline comments
     .replace(/}\s*([^h\s}])/g, "}\n$1"); // Ensure newline after closing brace if followed by code

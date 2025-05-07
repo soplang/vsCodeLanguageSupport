@@ -73,7 +73,7 @@ const soplangKeywords = [
   "haddii",
   "haddii_kale",
   "haddii_kalena",
-  "ku_celi",
+  "kuceli",
   "intay",
   "jooji",
   "sii_wad",
@@ -215,8 +215,8 @@ const expectedErrors = [
   },
   {
     line: 22,
-    message: "Invalid loop statement. Did you mean 'ku_celi i min...'?",
-    suggestion: "ku_celi",
+    message: "Invalid loop statement. Did you mean 'kuceli i min...'?",
+    suggestion: "kuceli",
   },
   {
     line: 27,

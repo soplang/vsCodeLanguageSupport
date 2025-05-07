@@ -71,7 +71,7 @@ All Soplang keywords are properly highlighted:
 - `bandhig` - Print statement
 - `akhri` - Read input
 - `haddii`, `haddii_kale`, `haddii_kalena` - Conditionals
-- `ku_celi`, `intay` - Loops
+- `kuceli`, `intay` - Loops
 - ...and many more
 
 ### Hover Documentation

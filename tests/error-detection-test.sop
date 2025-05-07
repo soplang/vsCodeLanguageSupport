@@ -1,38 +1,53 @@
 /* This Soplang file contains intentional errors to test error detection */
-
 // Incorrect function keyword (should be "howl")
+
 fun testFunction(a, b) {
-    return a + b;  // should be "soo_celi"
+    return a + b;
+// should be "soo_celi"
+
+}
+// Incorrect variable declaration (should be "door")
+
+let x = 10;
+
+var y = 20;
+
+const z = 30;
+// Incorrect control flow (should be "haddii", "haddii_kale")
+
+if (x > 5) {
+    print("x is greater than 5");
+// should be "bandhig"
+
 }
 
-// Incorrect variable declaration (should be "door")
-let x = 10;
-var y = 20;
-const z = 30;
-
-// Incorrect control flow (should be "haddii", "haddii_kale")
-if (x > 5) {
-    print("x is greater than 5");  // should be "bandhig"
-} else {
+else {
     print("x is not greater than 5");
 }
+// Incorrect loop syntax (should be "kuceli")
 
-// Incorrect loop syntax (should be "ku_celi")
-for (i = 0; i < 10; i++) {
-    console.log(i);  // should be "bandhig"
+for (i = 0;
+
+i < 10;
+
+i ++ ) {
+    console.log(i);
+// should be "bandhig"
+
 }
-
 // Duplicated variable in same scope
-door abc = 100;
-door abc = 200;  // This should be detected as duplicated
 
-// Misspelled keyword with no direct mapping (used Levenshtein distance)
+door abc = 100;
+door abc = 200;
+// This should be detected as duplicated // Misspelled keyword with no direct mapping (used Levenshtein distance)
+
 kowl greet() {
     bandhig("Hello, World!");
 }
-
 // Correct Soplang code for comparison
+
 door correctVar = 42;
+
 haddii (correctVar > 40) {
     bandhig("This is correct Soplang code");
-} 
+}

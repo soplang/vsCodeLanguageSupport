@@ -18,7 +18,7 @@ haddii (da < 18) {
 } haddii_kale {
     bandhig("Waa qof weyn")
 }
-// Incorrect loop statement (should use "ku_celi")
+// Incorrect loop statement (should use "kuceli")
 
 looping i min 1 ilaa 5 {
     bandhig("Tirinta: " + i)
@@ -51,8 +51,8 @@ myloop (count < 5) {
 
 door x = 10
 door y = 20
-ku_celi i min 1 ilaa 3 {
-    ku_celi j min 1 ilaa 2 {
+kuceli i min 1 ilaa 3 {
+    kuceli j min 1 ilaa 2 {
         bandhig("i = " + i + ", j = " + j)
     }
 }

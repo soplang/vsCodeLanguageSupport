@@ -85,7 +85,7 @@ const soplangKeywords = [
   "cusub",
   "nafta",
   "liis",
-  "shey",
+  "walax",
   "waxba",
   "run",
   "been",

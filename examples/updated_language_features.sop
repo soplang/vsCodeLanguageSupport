@@ -14,7 +14,7 @@ run_mise_been been_baa = been;
 liis magacyo = ["Cali", "Cumar", "Xasan"];
 // Liiska qoraalka
 
-shey qof = {
+walax qof = {
     // Nooca shayga
     magac: "Cabdi", da: 30, waa_arday: run
 }

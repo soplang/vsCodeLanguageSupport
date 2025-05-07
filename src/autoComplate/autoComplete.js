@@ -40,8 +40,8 @@ function registerAutoComplete(context) {
       detail: "array Declaration",
     },
     {
-      key: "shey",
-      body: "shey",
+      key: "walax",
+      body: "walax",
       kind: vscode.CompletionItemKind.Variable,
       detail: "object Declaration",
     },

@@ -174,10 +174,10 @@
     ],
     "description": "Waxay abuurtaa liis walxood ah"
   },
-  "Shey": {
+  "walax": {
     "prefix": "sh",
     "body": [
-      "shey ${1:magac} = {",
+      "walax ${1:magac} = {",
       "\t${2:astayn}: ${3:qiimo},$0",
       "}"
     ],

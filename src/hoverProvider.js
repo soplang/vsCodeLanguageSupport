@@ -173,9 +173,9 @@ class SoplangHoverProvider {
         usage:
           "Waxay u dhigantaa 'this' luuqadaha kale, waxay tixraaceysaa shayga hadda jira.",
       },
-      shey: {
-        description: "Shey - Waxay sheegaysaa doorsoome shay ah.",
-        example: 'shey qof = {\n    magac: "Cali",\n    da: 30\n}',
+      walax: {
+        description: "walax - Waxay sheegaysaa doorsoome shay ah.",
+        example: 'walax qof = {\n    magac: "Cali",\n    da: 30\n}',
         usage:
           "Waxaa loo isticmaalaa in lagu abuuro oo lagu shaqeeyo sheyo Soplang gudaheeda.",
       },

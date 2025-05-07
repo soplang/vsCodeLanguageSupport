@@ -52,7 +52,7 @@ StaticType ::= "tiro"      // Number
              | "qoraal"    // String
              | "bool" // Boolean
              | "liis"      // List/Array
-             | "shey"      // Object
+             | "walax"      // Object
 ```
 
 ## Function Declarations

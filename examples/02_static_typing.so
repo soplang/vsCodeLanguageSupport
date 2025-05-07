@@ -17,11 +17,11 @@ bandhig("  Boolean (bool): " + bool_var)
 
 liis list_var = [1, 2, 3, "afar", been]
 bandhig("  List (liis): " + list_var)
-// Object (shey)
+// Object (walax)
 
-shey object_var = {
+walax object_var = {
     magac: "Ahmed", da: 25
 }
 
-bandhig("  Object (shey): " + object_var)
+bandhig("  Object (walax): " + object_var)
 // Try to assign incompatible types (should fail) // Uncomment these lines to test type enforcement // number_var = "this should fail" // string_var = 123 // bool_var = "not a boolean"

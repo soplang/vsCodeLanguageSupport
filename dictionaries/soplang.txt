@@ -19,7 +19,7 @@ cusub
 nafta
 liis
 walax
-waxba
+maran
 run
 been
 tiro
@@ -41,7 +41,7 @@ nooc
 dherer
 bool
 magac
-waxba
+maran
 xisaab
 sawir
 mishiin

@@ -46,8 +46,8 @@ function registerAutoComplete(context) {
       detail: "object Declaration",
     },
     {
-      key: "waxba",
-      body: "waxba",
+      key: "maran",
+      body: "maran",
       kind: vscode.CompletionItemKind.Value,
       detail: "Null type",
     },

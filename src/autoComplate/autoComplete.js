@@ -215,8 +215,8 @@ function registerAutoComplete(context) {
     detail:"length function"
    },
    {
-    key:"iskuxir",
-    body:"iskuxir()",
+    key:"kudar",
+    body:"kudar()",
     kind:vscode.CompletionItemKind.Function,
     detail:"concat function"
    },

@@ -121,12 +121,6 @@ class SoplangHoverProvider {
       },
 
       // Additional keywords
-      min: {
-        description:
-          "Min (Ka billow) - Waxaa loo isticmaalaa kuceli si loo sheego halka laga billaabayo.",
-        example: "kuceli i min 1 ilaa 5 {\n    bandhig(i)\n}",
-        usage: "Waxay qeexaysaa qiimaha bilowga ah ee xisaabinta.",
-      },
       ilaa: {
         description:
           "Ilaa (Ilaa) - Waxaa loo isticmaalaa kuceli si loo sheego halka loogu talagalay.",

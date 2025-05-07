@@ -31,7 +31,7 @@ door isudhuf = kukobci(4, 5);
 
 door qaybinta = uqeybi(20, 4);
 // Qaybinta //  ----- Daabacaadda ----- bandhig("Salaam, Adduunka!");
-// Daabacaad caadiga //  ----- Gelinta -----  // door galin = akhri("Gali magacaaga: ");
+// Daabacaad caadiga //  ----- Gelinta -----  // door galin = gelin("Gali magacaaga: ");
 //  ----- Shuruudaha ----- haddii (x > 5) {
     bandhig("X waa ka weyn yahay 5");
 } haddii_kale (x == 5) {

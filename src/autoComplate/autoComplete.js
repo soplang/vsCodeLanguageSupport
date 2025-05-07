@@ -166,8 +166,8 @@ function registerAutoComplete(context) {
       detail:"Print function"
     },
     {
-      key:"Akhri",
-      body:"Akhri()",
+      key:"gelin",
+      body:"gelin()",
       kind:vscode.CompletionItemKind.Function,
       detail:"Input function"
 

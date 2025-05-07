@@ -26,9 +26,9 @@ class SoplangHoverProvider {
         example: 'bandhig("Salaam, Adduunka!")\bandhig("Qiimaha: " + x)',
         usage: "Waxay daabici kartaa qoraal, doorsoome, ama xisaab.",
       },
-      akhri: {
-        description: "Gelinta - Wuxuu akhriyaa wixii isticmaaluhu geliyo.",
-        example: 'door magac = akhri("Fadlan gali magacaaga: ")',
+      gelin: {
+        description: "Gelinta - Wuxuu gelinyaa wixii isticmaaluhu geliyo.",
+        example: 'door magac = gelin("Fadlan gali magacaaga: ")',
         usage: "Wuxuu kaydiyaa qiimaha la geliyo.",
       },
       celi: {

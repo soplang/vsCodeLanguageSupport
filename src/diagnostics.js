@@ -57,10 +57,10 @@ const commonKeywordMappings = {
   echo: "bandhig",
 
   // Input
-  input: "akhri",
-  read: "akhri",
-  scan: "akhri",
-  get: "akhri",
+  input: "gelin",
+  read: "gelin",
+  scan: "gelin",
+  get: "gelin",
 };
 
 /**

@@ -69,7 +69,7 @@ const soplangKeywords = [
   "hawl",
   "celi",
   "bandhig",
-  "akhri",
+  "gelin",
   "haddii",
   "haddii_kale",
   "haddii_kalena",

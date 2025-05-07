@@ -218,10 +218,10 @@
     ],
     "description": "Waxay u qaybisaa qiimayaal"
   },
-  "Akhri": {
+  "gelin": {
     "prefix": "ak",
     "body": [
-      "akhri(\"${1:fariin}\")$0"
+      "gelin(\"${1:fariin}\")$0"
     ],
     "description": "Waxay akhriddaa wixii isticmaale geliyo"
   }

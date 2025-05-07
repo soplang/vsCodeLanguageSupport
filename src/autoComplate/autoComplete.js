@@ -221,8 +221,8 @@ function registerAutoComplete(context) {
     detail:"concat function"
    },
    {
-    key:"ka_kooban",
-    body:"ka_kooban()",
+    key:"leeyahay",
+    body:"leeyahay()",
     kind:vscode.CompletionItemKind.Function,
     detail:"contains function"
    },

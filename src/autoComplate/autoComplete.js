@@ -173,8 +173,8 @@ function registerAutoComplete(context) {
 
     },
     {
-      key:"nuuc",
-      body:"nuuc()",
+      key:"nooc",
+      body:"nooc()",
       kind:vscode.CompletionItemKind.Function,
       detail:"TypeOf function"
     },

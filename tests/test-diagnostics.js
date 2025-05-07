@@ -104,7 +104,7 @@ const soplangKeywords = [
   "dhaxal",
   "keeno",
   "siidaayo",
-  "nuuc",
+  "nooc",
   "dherer",
   "soplang",
   "sop",

@@ -67,11 +67,11 @@ Automatic formatting on save is enabled by default for Soplang files. You can di
 All Soplang keywords are properly highlighted:
 
 - `door` - Variable declaration
-- `howl` - Function declaration
-- `qor` - Print statement
-- `akhri` - Read input
+- `hawl` - Function declaration
+- `bandhig` - Print statement
+- `gelin` - Read input
 - `haddii`, `haddii_kale`, `haddii_kalena` - Conditionals
-- `ku_celi`, `inta_ay` - Loops
+- `kuceli`, `intay` - Loops
 - ...and many more
 
 ### Hover Documentation
@@ -83,7 +83,7 @@ Hover over any Soplang keyword to see documentation, examples, and usage tips.
 Type these prefixes and press Tab to use code snippets:
 
 - `door` - Variable declaration
-- `howl` - Function declaration
+- `hawl` - Function declaration
 - `if` - If statement
 - `for` - For loop
 - `while` - While loop

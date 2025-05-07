@@ -19,13 +19,13 @@ try {
  */
 const commonKeywordMappings = {
   // Function declarations
-  fun: "howl",
-  function: "howl",
-  func: "howl",
-  def: "howl",
-  fn: "howl",
-  method: "howl",
-  kowl: "howl",
+  fun: "hawl",
+  function: "hawl",
+  func: "hawl",
+  def: "hawl",
+  fn: "hawl",
+  method: "hawl",
+  kowl: "hawl",
 
   // Variable declarations
   let: "door",
@@ -41,26 +41,26 @@ const commonKeywordMappings = {
   else: "haddii_kale",
   "else if": "haddii_kale",
   elif: "haddii_kale",
-  for: "ku_celi",
-  while: "inta_ay",
-  continue: "sii_wad",
+  for: "kuceli",
+  while: "intay",
+  continue: "soco",
   break: "jooji",
-  return: "soo_celi",
+  return: "celi",
   try: "isku_day",
   catch: "qabo",
 
   // Output
-  print: "qor",
-  console: "qor",
-  log: "qor",
-  write: "qor",
-  echo: "qor",
+  print: "bandhig",
+  console: "bandhig",
+  log: "bandhig",
+  write: "bandhig",
+  echo: "bandhig",
 
   // Input
-  input: "akhri",
-  read: "akhri",
-  scan: "akhri",
-  get: "akhri",
+  input: "gelin",
+  read: "gelin",
+  scan: "gelin",
+  get: "gelin",
 };
 
 /**
@@ -244,7 +244,7 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `Missing '{}' after '${match[1]}'. Example: '${match[1]} (${match[2]}) { qor("example") }'`,
+            message: `Missing '{}' after '${match[1]}'. Example: '${match[1]} (${match[2]}) { bandhig("example") }'`,
             code: "missing-braces",
             suggestion: `${match[1]} (${match[2]}) {`,
             startPos: match.index,
@@ -256,7 +256,7 @@ class SoplangDiagnostics {
       // Assignment operator in conditionals (= instead of ==)
       {
         pattern:
-          /\b(haddii|haddii_kale|inta_ay)\s*\([^)]*?([^=!<>])=[^=][^)]*?\)/g,
+          /\b(haddii|haddii_kale|intay)\s*\([^)]*?([^=!<>])=[^=][^)]*?\)/g,
         validate: (match, line) => {
           const assignIndex = match[0].indexOf("=", match[1].length);
           if (assignIndex !== -1) {
@@ -302,11 +302,11 @@ class SoplangDiagnostics {
 
       // For loops without required 'min' keyword
       {
-        pattern: /\b(ku_celi)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+(?!min)/g,
+        pattern: /\b(kuceli)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+(?!min)/g,
         validate: (match, line) => {
           return {
             isInvalid: true,
-            message: `Missing 'min' keyword in for loop. Example: 'ku_celi ${match[2]} min 1 ilaa 10 { ... }'`,
+            message: `Missing 'min' keyword in for loop. Example: 'kuceli ${match[2]} min 1 ilaa 10 { ... }'`,
             code: "missing-min-keyword",
             suggestion: `${match[1]} ${match[2]} min`,
             startPos: match.index,
@@ -318,7 +318,7 @@ class SoplangDiagnostics {
 
       // While loops without braces
       {
-        pattern: /\b(inta_ay)\s*\(([^)]*)\)(?!\s*{)/g,
+        pattern: /\b(intay)\s*\(([^)]*)\)(?!\s*{)/g,
         validate: (match, line) => {
           // Don't flag if the next non-whitespace character after the closing parenthesis is semicolon
           const afterParen = line
@@ -328,7 +328,7 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `Missing '{}' after 'inta_ay'. Example: 'inta_ay (${match[2]}) { ... }'`,
+            message: `Missing '{}' after 'intay'. Example: 'intay (${match[2]}) { ... }'`,
             code: "missing-braces",
             suggestion: `${match[1]} (${match[2]}) {`,
             startPos: match.index,
@@ -343,10 +343,10 @@ class SoplangDiagnostics {
         pattern: /\b(for|while|looping|myloop)\b/g,
         validate: (match, line) => {
           const keywordMap = {
-            for: "ku_celi",
-            while: "inta_ay",
-            looping: "ku_celi",
-            myloop: "inta_ay",
+            for: "kuceli",
+            while: "intay",
+            looping: "kuceli",
+            myloop: "intay",
           };
 
           const incorrectKeyword = match[1];
@@ -366,7 +366,7 @@ class SoplangDiagnostics {
 
       // Function declarations without braces
       {
-        pattern: /\b(howl)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\([^)]*\)(?!\s*{)/g,
+        pattern: /\b(hawl)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\([^)]*\)(?!\s*{)/g,
         validate: (match, line) => {
           // Don't flag if the function is followed by a semicolon (might be a forward declaration)
           const afterMatch = line
@@ -376,7 +376,7 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `Missing '{}' in function definition. Example: 'howl ${match[2]}(...) { ... }'`,
+            message: `Missing '{}' in function definition. Example: 'hawl ${match[2]}(...) { ... }'`,
             code: "missing-braces",
             suggestion: `${match[0]} {`,
             startPos: match.index,
@@ -394,9 +394,9 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `'${incorrectKeyword}' is not a valid keyword in Soplang. Did you mean 'howl'?`,
+            message: `'${incorrectKeyword}' is not a valid keyword in Soplang. Did you mean 'hawl'?`,
             code: "incorrect-keyword",
-            suggestion: "howl",
+            suggestion: "hawl",
             startPos: match.index,
             endPos: match.index + incorrectKeyword.length,
             originalText: incorrectKeyword,
@@ -410,9 +410,9 @@ class SoplangDiagnostics {
         validate: (match, line) => {
           return {
             isInvalid: true,
-            message: `'return' is not a valid keyword in Soplang. Did you mean 'soo_celi'?`,
+            message: `'return' is not a valid keyword in Soplang. Did you mean 'celi'?`,
             code: "incorrect-keyword",
-            suggestion: "soo_celi",
+            suggestion: "celi",
             startPos: match.index,
             endPos: match.index + match[1].length,
             originalText: "return",
@@ -428,9 +428,9 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `'${incorrectKeyword}' is not a valid function in Soplang. Did you mean 'qor'?`,
+            message: `'${incorrectKeyword}' is not a valid function in Soplang. Did you mean 'bandhig'?`,
             code: "incorrect-function",
-            suggestion: "qor",
+            suggestion: "bandhig",
             startPos: match.index,
             endPos: match.index + incorrectKeyword.length,
             originalText: incorrectKeyword,
@@ -555,10 +555,10 @@ class SoplangDiagnostics {
         },
       },
 
-      // Improved: Type check for boole/labadaran (boolean) variables
+      // Improved: Type check for boole/bool (boolean) variables
       {
         pattern:
-          /\b(boole|labadaran)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+?)(?:$|;)/g,
+          /\b(boole|bool)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+?)(?:$|;)/g,
         validate: (match, line) => {
           const value = match[3].trim();
 
@@ -784,7 +784,7 @@ class SoplangDiagnostics {
       const { maskedLine, stringMap } = this.maskStringLiterals(line);
 
       // Track function declarations to collect parameters
-      const funcPattern = /\bhowl\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(([^)]*)\)/g;
+      const funcPattern = /\bhawl\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(([^)]*)\)/g;
       let funcMatch;
 
       while ((funcMatch = funcPattern.exec(maskedLine)) !== null) {
@@ -987,7 +987,7 @@ class SoplangDiagnostics {
     }
 
     // Function parameters and names
-    const funcParamRegex = /\b(howl)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(([^)]*)\)/g;
+    const funcParamRegex = /\b(hawl)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(([^)]*)\)/g;
     let funcMatch;
     while ((funcMatch = funcParamRegex.exec(maskedLine)) !== null) {
       // Add function name
@@ -1004,7 +1004,7 @@ class SoplangDiagnostics {
     }
 
     // Loop variables
-    const loopVarRegex = /\b(ku_celi)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+min/g;
+    const loopVarRegex = /\b(kuceli)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s+min/g;
     let loopMatch;
     while ((loopMatch = loopVarRegex.exec(maskedLine)) !== null) {
       validIdentifiers.add(loopMatch[2]);

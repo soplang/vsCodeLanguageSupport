@@ -1,8 +1,8 @@
 {
-  "Qor": {
+  "BANDHIG": {
     "prefix": "q",
     "body": [
-      "qor(${1:fariin})$0"
+      "bandhig(${1:fariin})$0"
     ],
     "description": "Waxay daabacdaa"
   },
@@ -40,19 +40,19 @@
     ],
     "description": "Waxay fulisaa koodka haddii shuruudihii hore been ahaayeen"
   },
-  "Ku_Celi": {
+  "kuceli": {
     "prefix": "kc",
     "body": [
-      "ku_celi ${1:doorsoome} min ${2:bilow} ilaa ${3:dhamaad} {",
+      "kuceli ${1:doorsoome} min ${2:bilow} ilaa ${3:dhamaad} {",
       "\t$4",
       "}"
     ],
     "description": "Waxay soo celcelisaa koodka marto meel ilaa meel"
   },
-  "Howl": {
+  "hawl": {
     "prefix": "hl",
     "body": [
-      "howl ${1:magac}(${2:qiimayaal}) {",
+      "hawl ${1:magac}(${2:qiimayaal}) {",
       "\t$3",
       "}"
     ],
@@ -67,10 +67,10 @@
     ],
     "description": "Waxay abuurtaa fasal (class), ka_dhaxal waa doorasho"
   },
-  "Inta_ay": {
+  "intay": {
     "prefix": "it",
     "body": [
-      "inta_ay (${1:shurrud}) {",
+      "intay (${1:shurrud}) {",
       "\t$2",
       "}"
     ],
@@ -85,19 +85,19 @@
     ],
     "description": "Waxay joojisaa xisaabinta socota"
   },
-  "Sii_Wad": {
+  "soco": {
     "prefix": "sw",
     "body": [
       "haddii (${1:shuurud}) {",
-      "\tsii_wad",
+      "\tsoco",
       "}"
     ],
     "description": "Waxay u gudbaa xisaabinta soo socota ee wareegga"
   },
-  "Soo_celi": {
+  "celi": {
     "prefix": "sc",
     "body": [
-      "soo_celi ${1:qiimaha}$0"
+      "celi ${1:qiimaha}$0"
     ],
     "description": "Waxay soo celisaa qiimo ka timaado shaqo"
   },
@@ -125,7 +125,7 @@
       "isku_day {",
       "    $1",
       "} qabo (cilad) {",
-      "   qor(\"Cilada: \" + cilad);",
+      "   bandhig(\"Cilada: \" + cilad);",
       "}"
     ],
     "description": "Waxay isku qabtaa cilladaha ka dhasha koodka"
@@ -140,7 +140,7 @@
   "Siidaayo": {
     "prefix": "sdy",
     "body": [
-      "siidaayo howl ${1:magaca}(${2:qiimayaal}) {",
+      "siidaayo hawl ${1:magaca}(${2:qiimayaal}) {",
       "\t$3",
       "}"
     ],
@@ -174,10 +174,10 @@
     ],
     "description": "Waxay abuurtaa liis walxood ah"
   },
-  "Shey": {
+  "walax": {
     "prefix": "sh",
     "body": [
-      "shey ${1:magac} = {",
+      "walax ${1:magac} = {",
       "\t${2:astayn}: ${3:qiimo},$0",
       "}"
     ],
@@ -218,10 +218,10 @@
     ],
     "description": "Waxay u qaybisaa qiimayaal"
   },
-  "Akhri": {
+  "gelin": {
     "prefix": "ak",
     "body": [
-      "akhri(\"${1:fariin}\")$0"
+      "gelin(\"${1:fariin}\")$0"
     ],
     "description": "Waxay akhriddaa wixii isticmaale geliyo"
   }

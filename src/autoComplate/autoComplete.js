@@ -28,8 +28,8 @@ function registerAutoComplete(context) {
       detail: "Float type",
     },
     {
-      key: "labadaran",
-      body: "labadaran",
+      key: "bool",
+      body: "bool",
       kind: vscode.CompletionItemKind.Variable,
       detail: "boolean type",
     },
@@ -40,14 +40,14 @@ function registerAutoComplete(context) {
       detail: "array Declaration",
     },
     {
-      key: "shey",
-      body: "shey",
+      key: "walax",
+      body: "walax",
       kind: vscode.CompletionItemKind.Variable,
       detail: "object Declaration",
     },
     {
-      key: "waxba",
-      body: "waxba",
+      key: "maran",
+      body: "maran",
       kind: vscode.CompletionItemKind.Value,
       detail: "Null type",
     },
@@ -88,8 +88,8 @@ function registerAutoComplete(context) {
       detail:"for statement"
     },
     {
-      key:"inta_ay",
-      body:"inta_ay",
+      key:"intay",
+      body:"intay",
       kind:vscode.CompletionItemKind.Keyword,
       detail:"while statement"
     },
@@ -100,8 +100,8 @@ function registerAutoComplete(context) {
       detail:"break statement"
     },
     {
-      key:"sii_wad",
-      body:"sii_wad",
+      key:"soco",
+      body:"soco",
       kind:vscode.CompletionItemKind.Keyword,
       detail:"continue statement"
     },
@@ -118,14 +118,14 @@ function registerAutoComplete(context) {
         detail:"To (in for loops) "
     },
     {
-      key:"howl",
-      body:"howl",
+      key:"hawl",
+      body:"hawl",
       kind:vscode.CompletionItemKind.Function,
       detail:"function declaration"
     },
     {
-      key:"soo_celi",
-      body:"soo_celi",
+      key:"celi",
+      body:"celi",
       kind:vscode.CompletionItemKind.Function,
       detail:"return statement"
     },
@@ -160,21 +160,21 @@ function registerAutoComplete(context) {
       detail:"extends keyword"
     },
     {
-      key:"qor",
-      body:"qor()",
+      key:"bandhig",
+      body:"bandhig()",
       kind:vscode.CompletionItemKind.Function,
       detail:"Print function"
     },
     {
-      key:"Akhri",
-      body:"Akhri()",
+      key:"gelin",
+      body:"gelin()",
       kind:vscode.CompletionItemKind.Function,
       detail:"Input function"
 
     },
     {
-      key:"nuuc",
-      body:"nuuc()",
+      key:"nooc",
+      body:"nooc()",
       kind:vscode.CompletionItemKind.Function,
       detail:"TypeOf function"
     },
@@ -191,8 +191,8 @@ function registerAutoComplete(context) {
       detail:"Integer function"
     },
     {
-      key:"labadaran",
-      body:"labadaran()",
+      key:"bool",
+      body:"bool()",
       kind:vscode.CompletionItemKind.Function,
       detail:"Boolean function"
     },
@@ -215,20 +215,20 @@ function registerAutoComplete(context) {
     detail:"length function"
    },
    {
-    key:"iskuxir",
-    body:"iskuxir()",
+    key:"kudar",
+    body:"kudar()",
     kind:vscode.CompletionItemKind.Function,
     detail:"concat function"
    },
    {
-    key:"ka_kooban",
-    body:"ka_kooban()",
+    key:"leeyahay",
+    body:"leeyahay()",
     kind:vscode.CompletionItemKind.Function,
     detail:"contains function"
    },
    {
-    key:"furaha",
-    body:"furaha()",
+    key:"fure",
+    body:"fure()",
     kind:vscode.CompletionItemKind.Function,
     detail:"keys function"
    },
@@ -245,8 +245,8 @@ function registerAutoComplete(context) {
     detail:"Delete function"
    },
    {
-    key:"iskudar",
-    body:"iskudar()",
+    key:"kudar",
+    body:"kudar()",
     kind:vscode.CompletionItemKind.Function,
     detail:"merge function"
    }

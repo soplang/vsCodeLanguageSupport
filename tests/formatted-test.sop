@@ -4,19 +4,19 @@ door x = 10 + 5;
 door y = 20;
 
 haddii (x > 5) {
-    qor("Waa weyn!");
+    bandhig("Waa weyn!");
 } haddii_kale(x == 5) {
-    qor("Waa shan!");
+    bandhig("Waa shan!");
 } haddii_kalena {
-    qor("Waa yar yahay!");
+    bandhig("Waa yar yahay!");
 }
 // Testing a loop
 
-ku_celi i min 1 ilaa 5 {
-    qor("Number: " + i);
+kuceli i min 1 ilaa 5 {
+    bandhig("Number: " + i);
 }
 // Testing a function definition
 
-howl isuDar(a, b) {
-    soo_celi a + b;
+hawl isuDar(a, b) {
+    celi a + b;
 }

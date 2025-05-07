@@ -14,73 +14,73 @@ class SoplangHoverProvider {
         description:
           "Doorsoome Caddeyn - Waxaad u adeegsan kartaa inaad ku qeexdo doorsoome cusub.",
         example: 'door x = 10\ndoor magac = "Sharafdin"',
-        usage: "Qor doorsoome nooc kasta leh (tiro, qoraal, run_mise_been).",
+        usage: "Bandhig doorsoome nooc kasta leh (tiro, qoraal, run_mise_been).",
       },
-      howl: {
+      hawl: {
         description: "Hawlgal Caddeyn - Wuxuu qeexayaa shaqo cusub.",
-        example: 'howl salaam(magac) {\n    qor("Salaan, " + magac)\n}',
+        example: 'hawl salaam(magac) {\n    bandhig("Salaan, " + magac)\n}',
         usage: 'Si aad u isticmaasho: salaam("Sharafdin")',
       },
-      qor: {
+      bandhig: {
         description: "Daabacaad - Wuxuu daabacayaa qoraal.",
-        example: 'qor("Salaam, Adduunka!")\nqor("Qiimaha: " + x)',
+        example: 'bandhig("Salaam, Adduunka!")\bandhig("Qiimaha: " + x)',
         usage: "Waxay daabici kartaa qoraal, doorsoome, ama xisaab.",
       },
-      akhri: {
-        description: "Gelinta - Wuxuu akhriyaa wixii isticmaaluhu geliyo.",
-        example: 'door magac = akhri("Fadlan gali magacaaga: ")',
+      gelin: {
+        description: "Gelinta - Wuxuu gelinyaa wixii isticmaaluhu geliyo.",
+        example: 'door magac = gelin("Fadlan gali magacaaga: ")',
         usage: "Wuxuu kaydiyaa qiimaha la geliyo.",
       },
-      soo_celi: {
+      celi: {
         description: "Soo Celin - Waxay soo celisaa qiime ka yimid shaqo.",
-        example: "howl isuDar(a, b) {\n    soo_celi a + b\n}",
+        example: "hawl isuDar(a, b) {\n    celi a + b\n}",
         usage: "Waxaa loo isticmaalaa in lagu soo celiyo qiimayaal.",
       },
 
       // Control flow
       haddii: {
         description: "Hadday suurtogal tahay - Wuxuu hubiyaa shuruud.",
-        example: 'haddii (x > 5) {\n    qor("X waa weyn yahay")\n}',
+        example: 'haddii (x > 5) {\n    bandhig("X waa weyn yahay")\n}',
         usage: "Waxay fulisaa koodka haddii shuruuddu run tahay.",
       },
       haddii_kale: {
         description:
           "Haddii kale - Shuruud kale kadib marka shuruuddii hore been noqoto.",
         example:
-          'haddii (x > 10) {\n    qor("X aad bay u weyn tahay")\n} haddii_kale (x > 5) {\n    qor("X waa dhex dhexaad")\n}',
+          'haddii (x > 10) {\n    bandhig("X aad bay u weyn tahay")\n} haddii_kale (x > 5) {\n    bandhig("X waa dhex dhexaad")\n}',
         usage: "Waxaa loo isticmaalaa shuruudo badan oo isku xiga.",
       },
       haddii_kalena: {
         description:
           "Haddii kalena - Waxa la isticmaalaa markaad hubto in shuruudaha kale been yihiin.",
         example:
-          'haddii (x > 5) {\n    qor("X waa weyn yahay")\n} haddii_kalena {\n    qor("X waa yar yahay")\n}',
+          'haddii (x > 5) {\n    bandhig("X waa weyn yahay")\n} haddii_kalena {\n    bandhig("X waa yar yahay")\n}',
         usage: "Waxaa la fuliyaa marka shuruudaha kale oo dhan been yihiin.",
       },
 
       // Loops
-      ku_celi: {
+      kuceli: {
         description:
           "Soo celcelis - Waxay soo celcelisaa tallaabooyin gaar ah marto inta u dhaxeysa laba qiimo.",
-        example: 'ku_celi i min 1 ilaa 5 {\n    qor("Tirinta: " + i)\n}',
+        example: 'kuceli i min 1 ilaa 5 {\n    bandhig("Tirinta: " + i)\n}',
         usage: "Waxay soo celcelisaa billow ilaa dhammaad.",
       },
-      inta_ay: {
+      intay: {
         description:
           "Inta ay - Waxay soo celcelisaa ilaa shuruuddu been noqoto.",
-        example: "door i = 0\ninta_ay (i < 5) {\n    qor(i)\n    i = i + 1\n}",
+        example: "door i = 0\nintay (i < 5) {\n    bandhig(i)\n    i = i + 1\n}",
         usage: "Waxay sii wadataa xisaabinta ilaa shuruuddu been noqoto.",
       },
       jooji: {
         description: "Jooji - Waxay ka baxdaa xisaabinta hadda socota.",
         example:
-          "ku_celi i min 1 ilaa 10 {\n    haddii (i == 5) {\n        jooji\n    }\n    qor(i)\n}",
+          "kuceli i min 1 ilaa 10 {\n    haddii (i == 5) {\n        jooji\n    }\n    bandhig(i)\n}",
         usage: "Isla markiiba waxay ka baxdaa xisaabinta.",
       },
-      sii_wad: {
+      soco: {
         description: "Sii wad - Waxay u gudbaa xisaabinta soo socota.",
         example:
-          "ku_celi i min 1 ilaa 5 {\n    haddii (i == 3) {\n        sii_wad\n    }\n    qor(i) // Waxay ka booddaa daabacaadda 3\n}",
+          "kuceli i min 1 ilaa 5 {\n    haddii (i == 3) {\n        soco\n    }\n    bandhig(i) // Waxay ka booddaa daabacaadda 3\n}",
         usage: "Waxay ka booddaa inta hadda ka hartay ee xisaabinta.",
       },
 
@@ -101,36 +101,30 @@ class SoplangHoverProvider {
         example: "run_mise_been runbaa = run\nrun_mise_been beenbaa = been",
         usage: "Waxaa loo isticmaalaa qiimo run ama been ah.",
       },
-      labadaran: {
-        description: "Labadaran - Waxay sheegaysaa doorsoome boolean ah.",
-        example: "labadaran runbaa = run\nlabadaran beenbaa = been",
+      bool: {
+        description: "bool - Waxay sheegaysaa doorsoome boolean ah.",
+        example: "bool runbaa = run\nbool beenbaa = been",
         usage: "Waxaa loo isticmaalaa qiime boolean ah (run ama been).",
       },
       // Keywords from the dictionary
       isku_day: {
         description: "Isku day - Waxaa loo isticmaalaa maaraynta cilladaha.",
         example:
-          'isku_day {\n    // Koodka laga yaabo inuu cillad keeno\n} qabo (khalad) {\n    qor("Khalad: " + khalad)\n}',
+          'isku_day {\n    // Koodka laga yaabo inuu cillad keeno\n} qabo (khalad) {\n    bandhig("Khalad: " + khalad)\n}',
         usage: "Waxay qabtaa oo maareysaa cilladaha marka la isticmaalayo.",
       },
       qabo: {
         description: "Qabo - Waxay maareysaa cilladaha ka yimaada isku day.",
         example:
-          'isku_day {\n    // Koodka laga yaabo inuu cillad keeno\n} qabo (khalad) {\n    qor("Khalad: " + khalad)\n}',
+          'isku_day {\n    // Koodka laga yaabo inuu cillad keeno\n} qabo (khalad) {\n    bandhig("Khalad: " + khalad)\n}',
         usage: "Waxaa la isticmaalaa isku_day si loo maareeyo cilladaha.",
       },
 
       // Additional keywords
-      min: {
-        description:
-          "Min (Ka billow) - Waxaa loo isticmaalaa ku_celi si loo sheego halka laga billaabayo.",
-        example: "ku_celi i min 1 ilaa 5 {\n    qor(i)\n}",
-        usage: "Waxay qeexaysaa qiimaha bilowga ah ee xisaabinta.",
-      },
       ilaa: {
         description:
-          "Ilaa (Ilaa) - Waxaa loo isticmaalaa ku_celi si loo sheego halka loogu talagalay.",
-        example: "ku_celi i min 1 ilaa 5 {\n    qor(i)\n}",
+          "Ilaa (Ilaa) - Waxaa loo isticmaalaa kuceli si loo sheego halka loogu talagalay.",
+        example: "kuceli i min 1 ilaa 5 {\n    bandhig(i)\n}",
         usage: "Waxay qeexaysaa qiimaha dhamaadka ee xisaabinta.",
       },
       keeno: {
@@ -142,20 +136,20 @@ class SoplangHoverProvider {
       siidaayo: {
         description:
           "Siidaayo - Waxay sii daayaa code si loogu isticmaalo qaybaha kale.",
-        example: "siidaayo howl kuDar(a, b) {\n    soo_celi a + b\n}",
+        example: "siidaayo hawl kuDar(a, b) {\n    celi a + b\n}",
         usage:
           "Waxay ka dhigaysaa shaqooyin, doorsoome, ama fasal inay u furan yihiin qaybaha kale.",
       },
       fasalka: {
         description: "Fasalka - Waxay abuuraysaa fasal cusub.",
         example:
-          'fasalka Xayawaan {\n    howl sameeQayl() {\n        qor("Cod")\n    }\n}',
+          'fasalka Xayawaan {\n    hawl sameeQayl() {\n        bandhig("Cod")\n    }\n}',
         usage: "Waxaa loo isticmaalaa barnaamij ka kooban waxyaabo.",
       },
       ka_dhaxal: {
         description: "Ka_dhaxal - Waxay ballaarisaa fasal.",
         example:
-          'fasalka Bisad ka_dhaxal Xayawaan {\n    howl sameeQayl() {\n        qor("Miyaaw")\n    }\n}',
+          'fasalka Bisad ka_dhaxal Xayawaan {\n    hawl sameeQayl() {\n        bandhig("Miyaaw")\n    }\n}',
         usage:
           "Waxaa loo isticmaalaa in laga dhaxlo sifooyinka iyo hab-dhaqanka fasalka waalidka ah.",
       },
@@ -169,13 +163,13 @@ class SoplangHoverProvider {
       nafta: {
         description: "Nafta - Waxay tixraaceysaa shayga hadda jira.",
         example:
-          'fasalka Qof {\n    door magac = ""\n    howl magacdhig(magaccusub) {\n        nafta.magac = magaccusub\n    }\n}',
+          'fasalka Qof {\n    door magac = ""\n    hawl magacdhig(magaccusub) {\n        nafta.magac = magaccusub\n    }\n}',
         usage:
           "Waxay u dhigantaa 'this' luuqadaha kale, waxay tixraaceysaa shayga hadda jira.",
       },
-      shey: {
-        description: "Shey - Waxay sheegaysaa doorsoome shay ah.",
-        example: 'shey qof = {\n    magac: "Cali",\n    da: 30\n}',
+      walax: {
+        description: "walax - Waxay sheegaysaa doorsoome shay ah.",
+        example: 'walax qof = {\n    magac: "Cali",\n    da: 30\n}',
         usage:
           "Waxaa loo isticmaalaa in lagu abuuro oo lagu shaqeeyo sheyo Soplang gudaheeda.",
       },

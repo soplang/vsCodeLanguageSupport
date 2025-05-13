@@ -8,6 +8,8 @@ const { registerAutoComplete } = require("../src/autoComplate/autoComplete");
 
 const { SoplangDiagnostics } = require("../src/diagnostics");
 const { SoplangHoverProvider } = require("../src/hoverProvider");
+const { provideSoplangSignatureHelp } = require("../src/signatureHelp");
+
 
 
 /**
@@ -32,6 +34,10 @@ function activate(context) {
 
   // Setup Soplang execution
   setupSoplangExecution(context);
+
+   // Register Signature Help
+   setupSignatureHelp(context)
+   
 }
 
 /**
@@ -105,6 +111,21 @@ function setupFormatter(context) {
   );
 
   console.log("Soplang formatter registered successfully.");
+}
+
+/**
+ * Sets up integration with the Code Spell Checker if it's installed
+ * @param {vscode.ExtensionContext} context
+ */
+
+function setupSignatureHelp(context){
+  context.subscriptions.push(
+    vscode.languages.registerSignatureHelpProvider(
+      { language: 'soplang', scheme: 'file' },
+      { provideSignatureHelp: provideSoplangSignatureHelp },
+      '(', ',' // Trigger characters
+    )
+  );
 }
 
 /**

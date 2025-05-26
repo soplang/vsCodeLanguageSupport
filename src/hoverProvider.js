@@ -14,12 +14,18 @@ class SoplangHoverProvider {
         description:
           "Doorsoome Caddeyn - Waxaad u adeegsan kartaa inaad ku qeexdo doorsoome cusub.",
         example: 'door x = 10\ndoor magac = "Sharafdin"',
-        usage: "Bandhig doorsoome nooc kasta leh (tiro, qoraal, run_mise_been).",
+        usage:
+          "Bandhig doorsoome nooc kasta leh (tiro, qoraal, run_mise_been).",
       },
       hawl: {
-        description: "Hawlgal Caddeyn - Wuxuu qeexayaa shaqo cusub.",
-        example: 'hawl salaam(magac) {\n    bandhig("Salaan, " + magac)\n}',
-        usage: 'Si aad u isticmaasho: salaam("Sharafdin")',
+        description: "Hawl - Waxay qeexaysaa shaqo (function) cusub.",
+        usage: "Qor doorsoome nooc kasta leh (abn, qoraal, bool).",
+        syntax: "hawl magac(parameters) { ... }",
+        example: 'hawl salaam(magac) {\n    qor("Salaan, " + magac)\n}',
+      },
+      qor: {
+        description: "Qor - Waxay daabacaysaa qoraal console-ka.",
+        example: 'qor("Salaam, Adduunka!")\nqor("Qiimaha: " + x)',
       },
       bandhig: {
         description: "Daabacaad - Wuxuu daabacayaa qoraal.",
@@ -39,56 +45,55 @@ class SoplangHoverProvider {
 
       // Control flow
       haddii: {
-        description: "Hadday suurtogal tahay - Wuxuu hubiyaa shuruud.",
-        example: 'haddii (x > 5) {\n    bandhig("X waa weyn yahay")\n}',
-        usage: "Waxay fulisaa koodka haddii shuruuddu run tahay.",
+        description: "Haddii - Waxay hubisaa shuruud.",
+        syntax: "haddii (shuruud) { ... }",
+        example: 'haddii (x > 5) {\n    qor("X waa weyn yahay")\n}',
       },
       haddii_kale: {
-        description:
-          "Haddii kale - Shuruud kale kadib marka shuruuddii hore been noqoto.",
+        description: "Haddii_kale - Waxay hubisaa shuruud kale.",
+        syntax: "haddii_kale (shuruud) { ... }",
         example:
-          'haddii (x > 10) {\n    bandhig("X aad bay u weyn tahay")\n} haddii_kale (x > 5) {\n    bandhig("X waa dhex dhexaad")\n}',
-        usage: "Waxaa loo isticmaalaa shuruudo badan oo isku xiga.",
+          'haddii (x > 10) {\n    qor("X aad bay u weyn tahay")\n} haddii_kale (x > 5) {\n    qor("X waa dhex dhexaad")\n}',
       },
-      haddii_kalena: {
+      ugudambeyn: {
         description:
-          "Haddii kalena - Waxa la isticmaalaa markaad hubto in shuruudaha kale been yihiin.",
+          "Ugudambeyn - Waxay fulisaa koodka haddii shuruudihii hore been ahaayeen.",
+        syntax: "ugudambeyn { ... }",
         example:
-          'haddii (x > 5) {\n    bandhig("X waa weyn yahay")\n} haddii_kalena {\n    bandhig("X waa yar yahay")\n}',
-        usage: "Waxaa la fuliyaa marka shuruudaha kale oo dhan been yihiin.",
+          'haddii (x > 5) {\n    qor("X waa weyn yahay")\n} ugudambeyn {\n    qor("X waa yar yahay")\n}',
       },
 
       // Loops
       kuceli: {
-        description:
-          "Soo celcelis - Waxay soo celcelisaa tallaabooyin gaar ah marto inta u dhaxeysa laba qiimo.",
-        example: 'kuceli i min 1 ilaa 5 {\n    bandhig("Tirinta: " + i)\n}',
-        usage: "Waxay soo celcelisaa billow ilaa dhammaad.",
+        description: "Kuceli - Waxay soo celcelisaa koodka.",
+        syntax: "kuceli (variable start ilaa end) { ... }",
+        example: 'kuceli (i 1 ilaa 5) {\n    qor("Tirinta: " + i)\n}',
       },
       intay: {
         description:
-          "Inta ay - Waxay soo celcelisaa ilaa shuruuddu been noqoto.",
-        example: "door i = 0\nintay (i < 5) {\n    bandhig(i)\n    i = i + 1\n}",
-        usage: "Waxay sii wadataa xisaabinta ilaa shuruuddu been noqoto.",
+          "Intay - Waxay soo celcelisaa koodka ilaa shuruuddu been noqoto.",
+        syntax: "intay (shuruud) { ... }",
+        example: "door i = 0\nintay (i < 5) {\n    qor(i)\n    i = i + 1\n}",
       },
       jooji: {
-        description: "Jooji - Waxay ka baxdaa xisaabinta hadda socota.",
+        description: "Jooji - Waxay joojisaa xisaabinta socota.",
         example:
-          "kuceli i min 1 ilaa 10 {\n    haddii (i == 5) {\n        jooji\n    }\n    bandhig(i)\n}",
-        usage: "Isla markiiba waxay ka baxdaa xisaabinta.",
+          "kuceli (i 1 ilaa 10) {\n    haddii (i == 5) {\n        jooji\n    }\n    qor(i)\n}",
       },
       soco: {
-        description: "Sii wad - Waxay u gudbaa xisaabinta soo socota.",
+        description: "Soco - Waxay u gudbaa xisaabinta soo socota ee wareegga.",
         example:
-          "kuceli i min 1 ilaa 5 {\n    haddii (i == 3) {\n        soco\n    }\n    bandhig(i) // Waxay ka booddaa daabacaadda 3\n}",
-        usage: "Waxay ka booddaa inta hadda ka hartay ee xisaabinta.",
+          "kuceli (i 1 ilaa 5) {\n    haddii (i == 3) {\n        soco\n    }\n    qor(i) // Waxay ka booddaa daabacaadda 3\n}",
       },
 
       // Data types
-      tiro: {
-        description: "Tiro - Waxay sheegaysaa doorsoome tiro ah.",
-        example: "tiro x = 10\ntiro y = 3.14",
-        usage: "Waxaa loo isticmaalaa labadaba tirada iyo jajabka tobanle.",
+      abn: {
+        description: "Abn - Waxay sheegaysaa doorsoome tiro ah.",
+        example: "abn x = 10\nabn y = 25",
+      },
+      jajab: {
+        description: "Jajab - Waxay sheegaysaa doorsoome jajab ah.",
+        example: "jajab pi = 3.14\njajab qiimo = 2.5",
       },
       qoraal: {
         description: "Qoraal - Waxay sheegaysaa doorsoome qoraal ah.",
@@ -108,30 +113,26 @@ class SoplangHoverProvider {
       },
       // Keywords from the dictionary
       isku_day: {
-        description: "Isku day - Waxaa loo isticmaalaa maaraynta cilladaha.",
+        description: "Isku_day - Waxay isku daysa fulinta koodka aan la hubin.",
+        syntax: "isku_day { ... } qabo (khalad) { ... }",
         example:
-          'isku_day {\n    // Koodka laga yaabo inuu cillad keeno\n} qabo (khalad) {\n    bandhig("Khalad: " + khalad)\n}',
-        usage: "Waxay qabtaa oo maareysaa cilladaha marka la isticmaalayo.",
+          'isku_day {\n    // Koodka laga yaabo inuu cillad keeno\n} qabo (khalad) {\n    qor("Khalad: " + khalad)\n}',
       },
       qabo: {
-        description: "Qabo - Waxay maareysaa cilladaha ka yimaada isku day.",
+        description: "Qabo - Waxay qabtaa cilladaha ka dhasha isku_day.",
+        syntax: "qabo (khalad) { ... }",
         example:
-          'isku_day {\n    // Koodka laga yaabo inuu cillad keeno\n} qabo (khalad) {\n    bandhig("Khalad: " + khalad)\n}',
-        usage: "Waxaa la isticmaalaa isku_day si loo maareeyo cilladaha.",
+          'isku_day {\n    // Koodka laga yaabo inuu cillad keeno\n} qabo (khalad) {\n    qor("Khalad: " + khalad)\n}',
       },
 
       // Additional keywords
       ilaa: {
-        description:
-          "Ilaa (Ilaa) - Waxaa loo isticmaalaa kuceli si loo sheego halka loogu talagalay.",
-        example: "kuceli i min 1 ilaa 5 {\n    bandhig(i)\n}",
-        usage: "Waxay qeexaysaa qiimaha dhamaadka ee xisaabinta.",
+        description: "Ilaa - Waxay sheegaysaa dhamaadka wareegga.",
+        example: "kuceli (i 1 ilaa 5) {\n    qor(i)\n}",
       },
-      keeno: {
-        description: "Keeno - Waxay soo dejisaa qaybo dibadda ah.",
-        example: 'keeno "module"\nkeeno "path"',
-        usage:
-          "Waxaa loo isticmaalaa in lagu soo jiido code dibadeed iyo maktabado.",
+      ka_keen: {
+        description: "Ka_keen - Waxay soo dejisaa qaybo dibadda ah.",
+        example: 'ka_keen "module"\nka_keen "path"',
       },
       siidaayo: {
         description:
@@ -141,17 +142,16 @@ class SoplangHoverProvider {
           "Waxay ka dhigaysaa shaqooyin, doorsoome, ama fasal inay u furan yihiin qaybaha kale.",
       },
       fasalka: {
-        description: "Fasalka - Waxay abuuraysaa fasal cusub.",
+        description: "Fasalka - Waxay qeexaysaa fasal (class) cusub.",
+        syntax: "fasalka MagacFasal { ... }",
         example:
-          'fasalka Xayawaan {\n    hawl sameeQayl() {\n        bandhig("Cod")\n    }\n}',
-        usage: "Waxaa loo isticmaalaa barnaamij ka kooban waxyaabo.",
+          'fasalka Xayawaan {\n    hawl sameeQayl() {\n        qor("Cod")\n    }\n}',
       },
       ka_dhaxal: {
-        description: "Ka_dhaxal - Waxay ballaarisaa fasal.",
+        description: "Ka_dhaxal - Waxay dhaxashaa fasal kale.",
+        syntax: "fasalka MagacFasal ka_dhaxal WaalidFasal { ... }",
         example:
-          'fasalka Bisad ka_dhaxal Xayawaan {\n    hawl sameeQayl() {\n        bandhig("Miyaaw")\n    }\n}',
-        usage:
-          "Waxaa loo isticmaalaa in laga dhaxlo sifooyinka iyo hab-dhaqanka fasalka waalidka ah.",
+          'fasalka Bisad ka_dhaxal Xayawaan {\n    hawl sameeQayl() {\n        qor("Miyaaw")\n    }\n}',
       },
       liis: {
         description: "Liis - Waxay sheegaysaa liis walxaha ah.",

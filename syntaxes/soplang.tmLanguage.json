@@ -16,6 +16,9 @@
 			"include": "#numbers"
 		},
 		{
+			"include": "#operators"
+		},
+		{
 			"include": "#identifiers"
 		}
 	],
@@ -42,7 +45,31 @@
 			"patterns": [
 				{
 					"name": "keyword.control.soplang",
-					"match": "\\b(?:door|hawl|celi|bandhig|gelin|haddii|haddii_kale|haddii_kalena|kuceli|intay|jooji|soco|isku_day|qabo|ka_keen|fasalka|ka_dhaxal|cusub|nafta|liis|walax|maran|run|been|tiro|qoraal|boole|waxa|fadhi|waxaba|kuCeli|intaAy|min|ilaa|fasal|this|dhaxal|keeno|siidaayo|nooc|dherer|bool|magac|maran|xisaab|sawir|mishiin|shaqo|habdhis|kudar|kadhaaf|kukobci|uqeybi|kadhig|tijaabi|tirada|qoraalka|run_mise_been|eber|koobiyee|daabac|ururka|dhammaadka|tusmeeyaha|qaado|bilow|isticmaal|fasalkeyga|celcelis|kudar|furitaanka|qaybta|mid|mid_kale|kama_dhicin|tirtir|samee|dib_u_dhig|muddo|ku_sii_socdo|si_deg_deg_ah|kala_saar|adeegsiga|soondheer|erayga)\\b"
+					"match": "\\b(?:haddii|haddii_kale|ugudambeyn|dooro|xaalad|kuceli|ilaa|intay|jooji|soco|isku_day|qabo|throw)\\b"
+				},
+				{
+					"name": "keyword.declaration.soplang",
+					"match": "\\b(?:door|madoor|hawl|fasalka|ka_dhaxal|cusub|ka_keen)\\b"
+				},
+				{
+					"name": "keyword.type.soplang",
+					"match": "\\b(?:abn|jajab|qoraal|bool|liis|walax)\\b"
+				},
+				{
+					"name": "keyword.other.soplang",
+					"match": "\\b(?:celi|nafta|min|by)\\b"
+				},
+				{
+					"name": "constant.language.soplang",
+					"match": "\\b(?:run|been|maran|true|false|null)\\b"
+				},
+				{
+					"name": "support.function.builtin.soplang",
+					"match": "\\b(?:qor|gelin|nooc|abn|jajab|qoraal|bool|liis|walax|daji|kor|dherer|xul)\\b"
+				},
+				{
+					"name": "support.function.method.soplang",
+					"match": "\\b(?:kudar|kasaar|leeyahay|nuqul|nadiifi|rog|habee|jar|aaddin|shaandhee|muuji|fure|qiime|lamaane|tir|qeybi|dhamaad|bilow|beddel)\\b"
 				}
 			]
 		},
@@ -77,6 +104,26 @@
 				{
 					"name": "constant.numeric.soplang",
 					"match": "\\b\\d+(?:\\.\\d+)?\\b"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.comparison.soplang",
+					"match": "==|!=|>=|<=|>|<"
+				},
+				{
+					"name": "keyword.operator.logical.soplang",
+					"match": "&&|\\|\\||!"
+				},
+				{
+					"name": "keyword.operator.arithmetic.soplang",
+					"match": "\\+|\\-|\\*|\\/|%"
+				},
+				{
+					"name": "keyword.operator.assignment.soplang",
+					"match": "="
 				}
 			]
 		},

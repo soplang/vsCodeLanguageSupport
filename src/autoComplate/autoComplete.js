@@ -10,40 +10,46 @@ function registerAutoComplete(context) {
       detail: "Dynamic variable declaration",
     },
     {
+      key: "madoor",
+      body: "madoor",
+      kind: vscode.CompletionItemKind.Variable,
+      detail: "Constant variable declaration",
+    },
+    {
       key: "qoraal",
       body: "qoraal",
       kind: vscode.CompletionItemKind.Variable,
       detail: "String type",
     },
     {
-      key: "tiro",
-      body: "tiro",
+      key: "abn",
+      body: "abn",
       kind: vscode.CompletionItemKind.Variable,
       detail: "Integer type",
     },
     {
-      key: "fadhi",
-      body: "fadhi",
+      key: "jajab",
+      body: "jajab",
       kind: vscode.CompletionItemKind.Variable,
-      detail: "Float type",
+      detail: "Float/decimal type",
     },
     {
       key: "bool",
       body: "bool",
       kind: vscode.CompletionItemKind.Variable,
-      detail: "boolean type",
+      detail: "Boolean type",
     },
     {
       key: "liis",
       body: "liis",
       kind: vscode.CompletionItemKind.Variable,
-      detail: "array Declaration",
+      detail: "Array declaration",
     },
     {
       key: "walax",
       body: "walax",
       kind: vscode.CompletionItemKind.Variable,
-      detail: "object Declaration",
+      detail: "Object declaration",
     },
     {
       key: "maran",
@@ -64,197 +70,295 @@ function registerAutoComplete(context) {
       detail: "False type",
     },
     {
-      key:"haddii",
-      body:"haddii",
-      kind:vscode.CompletionItemKind.Keyword,
-      detail:"if statement"
+      key: "haddii",
+      body: "haddii",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "If statement",
     },
     {
-        key:"haddii_kale",
-        body:"haddii_kale",
-        kind:vscode.CompletionItemKind.Keyword,
-        detail:"else if statement"
+      key: "haddii_kale",
+      body: "haddii_kale",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "Else if statement",
     },
     {
-      key:"Haddii_kalena",
-      body:"Haddii_kalena",
-      kind:vscode.CompletionItemKind.Keyword,
-      detail:"Else statement"
+      key: "ugudambeyn",
+      body: "ugudambeyn",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "Else statement",
     },
     {
-      key:"ku_cel",
-      body:"ku_cel",
-      kind:vscode.CompletionItemKind.Keyword,
-      detail:"for statement"
+      key: "kuceli",
+      body: "kuceli",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "For statement",
     },
     {
-      key:"intay",
-      body:"intay",
-      kind:vscode.CompletionItemKind.Keyword,
-      detail:"while statement"
+      key: "intay",
+      body: "intay",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "While statement",
     },
     {
-      key:"jooji",
-      body:"jooji",
-      kind:vscode.CompletionItemKind.Keyword,
-      detail:"break statement"
+      key: "jooji",
+      body: "jooji",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "Break statement",
     },
     {
-      key:"soco",
-      body:"soco",
-      kind:vscode.CompletionItemKind.Keyword,
-      detail:"continue statement"
+      key: "soco",
+      body: "soco",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "Continue statement",
     },
     {
-      key:"min",
-      body:"min",
-      kind:vscode.CompletionItemKind.Keyword,
-      detail:"From (in for loops)"
+      key: "min",
+      body: "min",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "From (in for loops)",
     },
     {
-        key:"ilaa",
-        body:"ilaa",
-        kind:vscode.CompletionItemKind.Keyword,
-        detail:"To (in for loops) "
+      key: "ilaa",
+      body: "ilaa",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "To (in for loops)",
     },
     {
-      key:"hawl",
-      body:"hawl",
-      kind:vscode.CompletionItemKind.Function,
-      detail:"function declaration"
+      key: "dooro",
+      body: "dooro",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "Switch statement",
     },
     {
-      key:"celi",
-      body:"celi",
-      kind:vscode.CompletionItemKind.Function,
-      detail:"return statement"
+      key: "xaalad",
+      body: "xaalad",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "Case statement",
     },
     {
-      key:"isku_day",
-      body:"isku_day",
-      kind:vscode.CompletionItemKind.Keyword,
-      detail:"try statement"
+      key: "hawl",
+      body: "hawl",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Function declaration",
     },
     {
-      key:"qabo",
-      body:"qabo",
-      kind:vscode.CompletionItemKind.Keyword,
-      detail:"catch statement"
+      key: "celi",
+      body: "celi",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Return statement",
     },
     {
-      key:"fasal",
-      body:"fasal",
-      kind:vscode.CompletionItemKind.Class,
-      detail:"class declaration"
+      key: "isku_day",
+      body: "isku_day",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "Try statement",
     },
     {
-      key:"this",
-      body:"this",
-      kind:vscode.CompletionItemKind.Variable,
-      detail:"this keyword"
+      key: "qabo",
+      body: "qabo",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "Catch statement",
     },
     {
-      key:"dhaxal",
-      body:"dhaxal",
-      kind:vscode.CompletionItemKind.Variable,
-      detail:"extends keyword"
+      key: "fasalka",
+      body: "fasalka",
+      kind: vscode.CompletionItemKind.Class,
+      detail: "Class declaration",
     },
     {
-      key:"bandhig",
-      body:"bandhig()",
-      kind:vscode.CompletionItemKind.Function,
-      detail:"Print function"
+      key: "nafta",
+      body: "nafta",
+      kind: vscode.CompletionItemKind.Variable,
+      detail: "This keyword",
     },
     {
-      key:"gelin",
-      body:"gelin()",
-      kind:vscode.CompletionItemKind.Function,
-      detail:"Input function"
-
+      key: "ka_dhaxal",
+      body: "ka_dhaxal",
+      kind: vscode.CompletionItemKind.Variable,
+      detail: "Extends keyword",
     },
     {
-      key:"nooc",
-      body:"nooc()",
-      kind:vscode.CompletionItemKind.Function,
-      detail:"TypeOf function"
+      key: "ka_keen",
+      body: "ka_keen",
+      kind: vscode.CompletionItemKind.Keyword,
+      detail: "Import statement",
     },
     {
-      key:"qoraal",
-      body:"qoraal()",
-      kind:vscode.CompletionItemKind.Function,
-      detail:"String function"
+      key: "qor",
+      body: "qor()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Print function",
     },
     {
-      key:"tiro",
-      body:"tiro()",
-      kind:vscode.CompletionItemKind.Function,
-      detail:"Integer function"
+      key: "gelin",
+      body: "gelin()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Input function",
     },
     {
-      key:"bool",
-      body:"bool()",
-      kind:vscode.CompletionItemKind.Function,
-      detail:"Boolean function"
+      key: "nooc",
+      body: "nooc()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "TypeOf function",
     },
     {
-      key:"kudar",
-      body:"kudar()",
-      kind:vscode.CompletionItemKind.Function,
-      detail:"push function"
+      key: "qoraal",
+      body: "qoraal()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "String function",
     },
     {
-      key:"kasaar",
-      body:"kasaar()",
-      kind:vscode.CompletionItemKind.Function,
-      detail:"pop function"
+      key: "abn",
+      body: "abn()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Integer function",
     },
-   {
-    key:"dherer",
-    body:"dherer()",
-    kind:vscode.CompletionItemKind.Function,
-    detail:"length function"
-   },
-   {
-    key:"kudar",
-    body:"kudar()",
-    kind:vscode.CompletionItemKind.Function,
-    detail:"concat function"
-   },
-   {
-    key:"leeyahay",
-    body:"leeyahay()",
-    kind:vscode.CompletionItemKind.Function,
-    detail:"contains function"
-   },
-   {
-    key:"fure",
-    body:"fure()",
-    kind:vscode.CompletionItemKind.Function,
-    detail:"keys function"
-   },
-   {
-    key:"haystaa",
-    body:"haystaa()",
-    kind:vscode.CompletionItemKind.Function,
-    detail:"has function"
-   },
-   {
-    key:"tirtir",
-    body:"tirtir()",
-    kind:vscode.CompletionItemKind.Function,
-    detail:"Delete function"
-   },
-   {
-    key:"kudar",
-    body:"kudar()",
-    kind:vscode.CompletionItemKind.Function,
-    detail:"merge function"
-   }
-   
-    
+    {
+      key: "jajab",
+      body: "jajab()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Float function",
+    },
+    {
+      key: "bool",
+      body: "bool()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Boolean function",
+    },
+    {
+      key: "kudar",
+      body: "kudar()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Push function",
+    },
+    {
+      key: "kasaar",
+      body: "kasaar()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Pop function",
+    },
+    {
+      key: "dherer",
+      body: "dherer()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Length function",
+    },
+    {
+      key: "leeyahay",
+      body: "leeyahay()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Contains function",
+    },
+    {
+      key: "fure",
+      body: "fure()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Keys function",
+    },
+    {
+      key: "daji",
+      body: "daji()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Stop/pause function",
+    },
+    {
+      key: "kor",
+      body: "kor()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Up/increment function",
+    },
+    {
+      key: "xul",
+      body: "xul()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Close function",
+    },
+    {
+      key: "nadiifi",
+      body: "nadiifi()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Clean function",
+    },
+    {
+      key: "rog",
+      body: "rog()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Turn/rotate function",
+    },
+    {
+      key: "habee",
+      body: "habee()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Format function",
+    },
+    {
+      key: "jar",
+      body: "jar()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Cut function",
+    },
+    {
+      key: "aaddin",
+      body: "aaddin()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Add function",
+    },
+    {
+      key: "shaandhee",
+      body: "shaandhee()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Share function",
+    },
+    {
+      key: "muuji",
+      body: "muuji()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Show function",
+    },
+    {
+      key: "qiime",
+      body: "qiime()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Value function",
+    },
+    {
+      key: "lamaane",
+      body: "lamaane()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Double function",
+    },
+    {
+      key: "tir",
+      body: "tir()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Count function",
+    },
+    {
+      key: "qeybi",
+      body: "qeybi()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Divide function",
+    },
+    {
+      key: "dhamaad",
+      body: "dhamaad()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "End function",
+    },
+    {
+      key: "bilow",
+      body: "bilow()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Start function",
+    },
+    {
+      key: "beddel",
+      body: "beddel()",
+      kind: vscode.CompletionItemKind.Function,
+      detail: "Change function",
+    },
   ];
 
- 
   const provider = vscode.languages.registerCompletionItemProvider(
     { language: "soplang", scheme: "file" },
     {

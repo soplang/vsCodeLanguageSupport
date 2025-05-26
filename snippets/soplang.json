@@ -1,228 +1,223 @@
 {
-  "BANDHIG": {
-    "prefix": "q",
+  "Print Statement": {
+    "prefix": "qor",
     "body": [
-      "bandhig(${1:fariin})$0"
+      "qor(${1:fariin})$0"
     ],
-    "description": "Waxay daabacdaa"
+    "description": "Print statement - outputs text to console"
   },
-  "Door (Doorsoome)": {
-    "prefix": "d",
+  "Variable Declaration": {
+    "prefix": "door",
     "body": [
       "door ${1:magac} = ${2:qiimo}$0"
     ],
-    "description": "Waxay qeexdaa doorsoome cusub"
+    "description": "Dynamic variable declaration"
   },
-  "Haddii": {
-    "prefix": "ha",
+  "Constant Declaration": {
+    "prefix": "madoor",
+    "body": [
+      "madoor ${1:magac} = ${2:qiimo}$0"
+    ],
+    "description": "Constant variable declaration"
+  },
+  "Integer Type": {
+    "prefix": "abn",
+    "body": [
+      "abn ${1:magac} = ${2:10}$0"
+    ],
+    "description": "Integer type declaration"
+  },
+  "Decimal Type": {
+    "prefix": "jajab",
+    "body": [
+      "jajab ${1:magac} = ${2:3.14}$0"
+    ],
+    "description": "Decimal/float type declaration"
+  },
+  "String Type": {
+    "prefix": "qoraal",
+    "body": [
+      "qoraal ${1:magac} = \"${2:text}\"$0"
+    ],
+    "description": "String type declaration"
+  },
+  "Boolean Type": {
+    "prefix": "bool",
+    "body": [
+      "bool ${1:magac} = ${2|run,been|}$0"
+    ],
+    "description": "Boolean type declaration"
+  },
+  "List Type": {
+    "prefix": "liis",
+    "body": [
+      "liis ${1:magac} = [${2:qiimayaal}]$0"
+    ],
+    "description": "List/array type declaration"
+  },
+  "Object Type": {
+    "prefix": "walax",
+    "body": [
+      "walax ${1:magac} = {",
+      "\t${2:key}: ${3:value},$0",
+      "}"
+    ],
+    "description": "Object type declaration"
+  },
+  "If Statement": {
+    "prefix": "haddii",
     "body": [
       "haddii (${1:shuruud}) {",
       "\t$2",
       "}"
     ],
-    "description": "Waxay hubisaa shuruud, haddii run tahay waxay fulisaa koodka"
+    "description": "If statement"
   },
-  "Haddii_kale": {
-    "prefix": "hk",
+  "Else If Statement": {
+    "prefix": "haddii_kale",
     "body": [
       "haddii_kale (${1:shuruud}) {",
       "\t$2",
       "}"
     ],
-    "description": "Waxay hubisaa shuruud kale haddii tii hore been noqoto"
+    "description": "Else if statement"
   },
-  "Haddii_kalena": {
-    "prefix": "hkn",
+  "Else Statement": {
+    "prefix": "ugudambeyn",
     "body": [
-      "haddii_kalena {",
+      "ugudambeyn {",
       "\t$1",
       "}"
     ],
-    "description": "Waxay fulisaa koodka haddii shuruudihii hore been ahaayeen"
+    "description": "Else statement"
   },
-  "kuceli": {
-    "prefix": "kc",
+  "Switch Statement": {
+    "prefix": "dooro",
     "body": [
-      "kuceli ${1:doorsoome} min ${2:bilow} ilaa ${3:dhamaad} {",
+      "dooro (${1:expression}) {",
+      "\txaalad ${2:value} {",
+      "\t\t$3",
+      "\t}",
+      "\tugudambeyn {",
+      "\t\t$4",
+      "\t}",
+      "}"
+    ],
+    "description": "Switch statement"
+  },
+  "Case Clause": {
+    "prefix": "xaalad",
+    "body": [
+      "xaalad ${1:value} {",
+      "\t$2",
+      "}"
+    ],
+    "description": "Case clause for switch statement"
+  },
+  "For Loop": {
+    "prefix": "kuceli",
+    "body": [
+      "kuceli (${1:i} ${2:1} ilaa ${3:10}) {",
       "\t$4",
       "}"
     ],
-    "description": "Waxay soo celcelisaa koodka marto meel ilaa meel"
+    "description": "For loop statement"
   },
-  "hawl": {
-    "prefix": "hl",
+  "While Loop": {
+    "prefix": "intay",
     "body": [
-      "hawl ${1:magac}(${2:qiimayaal}) {",
-      "\t$3",
-      "}"
-    ],
-    "description": "Waxay abuurtaa shaqo (function) cusub"
-  },
-  "Fasalka": {
-    "prefix": "fl",
-    "body": [
-      "fasalka ${1:MagacFasal} ka_dhaxal ${2:Waalid} {",
-      "\t$3",
-      "}"
-    ],
-    "description": "Waxay abuurtaa fasal (class), ka_dhaxal waa doorasho"
-  },
-  "intay": {
-    "prefix": "it",
-    "body": [
-      "intay (${1:shurrud}) {",
+      "intay (${1:shuruud}) {",
       "\t$2",
       "}"
     ],
-    "description": "Waxay soo celcelisaa koodka ilaa shuruuddu been noqoto"
+    "description": "While loop statement"
   },
-  "Jooji": {
-    "prefix": "jj",
+  "Function Declaration": {
+    "prefix": "hawl",
     "body": [
-      "haddii (${1:shuruud}) {",
-      "\tjooji",
+      "hawl ${1:magac}(${2:parameters}) {",
+      "\t$3",
+      "\tceli ${4:value}",
       "}"
     ],
-    "description": "Waxay joojisaa xisaabinta socota"
+    "description": "Function declaration"
   },
-  "soco": {
-    "prefix": "sw",
-    "body": [
-      "haddii (${1:shuurud}) {",
-      "\tsoco",
-      "}"
-    ],
-    "description": "Waxay u gudbaa xisaabinta soo socota ee wareegga"
-  },
-  "celi": {
-    "prefix": "sc",
+  "Return Statement": {
+    "prefix": "celi",
     "body": [
       "celi ${1:qiimaha}$0"
     ],
-    "description": "Waxay soo celisaa qiimo ka timaado shaqo"
+    "description": "Return statement"
   },
-  "Isku_day": {
-    "prefix": "ikd",
+  "Break Statement": {
+    "prefix": "jooji",
+    "body": [
+      "jooji$0"
+    ],
+    "description": "Break statement"
+  },
+  "Continue Statement": {
+    "prefix": "soco",
+    "body": [
+      "soco$0"
+    ],
+    "description": "Continue statement"
+  },
+  "Try-Catch": {
+    "prefix": "isku_day",
     "body": [
       "isku_day {",
       "\t$1",
-      "}"
-    ],
-    "description": "Waxay isku daysa fulinta koodka aan la hubin"
-  },
-  "Qabo": {
-    "prefix": "qb",
-    "body": [
-      "qabo (${1:cilad}) {",
-      "\t$2",
-      "}"
-    ],
-    "description": "Waxay qabtaa cilladaha ka dhasha isku_day"
-  },
-  "Isku_day Qabo": {
-    "prefix": "isku_qabo",
-    "body": [
-      "isku_day {",
-      "    $1",
-      "} qabo (cilad) {",
-      "   bandhig(\"Cilada: \" + cilad);",
-      "}"
-    ],
-    "description": "Waxay isku qabtaa cilladaha ka dhasha koodka"
-  },
-  "Keeno": {
-    "prefix": "kn",
-    "body": [
-      "keeno \"${1:module}\"$0"
-    ],
-    "description": "Waxay soo dejisaa module dibadeed"
-  },
-  "Siidaayo": {
-    "prefix": "sdy",
-    "body": [
-      "siidaayo hawl ${1:magaca}(${2:qiimayaal}) {",
+      "} qabo (${2:khalad}) {",
       "\t$3",
       "}"
     ],
-    "description": "Waxay siidaysaa shaqo si ay dadka kale u isticmaalaan"
+    "description": "Try-catch statement"
   },
-  "Tiro": {
-    "prefix": "tr",
+  "Throw Statement": {
+    "prefix": "throw",
     "body": [
-      "tiro ${1:magac} = ${2:10}$0"
+      "throw ${1:\"error message\"}$0"
     ],
-    "description": "Waxay qeexaysaa doorsoome tiro ah"
+    "description": "Throw statement"
   },
-  "Qoraal": {
-    "prefix": "qr",
+  "Import Statement": {
+    "prefix": "ka_keen",
     "body": [
-      "qoraal ${1:magac} = \"${2:text}\"$0"
+      "ka_keen \"${1:module_path}\"$0"
     ],
-    "description": "Waxay qeexaysaa doorsoome qoraal ah"
+    "description": "Import statement"
   },
-  "Run_mise_been": {
-    "prefix": "rmb",
+  "Class Declaration": {
+    "prefix": "fasalka",
     "body": [
-      "run_mise_been ${1:magac} = ${2|run,been|}$0"
-    ],
-    "description": "Waxay qeexaysaa doorsoome run ama been ah"
-  },
-  "Liis": {
-    "prefix": "ls",
-    "body": [
-      "liis ${1:magac} = [${2:qiimayaal}]$0"
-    ],
-    "description": "Waxay abuurtaa liis walxood ah"
-  },
-  "walax": {
-    "prefix": "sh",
-    "body": [
-      "walax ${1:magac} = {",
-      "\t${2:astayn}: ${3:qiimo},$0",
+      "fasalka ${1:ClassName} {",
+      "\t$2",
       "}"
     ],
-    "description": "Waxay abuurtaa shay oo leh astayno"
+    "description": "Class declaration"
   },
-  "Nafta": {
-    "prefix": "nf",
+  "Class with Inheritance": {
+    "prefix": "fasalka_dhaxal",
     "body": [
-      "nafta.${1:astayn} = ${2:qiimo}$0"
+      "fasalka ${1:ClassName} ka_dhaxal ${2:ParentClass} {",
+      "\t$3",
+      "}"
     ],
-    "description": "Waxay tixraacaysaa sheyga hadda (sida 'this')"
+    "description": "Class declaration with inheritance"
   },
-  "Kudar": {
-    "prefix": "kd",
+  "Input Statement": {
+    "prefix": "gelin",
     "body": [
-      "kudar(${1:qiime1}, ${2:qiime2})$0"
+      "gelin(\"${1:prompt}\")$0"
     ],
-    "description": "Waxay kudartaa laba qiime"
+    "description": "Input statement - reads user input"
   },
-  "Kadhaaf": {
-    "prefix": "kdh",
+  "Type Check": {
+    "prefix": "nooc",
     "body": [
-      "kadhaaf(${1:qiime1}, ${2:qiime2})$0"
+      "nooc(${1:variable})$0"
     ],
-    "description": "Waxay kala jartaa qiimayaal"
-  },
-  "Kukobci": {
-    "prefix": "kk",
-    "body": [
-      "kukobci(${1:qiime1}, ${2:qiime2})$0"
-    ],
-    "description": "Waxay isku dhufataa qiimayaal"
-  },
-  "Uqeybi": {
-    "prefix": "uq",
-    "body": [
-      "uqeybi(${1:qiime1}, ${2:qiime2})$0"
-    ],
-    "description": "Waxay u qaybisaa qiimayaal"
-  },
-  "gelin": {
-    "prefix": "ak",
-    "body": [
-      "gelin(\"${1:fariin}\")$0"
-    ],
-    "description": "Waxay akhriddaa wixii isticmaale geliyo"
+    "description": "Get type of variable"
   }
 }

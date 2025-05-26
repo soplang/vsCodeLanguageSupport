@@ -60,7 +60,7 @@ function formatIndentation(text) {
 
     // Special case for else clauses
     if (
-      (line.startsWith("haddii_kale") || line.startsWith("haddii_kalena")) &&
+      (line.startsWith("haddii_kale") || line.startsWith("ugudambeyn")) &&
       !line.startsWith("}")
     ) {
       // Use parent if indent level
@@ -84,7 +84,7 @@ function formatIndentation(text) {
         line.endsWith("}") &&
         !nextLine.startsWith("}") &&
         !nextLine.startsWith("haddii_kale") &&
-        !nextLine.startsWith("haddii_kalena")
+        !nextLine.startsWith("ugudambeyn")
       ) {
         result.push("");
       }
@@ -137,20 +137,20 @@ function reformatEntireDocument(text) {
     const isDeclaration =
       line.startsWith("door") ||
       line.startsWith("hawl") ||
-      line.startsWith("bandhig") ||
+      line.startsWith("qor") ||
       line.startsWith("kuceli");
 
     // Decrease indentation for closing braces (before adding the line)
     if (line.startsWith("}")) {
       // Don't decrease for else clauses
-      if (!line.match(/^} (haddii_kale|haddii_kalena)/)) {
+      if (!line.match(/^} (haddii_kale|ugudambeyn)/)) {
         indentLevel = Math.max(0, indentLevel - 1);
       }
     }
 
     // Special case for standalone else clauses
     if (
-      (line.startsWith("haddii_kale") || line.startsWith("haddii_kalena")) &&
+      (line.startsWith("haddii_kale") || line.startsWith("ugudambeyn")) &&
       !line.startsWith("}")
     ) {
       // Use same indent as previous closing brace
@@ -179,7 +179,7 @@ function reformatEntireDocument(text) {
         !nextLine.startsWith("}") &&
         line.endsWith("}") &&
         !nextLine.startsWith("haddii_kale") &&
-        !nextLine.startsWith("haddii_kalena")
+        !nextLine.startsWith("ugudambeyn")
       ) {
         // Add empty line after closing block (if not followed by else)
         formattedLines.push("");
@@ -207,7 +207,7 @@ function reformatEntireDocument(text) {
     if (
       line.startsWith("door") ||
       line.startsWith("hawl") ||
-      line.startsWith("bandhig") ||
+      line.startsWith("qor") ||
       line.startsWith("kuceli") ||
       line.startsWith("//")
     ) {
@@ -285,14 +285,10 @@ function formatSoplangOperators(text) {
  * @returns {string}
  */
 function formatSoplangBlocks(text) {
-  // Format braces and block structures - brackets on same line
   return text
-    .replace(/\)\s*{/g, ") {") // Space before opening brace, on same line
-    .replace(/([a-zA-Z0-9_])\s*{/g, "$1 {") // Space before opening brace, on same line
-    .replace(/\s*{\s*/g, " {\n") // Newline after opening brace
-    .replace(/\s*}\s*/g, "\n}") // Newline before closing brace
-    .replace(/{\n\s*}/g, "{ }") // Empty blocks stay on one line
-    .replace(/}\s*(haddii_kale|haddii_kalena)/g, "} $1"); // Keep else on same line
+    .replace(/{\s+/g, " {\n") // Opening brace formatting
+    .replace(/\s+}/g, "\n}") // Closing brace formatting
+    .replace(/}\s*(haddii_kale|ugudambeyn)/g, "} $1"); // Keep else on same line
 }
 
 /**
@@ -301,12 +297,11 @@ function formatSoplangBlocks(text) {
  * @returns {string}
  */
 function formatSoplangStatements(text) {
-  // Format statements and line breaks
-  let result = text
-    .replace(/;\s*/g, ";\n") // Ensure semicolon newlines
-    .replace(/(door|tiro|qoraal|boole|waxa|liis|fadhi)\s+/g, "$1 ") // Format variable declarations
+  return text
+    .replace(/(door|madoor|abn|jajab|qoraal|bool|liis|walax)\s+/g, "$1 ") // Format variable declarations
+    .replace(/\s*=\s*/g, " = ") // Format assignment operators
+    .replace(/\b(celi|qor|gelin)\s*\(/g, "$1(") // Format function calls
     .replace(/(haddii|intaAy|kuCeli|intay|kuceli)\s*\(/g, "$1 (") // Format control statements
-    .replace(/\b(celi|bandhig|gelin)\s*\(/g, "$1(") // Format function calls
     .replace(/\/\*[\s\S]*?\*\/\s*/g, (match) => match.trim() + "\n\n") // Format multiline comments
     .replace(/}\s*([^h\s}])/g, "}\n$1"); // Ensure newline after closing brace if followed by code
 

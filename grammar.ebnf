@@ -1,150 +1,100 @@
-# Soplang Formal Grammar
+/*
+ * Soplang Formal Grammar Specification in Extended Backus-Naur Form (EBNF)
+ *
+ * Syntax conventions:
+ * - | denotes alternatives
+ * - [ ] denotes optional elements
+ * - { } denotes repetition (zero or more)
+ * - ( ) denotes grouping
+ * - " " denotes literals/terminals
+ * - 'a'..'z' denotes character ranges
+ */
 
-This document provides the formal grammar specification for the Soplang programming language in Extended Backus-Naur Form (EBNF).
-
-## Grammar Conventions
-
-- `|` denotes alternatives
-- `[ ]` denotes optional elements
-- `{ }` denotes repetition (zero or more)
-- `( )` denotes grouping
-- `" "` denotes literals/terminals
-- `'a'..'z'` denotes character ranges
-
-## Program Structure
-
-```ebnf
+// ===== PROGRAM STRUCTURE =====
 Program ::= Statement {Statement}
-```
 
-## Statements
-
-```ebnf
+// ===== STATEMENTS =====
 Statement ::= VariableDeclaration
             | FunctionDeclaration
             | FunctionCall
             | IfStatement
+            | SwitchStatement
             | LoopStatement
             | WhileStatement
             | BreakStatement
             | ContinueStatement
             | ReturnStatement
-            | TryCatchStatement
-            | ImportStatement
-            | ClassDeclaration
             | AssignmentStatement
             | Block
-            | ThrowStatement
 
 Block ::= "{" {Statement} "}"
-```
 
-## Variable Declarations
-
-```ebnf
-VariableDeclaration ::= DynamicDeclaration | StaticDeclaration
+// ===== VARIABLE DECLARATIONS =====
+VariableDeclaration ::= DynamicDeclaration | StaticDeclaration | ConstantDeclaration
 
 DynamicDeclaration ::= "door" Identifier "=" Expression
 
 StaticDeclaration ::= StaticType Identifier "=" Expression
 
-StaticType ::= "tiro"      // Number
+ConstantDeclaration ::= "madoor" [StaticType] Identifier "=" Expression
+
+StaticType ::= "abn"      // Integer
+             | "jajab"     // Decimal
              | "qoraal"    // String
-             | "bool" // Boolean
-             | "liis"      // List/Array
-             | "walax"      // Object
-```
+             | "bool"      // Boolean
+             | "teed"      // List/Array
+             | "walax"     // Object
 
-## Function Declarations
-
-```ebnf
+// ===== FUNCTION DECLARATIONS =====
 FunctionDeclaration ::= "hawl" Identifier "(" [ParameterList] ")" Block
 
 ParameterList ::= Identifier {"," Identifier}
-```
 
-## Function Calls
-
-```ebnf
-FunctionCall ::= Identifier "(" [ArgumentList] ")"
+// ===== FUNCTION CALLS =====
+FunctionCall ::= (Identifier | BuiltInFunction) "(" [ArgumentList] ")"
                | MethodCall
 
 MethodCall ::= ObjectProperty "(" [ArgumentList] ")"
 
 ArgumentList ::= Expression {"," Expression}
-```
 
-## Control Flow
-
-```ebnf
+// ===== CONTROL FLOW =====
 IfStatement ::= "haddii" "(" Expression ")" Block
                {ElseIfClause}
                [ElseClause]
 
 ElseIfClause ::= "haddii_kale" "(" Expression ")" Block
 
-ElseClause ::= "haddii_kalena" Block
-```
+ElseClause ::= "ugudambeyn" Block
 
-## Loops
+// ===== SWITCH STATEMENT =====
+SwitchStatement ::= "dooro" "(" Expression ")" "{" {CaseClause} [DefaultClause] "}"
 
-```ebnf
-LoopStatement ::= "kuceli" Identifier "min" Expression "ilaa" Expression ["by" Expression] Block
+CaseClause ::= "xaalad" Expression Block
+
+DefaultClause ::= "ugudambeyn" Block
+
+// ===== LOOPS =====
+LoopStatement ::= "kuceli" "(" Identifier Expression "ilaa" Expression ["::" Expression] ")" Block
 
 WhileStatement ::= "intay" "(" Expression ")" Block
 
 BreakStatement ::= "jooji"
 
 ContinueStatement ::= "soco"
-```
 
-## Return Statement
-
-```ebnf
+// ===== RETURN STATEMENT =====
 ReturnStatement ::= "celi" [Expression]
-```
 
-## Throw Statement
-
-```ebnf
-ThrowStatement ::= "throw" Expression
-```
-
-## Try-Catch
-
-```ebnf
-TryCatchStatement ::= "isku_day" Block "qabo" "(" Identifier ")" Block
-```
-
-## Import
-
-```ebnf
-ImportStatement ::= "ka_keen" StringLiteral
-```
-
-## Classes
-
-```ebnf
-ClassDeclaration ::= "fasalka" Identifier ["ka_dhaxal" Identifier] Block
-```
-
-## Object-Oriented Features
-
-```ebnf
+// ===== OBJECT ORIENTED =====
 ObjectProperty ::= Expression "." Identifier
 
 IndexAccess ::= Expression "[" Expression "]"
-```
 
-## Assignment
-
-```ebnf
+// ===== ASSIGNMENT =====
 AssignmentStatement ::= (Identifier | ObjectProperty | IndexAccess) "=" Expression
-```
 
-## Expressions
-
-```ebnf
+// ===== EXPRESSIONS =====
 Expression ::= LogicalExpression
 
 LogicalExpression ::= ComparisonExpression {LogicalOperator ComparisonExpression}
@@ -165,20 +115,10 @@ Factor ::= NumberLiteral
         | IndexAccess
         | ListLiteral
         | ObjectLiteral
-        | NewExpression
         | "(" Expression ")"
         | UnaryOperator Factor
-```
 
-## New Expression
-
-```ebnf
-NewExpression ::= "cusub" Identifier "(" [ArgumentList] ")"
-```
-
-## Operators
-
-```ebnf
+// ===== OPERATORS =====
 LogicalOperator ::= "&&" | "||"
 
 ComparisonOperator ::= "==" | "!=" | ">" | "<" | ">=" | "<="
@@ -188,11 +128,8 @@ AdditiveOperator ::= "+" | "-"
 MultiplicativeOperator ::= "*" | "/" | "%"
 
 UnaryOperator ::= "!" | "-"
-```
 
-## Literals
-
-```ebnf
+// ===== LITERALS =====
 NumberLiteral ::= Digit {Digit} ["." Digit {Digit}]
 
 StringLiteral ::= '"' {Character} '"' | "'" {Character} "'"
@@ -206,11 +143,8 @@ ListLiteral ::= "[" [Expression {"," Expression}] "]"
 ObjectLiteral ::= "{" [PropertyAssignment {"," PropertyAssignment}] "}"
 
 PropertyAssignment ::= (Identifier | StringLiteral) ":" Expression
-```
 
-## Basic Elements
-
-```ebnf
+// ===== BASIC ELEMENTS =====
 Identifier ::= (Letter | "_") {Letter | Digit | "_"}
 
 Letter ::= 'a'..'z' | 'A'..'Z'
@@ -222,30 +156,15 @@ Character ::= Letter | Digit | Symbol | Whitespace
 Symbol ::= '!' | '@' | '#' | '$' | '%' | '^' | '&' | '*' | '(' | ')' | '-' | '+' | '=' | '{' | '}' | '[' | ']' | ':' | ';' | '"' | "'" | '<' | '>' | ',' | '.' | '?' | '/' | '\\' | '|' | '`' | '~'
 
 Whitespace ::= ' ' | '\t' | '\n' | '\r'
-```
 
-## List Methods
+// ===== COMMENTS =====
+Comment ::= SingleLineComment | MultiLineComment
 
-```ebnf
-ListMethod ::= "kudar"       // push
-             | "kasaar"      // pop
-             | "dherer"      // length
-             | "kudar"     // concat
-             | "leeyahay"   // contains
-```
+SingleLineComment ::= "//" {Character} '\n'
 
-## Object Methods
+MultiLineComment ::= "/*" {Character} "*/"
 
-```ebnf
-ObjectMethod ::= "fure"    // keys
-               | "haystaa"   // has
-               | "tirtir"    // remove
-               | "kudar"   // merge
-```
-
-## Error Messages
-
-```ebnf
+// ===== ERROR FORMATTING =====
 ErrorMessage ::= "Khalad" ErrorType ":" ErrorDetail ["ee" "sadar" LineNumber "," "goobta" Position]
 
 ErrorType ::= "lexer" | "parser" | "runtime" | "type" | "import"
@@ -255,14 +174,52 @@ ErrorDetail ::= {Character}
 LineNumber ::= Digit {Digit}
 
 Position ::= Digit {Digit}
-```
 
-## Comments
+// ===== LIST METHODS =====
+ListMethod ::= "kudar"       // push
+             | "kasaar"      // pop
+             | "dherer"      // length
+             | "kudar"       // concat
+             | "leeyahay"    // contains
+             | "nuqul"       // copy
+             | "nadiifi"     // clear
+             | "rog"         // reverse
+             | "habee"       // sort
+             | "jar"         // slice
+             | "aaddin"      // map/transform
+             | "shaandhee"   // filter
+             | "muuji"      // find index
 
-```ebnf
-Comment ::= SingleLineComment | MultiLineComment
+// ===== OBJECT METHODS =====
+ObjectMethod ::= "fure"      // keys
+               | "qiime"     // values
+               | "lamaane"   // entries
+               | "leeyahay"  // has
+               | "tir"    // remove
+               | "kudar"     // merge
+               | "nuqul"     // copy
+               | "nadiifi"   // clear
 
-SingleLineComment ::= "//" {Character} '\n'
+// ===== STRING METHODS =====
+StringMethod ::= "qeybi"     // split
+              | "leeyahay"   // contains
+              | "dhamaad"    // endsWith
+              | "bilow"      // startsWith
+              | "beddel"     // replace
+              | "kudar"      // join
+              | "jar"        // slice
 
-MultiLineComment ::= "/*" {Character} "*/"
-```
+// ===== BUILT-IN FUNCTIONS =====
+BuiltInFunction ::= "qor"  // print
+                  | "gelin"    // input
+                  | "nooc"     // typeof
+                  | "abn"     // to integer
+                  | "jajab"    // to float
+                  | "qoraal"   // to string
+                  | "bool"     // to boolean
+                  | "teed"     // create list
+                  | "walax"    // create object
+                  | "daji"     // math.floor
+                  | "kor"      // math.ceil
+                  | "dherer"   // length
+                  | "xul"   // random

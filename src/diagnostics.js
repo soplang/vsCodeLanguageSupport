@@ -38,7 +38,7 @@ const commonKeywordMappings = {
 
   // Control flow
   if: "haddii",
-  else: "haddii_kale",
+  else: "ugudambeyn",
   "else if": "haddii_kale",
   elif: "haddii_kale",
   for: "kuceli",
@@ -50,11 +50,11 @@ const commonKeywordMappings = {
   catch: "qabo",
 
   // Output
-  print: "bandhig",
-  console: "bandhig",
-  log: "bandhig",
-  write: "bandhig",
-  echo: "bandhig",
+  print: "qor",
+  console: "qor",
+  log: "qor",
+  write: "qor",
+  echo: "qor",
 
   // Input
   input: "gelin",
@@ -244,7 +244,7 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `Missing '{}' after '${match[1]}'. Example: '${match[1]} (${match[2]}) { bandhig("example") }'`,
+            message: `Missing '{}' after '${match[1]}'. Example: '${match[1]} (${match[2]}) { qor("example") }'`,
             code: "missing-braces",
             suggestion: `${match[1]} (${match[2]}) {`,
             startPos: match.index,
@@ -281,7 +281,7 @@ class SoplangDiagnostics {
           const keywordMap = {
             if: "haddii",
             "else if": "haddii_kale",
-            else: "haddii_kalena",
+            else: "ugudambeyn",
             elif: "haddii_kale",
           };
 
@@ -428,9 +428,9 @@ class SoplangDiagnostics {
 
           return {
             isInvalid: true,
-            message: `'${incorrectKeyword}' is not a valid function in Soplang. Did you mean 'bandhig'?`,
-            code: "incorrect-function",
-            suggestion: "bandhig",
+            message: `'${incorrectKeyword}' is not a valid function in Soplang. Did you mean 'qor'?`,
+            code: "incorrect-keyword",
+            suggestion: "qor",
             startPos: match.index,
             endPos: match.index + incorrectKeyword.length,
             originalText: incorrectKeyword,
@@ -481,40 +481,34 @@ class SoplangDiagnostics {
         },
       },
 
-      // Improved: Type check for tiro (number) variables
+      // Improved: Type check for abn (number) variables
       {
-        pattern: /\b(tiro)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+?)(?:$|;)/g,
+        pattern: /\b(abn)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+?)(?:$|;)/g,
         validate: (match, line) => {
           const value = match[3].trim();
 
-          // Check if the value is enclosed in quotes (either single or double)
-          if (/(^['"].*['"]$)/.test(value)) {
+          // Check if value is a string literal (enclosed in quotes)
+          if (/^["'].*["']$/.test(value)) {
             return {
               isInvalid: true,
-              message: `Type mismatch: 'tiro' (number) variables cannot have string values (enclosed in quotes).`,
-              code: "type-mismatch-number",
-              suggestion: `tiro ${match[2]} = ${value.replace(/['"]/g, "")}`,
-              startPos: match.index,
-              endPos: match.index + match[0].length,
-              originalText: match[0],
+              message: `Type mismatch: 'abn' (number) variables cannot have string values (enclosed in quotes).`,
+              code: "type-mismatch",
+              suggestion: `abn ${match[2]} = ${value.replace(/['"]/g, "")}`,
             };
           }
 
-          // If it's a numeric value, it's valid
-          if (/^-?\d+(\.\d+)?$/.test(value)) {
-            return null;
+          // Check if value is a valid number
+          const numericValue = parseFloat(value);
+          if (isNaN(numericValue) && !value.match(/^[a-zA-Z_][a-zA-Z0-9_]*$/)) {
+            return {
+              isInvalid: true,
+              message: `Type mismatch: 'abn' (number) variables must have numeric values.`,
+              code: "type-mismatch",
+              suggestion: `abn ${match[2]} = 0`,
+            };
           }
 
-          // If it looks like a string or other non-numeric value
-          return {
-            isInvalid: true,
-            message: `Type mismatch: 'tiro' (number) variables must have numeric values.`,
-            code: "type-mismatch-number",
-            suggestion: `tiro ${match[2]} = 0`,
-            startPos: match.index,
-            endPos: match.index + match[0].length,
-            originalText: match[0],
-          };
+          return null;
         },
       },
 
@@ -612,7 +606,7 @@ class SoplangDiagnostics {
       // Check for proper use of door vs. typed declaration
       {
         pattern:
-          /\b(door)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(['"].*['"]|true|false|run|been|\d+\.\d+)/g,
+          /\b(door|madoor|abn|jajab|qoraal|bool|liis|walax)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(['"].*['"]|true|false|run|been|\d+\.\d+)/g,
         validate: (match, line) => {
           // Detect what kind of value it is
           let suggestedType = "door";
@@ -628,7 +622,7 @@ class SoplangDiagnostics {
             suggestedType = "jajab";
             reason = "decimal";
           } else if (/^\d+$/.test(match[3])) {
-            suggestedType = "tiro";
+            suggestedType = "abn";
             reason = "integer";
           }
 
@@ -945,7 +939,7 @@ class SoplangDiagnostics {
     // First pass: collect all valid identifiers using the masked line
     // Variable declarations
     const varDeclRegex =
-      /\b(door|tiro|qoraal|boole)\s+([a-zA-Z_][a-zA-Z0-9_]*)/g;
+      /\b(door|madoor|abn|jajab|qoraal|bool|liis|walax)\s+([a-zA-Z_][a-zA-Z0-9_]*)/g;
     let varMatch;
     while ((varMatch = varDeclRegex.exec(maskedLine)) !== null) {
       validIdentifiers.add(varMatch[2]);
@@ -1379,7 +1373,7 @@ class SoplangCodeActionProvider {
 
           case "invalid-string-format":
           case "malformed-string":
-          case "type-mismatch-number":
+          case "type-mismatch":
           case "type-mismatch-boolean":
           case "type-mismatch-string":
             this.createSimpleReplacementFix(document, diagnostic, actions);

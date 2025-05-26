@@ -14,8 +14,7 @@ class SoplangHoverProvider {
         description:
           "Doorsoome Caddeyn - Waxaad u adeegsan kartaa inaad ku qeexdo doorsoome cusub.",
         example: 'door x = 10\ndoor magac = "Sharafdin"',
-        usage:
-          "Bandhig doorsoome nooc kasta leh (tiro, qoraal, run_mise_been).",
+        usage: "Qor doorsoome nooc kasta leh (abn, qoraal, run_mise_been).",
       },
       hawl: {
         description: "Hawl - Waxay qeexaysaa shaqo (function) cusub.",
@@ -26,11 +25,6 @@ class SoplangHoverProvider {
       qor: {
         description: "Qor - Waxay daabacaysaa qoraal console-ka.",
         example: 'qor("Salaam, Adduunka!")\nqor("Qiimaha: " + x)',
-      },
-      bandhig: {
-        description: "Daabacaad - Wuxuu daabacayaa qoraal.",
-        example: 'bandhig("Salaam, Adduunka!")\bandhig("Qiimaha: " + x)',
-        usage: "Waxay daabici kartaa qoraal, doorsoome, ama xisaab.",
       },
       gelin: {
         description: "Gelinta - Wuxuu gelinyaa wixii isticmaaluhu geliyo.",
@@ -88,7 +82,7 @@ class SoplangHoverProvider {
 
       // Data types
       abn: {
-        description: "Abn - Waxay sheegaysaa doorsoome tiro ah.",
+        description: "Abn - Waxay sheegaysaa doorsoome abn ah.",
         example: "abn x = 10\nabn y = 25",
       },
       jajab: {

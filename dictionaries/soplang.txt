@@ -23,7 +23,6 @@ walax
 maran
 run
 been
-tiro
 qoraal
 boole
 waxa
@@ -35,7 +34,7 @@ min
 ilaa
 fasal
 dhaxal
-keeno
+ka_keen
 siidaayo
 nooc
 dherer

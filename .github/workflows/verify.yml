@@ -1,0 +1,109 @@
+name: Verify extension
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            target: linux-x64
+          - os: ubuntu-24.04-arm
+            target: linux-arm64
+          - os: macos-15-intel
+            target: darwin-x64
+          - os: macos-15
+            target: darwin-arm64
+          - os: windows-2025
+            target: win32-x64
+          - os: windows-11-arm
+            target: win32-arm64
+    runs-on: ${{ matrix.os }}
+    env:
+      VSCE_TARGET: ${{ matrix.target }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+      - run: npm ci
+      - run: npm run lint
+      - run: cargo test --locked --manifest-path server/Cargo.toml
+      - run: cargo build --locked --manifest-path server/Cargo.toml
+      - run: npm test
+        shell: bash
+        env:
+          SOPLANG_SERVER: ${{ github.workspace }}/server/target/debug/soplang-lsp${{ startsWith(matrix.target, 'win32') && '.exe' || '' }}
+      - run: npm run generate
+      - run: git diff --exit-code -- syntaxes snippets dictionaries keywords.md
+      - run: npm run build:server
+      - run: mkdir -p artifacts
+        shell: bash
+      - run: npm run package -- --target ${{ matrix.target }} --out artifacts/soplang-${{ matrix.target }}.vsix
+      - name: Inspect the archive
+        run: npm run verify:package -- artifacts/soplang-${{ matrix.target }}.vsix
+        shell: bash
+      - name: Test installed package in minimum and stable editors
+        shell: bash
+        env:
+          SOPLANG_VSIX: artifacts/soplang-${{ matrix.target }}.vsix
+        run: |
+          for editor in 1.95.0 stable; do
+            if [[ "${{ runner.os }}" == "Linux" ]]; then
+              VSCODE_VERSION="$editor" xvfb-run -a npm run test:host
+            else
+              VSCODE_VERSION="$editor" npm run test:host
+            fi
+          done
+      - name: Test Restricted Mode
+        shell: bash
+        env:
+          SOPLANG_VSIX: artifacts/soplang-${{ matrix.target }}.vsix
+          SOPLANG_RESTRICTED: 1
+        run: |
+          if [[ "${{ runner.os }}" == "Linux" ]]; then
+            xvfb-run -a npm run test:host
+          else
+            npm run test:host
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: soplang-${{ matrix.target }}
+          path: artifacts/*
+  compiler-parity:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: soplang/soplang
+          ref: e72c6668276fa801691ddb1c753ebbe2f73a417c
+          path: .compiler
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+      - run: npm ci
+      - run: cargo test --locked --manifest-path .compiler/Cargo.toml
+      - run: cargo build --locked --manifest-path .compiler/Cargo.toml
+      - run: cargo build --locked --manifest-path server/Cargo.toml
+      - run: npm test
+        env:
+          SOPLANG_COMPILER: ${{ github.workspace }}/.compiler/target/debug/soplang
+      - run: node tests/performance.cjs
+      - run: npm run build:server
+      - run: mkdir -p artifacts
+      - run: npm run package -- --target linux-x64 --out artifacts/soplang-linux-x64.vsix
+      - run: npm run verify:package -- artifacts/soplang-linux-x64.vsix
+      - name: Test compiler commands in installed packages
+        env:
+          SOPLANG_COMPILER: ${{ github.workspace }}/.compiler/target/debug/soplang
+        run: |
+          for editor in 1.95.0 stable; do
+            VSCODE_VERSION="$editor" xvfb-run -a npm run test:host
+          done

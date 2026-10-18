@@ -1,0 +1,18 @@
+const {spawn}=require('child_process');
+const path=require('path');
+const {pathToFileURL}=require('url');
+class Lsp {
+ constructor(){this.process=spawn(process.env.SOPLANG_SERVER||path.resolve('server/target/debug/soplang-lsp'),[],{stdio:['pipe','pipe','pipe']});this.buffer=Buffer.alloc(0);this.next=1;this.pending=new Map();this.messages=[];this.stderr='';this.process.stderr.on('data',d=>this.stderr+=d);this.process.stdout.on('data',d=>{this.buffer=Buffer.concat([this.buffer,d]);this.parse();});this.process.on('exit',code=>{for(const {reject}of this.pending.values())reject(Error(`Server exited ${code}: ${this.stderr}`));this.pending.clear();});}
+ parse(){while(true){const end=this.buffer.indexOf('\r\n\r\n');if(end<0)return;const match=/Content-Length: (\d+)/i.exec(this.buffer.subarray(0,end).toString());if(!match)throw Error('Invalid LSP header');const length=Number(match[1]);if(this.buffer.length<end+4+length)return;const m=JSON.parse(this.buffer.subarray(end+4,end+4+length));this.buffer=this.buffer.subarray(end+4+length);if(m.id!==undefined){const pending=this.pending.get(m.id);if(pending){this.pending.delete(m.id);clearTimeout(pending.timeout);m.error?pending.reject(Object.assign(Error(m.error.message),m.error)):pending.resolve(m.result);}}else this.messages.push(m);}}
+ send(method,params,id){const body=JSON.stringify({jsonrpc:'2.0',method,params,...(id!==undefined?{id}:{})});this.process.stdin.write(`Content-Length: ${Buffer.byteLength(body)}\r\n\r\n${body}`);}
+ request(method,params={}){const id=this.next++;return new Promise((resolve,reject)=>{const timeout=setTimeout(()=>{this.pending.delete(id);reject(Error(`Timeout ${method}: ${this.stderr}`));},15000);this.pending.set(id,{resolve,reject,timeout});this.send(method,params,id);});}
+ async initialize(root){const result=await this.request('initialize',{capabilities:{general:{positionEncodings:['utf-16']}},workspaceFolders:root?[{uri:pathToFileURL(root).href,name:'test'}]:[],initializationOptions:{trusted:true}});this.send('initialized',{});return result;}
+ open(uri,text,version=1){this.send('textDocument/didOpen',{textDocument:{uri,languageId:'soplang',version,text}});}
+ change(uri,text,version){this.send('textDocument/didChange',{textDocument:{uri,version},contentChanges:[{text}]});}
+ async diagnostics(uri,version){for(let i=0;i<300;i++){const found=this.messages.findLast(m=>m.method==='textDocument/publishDiagnostics'&&m.params.uri===uri&&(version===undefined||m.params.version===version));if(found)return found.params.diagnostics;await new Promise(r=>setTimeout(r,10));}throw Error(`No diagnostics for ${uri}: ${this.stderr}`);}
+ async close(){if(this.process.exitCode!==null)return;await this.request('shutdown');this.send('exit',{});await new Promise(resolve=>this.process.once('exit',resolve));}
+}
+function position(text,needle,delta=0){const offset=text.indexOf(needle)+delta;if(offset<0)throw Error(`Missing ${needle}`);const prefix=text.slice(0,offset);return {line:prefix.split('\n').length-1,character:prefix.slice(prefix.lastIndexOf('\n')+1).length};}
+function params(uri,text,needle,delta=0){return {textDocument:{uri},position:position(text,needle,delta)};}
+function apply(text,edits){const offset=p=>text.split('\n').slice(0,p.line).reduce((n,s)=>n+s.length+1,0)+p.character;for(const e of [...edits].sort((a,b)=>offset(b.range.start)-offset(a.range.start)))text=text.slice(0,offset(e.range.start))+e.newText+text.slice(offset(e.range.end));return text;}
+module.exports={Lsp,position,params,apply};

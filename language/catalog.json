@@ -1,0 +1,960 @@
+{
+  "version": "3.0.0",
+  "entries": [
+    {
+      "receiver": "keyword",
+      "name": "door",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Declare a dynamic variable.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "madoor",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Declare a constant.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "hawl",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Define a function or closure. At most eight ABI parameters, including an implicit receiver or capture environment.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "celi",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Return from a function.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "haddii",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Start a conditional branch.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "kale",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Contextual conditional or switch fallback; otherwise an identifier.",
+      "aliases": [
+        "haddii_kale",
+        "ugudambeyn"
+      ]
+    },
+    {
+      "receiver": "keyword",
+      "name": "dooro",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Select a matching case.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "xaalad",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Start a switch case.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "kuceli",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Numeric loop: kuceli (i 0 ilaa 10) { ... }. Also accepted as a member name.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "ilaa",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Upper bound of a numeric loop.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "intay",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Repeat while the condition is true.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "jooji",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Break out of a loop.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "soco",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Continue the loop.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "tijaabi",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Contextual try block before {; otherwise an identifier.",
+      "aliases": [
+        "fasax"
+      ]
+    },
+    {
+      "receiver": "keyword",
+      "name": "qabo",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Catch a runtime error.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "keen",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Flatten a source import relative to this file, in program order.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "qaab",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Define a class.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "dhaxal",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Inherit from a class.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "cusub",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Construct an instance. The nearest dhis or dhaw constructor is called.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "nafta",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Current method receiver.",
+      "aliases": []
+    },
+    {
+      "receiver": "keyword",
+      "name": "waalid",
+      "parameters": [],
+      "returns": "",
+      "documentation": "Call an ancestor method using waalid.method(...).",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "abn",
+      "parameters": [
+        "value"
+      ],
+      "returns": "abn",
+      "documentation": "Convert to integer. Floating point values are truncated.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "jajab",
+      "parameters": [
+        "value"
+      ],
+      "returns": "jajab",
+      "documentation": "Convert to floating point.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "qoraal",
+      "parameters": [
+        "value"
+      ],
+      "returns": "qoraal",
+      "documentation": "Convert a value to its string representation.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "bool",
+      "parameters": [
+        "value"
+      ],
+      "returns": "bool",
+      "documentation": "Convert to truth value.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "teed",
+      "parameters": [],
+      "returns": "teed",
+      "documentation": "Create an empty list.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "walax",
+      "parameters": [],
+      "returns": "walax",
+      "documentation": "Create an empty object.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "qor",
+      "parameters": [
+        "value"
+      ],
+      "returns": "qoraal",
+      "documentation": "Print one value and return its string representation.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "gelin",
+      "parameters": [
+        "prompt?"
+      ],
+      "returns": "qoraal",
+      "documentation": "Read a line from interactive input, optionally printing a prompt.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "nooc",
+      "parameters": [
+        "value"
+      ],
+      "returns": "qoraal",
+      "documentation": "Return the runtime type name.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "daji",
+      "parameters": [
+        "value"
+      ],
+      "returns": "abn",
+      "documentation": "Round down.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "kor",
+      "parameters": [
+        "value"
+      ],
+      "returns": "abn",
+      "documentation": "Round up.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "dherer",
+      "parameters": [
+        "value"
+      ],
+      "returns": "abn",
+      "documentation": "Return collection length; string length counts Unicode scalar values.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "xul",
+      "parameters": [
+        "listOrStart?",
+        "end?"
+      ],
+      "returns": "door",
+      "documentation": "Random float with no arguments, random item from a nonempty list, or random number in a numeric interval.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "baaxad",
+      "parameters": [
+        "startOrStop",
+        "stop?",
+        "step?"
+      ],
+      "returns": "teed",
+      "documentation": "Create an integer range with an exclusive stop. Step must be nonzero.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "duub",
+      "parameters": [
+        "value"
+      ],
+      "returns": "abn",
+      "documentation": "Round to the nearest integer.",
+      "aliases": [
+        "dhammeystir"
+      ]
+    },
+    {
+      "receiver": "global",
+      "name": "sugan",
+      "parameters": [
+        "value"
+      ],
+      "returns": "door",
+      "documentation": "Absolute value, preserving integer or float type.",
+      "aliases": []
+    },
+    {
+      "receiver": "global",
+      "name": "yar",
+      "parameters": [
+        "value",
+        "values..."
+      ],
+      "returns": "door",
+      "documentation": "Smallest numeric argument; at least one argument.",
+      "aliases": [
+        "ugu_yar"
+      ]
+    },
+    {
+      "receiver": "global",
+      "name": "weyn",
+      "parameters": [
+        "value",
+        "values..."
+      ],
+      "returns": "door",
+      "documentation": "Largest numeric argument; at least one argument.",
+      "aliases": [
+        "ugu_weyn"
+      ]
+    },
+    {
+      "receiver": "global",
+      "name": "jibbaar",
+      "parameters": [
+        "base",
+        "exponent"
+      ],
+      "returns": "jajab",
+      "documentation": "Raise a number to a power.",
+      "aliases": [
+        "awood"
+      ]
+    },
+    {
+      "receiver": "global",
+      "name": "xidid",
+      "parameters": [
+        "value"
+      ],
+      "returns": "jajab",
+      "documentation": "Square root of a nonnegative number.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "dherer",
+      "parameters": [],
+      "returns": "abn",
+      "documentation": "Return length. Strings count Unicode scalar values.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "hel",
+      "parameters": [
+        "indexOrKey",
+        "default?"
+      ],
+      "returns": "door",
+      "documentation": "Return the item or default (maran when omitted). List and string indices allow negative offsets.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "leeyahay",
+      "parameters": [
+        "value"
+      ],
+      "returns": "bool",
+      "documentation": "Test membership.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "dhig",
+      "parameters": [
+        "indexOrKey",
+        "value"
+      ],
+      "returns": "teed",
+      "documentation": "Replace an existing list item or set an object key; mutate and return the receiver.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "midee",
+      "parameters": [
+        "other"
+      ],
+      "returns": "teed",
+      "documentation": "Return a combined copy; preserve the receiver. Object keys from other override matching keys.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "nuqul",
+      "parameters": [],
+      "returns": "teed",
+      "documentation": "Return a shallow copy.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "nadiifi",
+      "parameters": [],
+      "returns": "teed",
+      "documentation": "Remove all entries in place and return the receiver.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "jar",
+      "parameters": [
+        "start?",
+        "end?"
+      ],
+      "returns": "teed",
+      "documentation": "Return a slice copy with exclusive end, negative bounds, and clamped endpoints.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "hore",
+      "parameters": [],
+      "returns": "door",
+      "documentation": "First item or maran.",
+      "aliases": [
+        "koowaad"
+      ]
+    },
+    {
+      "receiver": "teed",
+      "name": "dambe",
+      "parameters": [],
+      "returns": "door",
+      "documentation": "Last item or maran.",
+      "aliases": [
+        "ugu_dambeeya"
+      ]
+    },
+    {
+      "receiver": "walax",
+      "name": "dherer",
+      "parameters": [],
+      "returns": "abn",
+      "documentation": "Return length. Strings count Unicode scalar values.",
+      "aliases": []
+    },
+    {
+      "receiver": "walax",
+      "name": "hel",
+      "parameters": [
+        "indexOrKey",
+        "default?"
+      ],
+      "returns": "door",
+      "documentation": "Return the item or default (maran when omitted). List and string indices allow negative offsets.",
+      "aliases": []
+    },
+    {
+      "receiver": "walax",
+      "name": "leeyahay",
+      "parameters": [
+        "value"
+      ],
+      "returns": "bool",
+      "documentation": "Test whether the key exists.",
+      "aliases": []
+    },
+    {
+      "receiver": "walax",
+      "name": "dhig",
+      "parameters": [
+        "indexOrKey",
+        "value"
+      ],
+      "returns": "walax",
+      "documentation": "Replace an existing list item or set an object key; mutate and return the receiver.",
+      "aliases": []
+    },
+    {
+      "receiver": "walax",
+      "name": "midee",
+      "parameters": [
+        "other"
+      ],
+      "returns": "walax",
+      "documentation": "Return a combined copy; preserve the receiver. Object keys from other override matching keys.",
+      "aliases": [
+        "kudar"
+      ]
+    },
+    {
+      "receiver": "walax",
+      "name": "nuqul",
+      "parameters": [],
+      "returns": "walax",
+      "documentation": "Return a shallow copy.",
+      "aliases": []
+    },
+    {
+      "receiver": "walax",
+      "name": "nadiifi",
+      "parameters": [],
+      "returns": "walax",
+      "documentation": "Remove all entries in place and return the receiver.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "dherer",
+      "parameters": [],
+      "returns": "abn",
+      "documentation": "Return length. Strings count Unicode scalar values.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "hel",
+      "parameters": [
+        "indexOrKey",
+        "default?"
+      ],
+      "returns": "door",
+      "documentation": "Return the item or default (maran when omitted). List and string indices allow negative offsets.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "leeyahay",
+      "parameters": [
+        "value"
+      ],
+      "returns": "bool",
+      "documentation": "Test whether the substring occurs.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "qeybi",
+      "parameters": [
+        "separator"
+      ],
+      "returns": "teed",
+      "documentation": "Split by a separator.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "dhammaad",
+      "parameters": [
+        "suffix"
+      ],
+      "returns": "bool",
+      "documentation": "Test a suffix.",
+      "aliases": [
+        "dhamaad"
+      ]
+    },
+    {
+      "receiver": "qoraal",
+      "name": "bilow",
+      "parameters": [
+        "prefix"
+      ],
+      "returns": "bool",
+      "documentation": "Test a prefix.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "beddel",
+      "parameters": [
+        "old",
+        "new",
+        "count?"
+      ],
+      "returns": "qoraal",
+      "documentation": "Replace the first occurrence by default. A nonnegative count limits replacements; maran replaces all.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "beddel_dhammaan",
+      "parameters": [
+        "old",
+        "new"
+      ],
+      "returns": "qoraal",
+      "documentation": "Replace all occurrences. Prefer beddel(old, new, maran).",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "xiriiri",
+      "parameters": [
+        "list"
+      ],
+      "returns": "qoraal",
+      "documentation": "Use this string as separator to join the string representations of list values.",
+      "aliases": [
+        "kudar"
+      ]
+    },
+    {
+      "receiver": "qoraal",
+      "name": "weynee",
+      "parameters": [],
+      "returns": "qoraal",
+      "documentation": "Convert to Unicode uppercase.",
+      "aliases": [
+        "xarfaha_waaweyn",
+        "xarafaha_weyn"
+      ]
+    },
+    {
+      "receiver": "qoraal",
+      "name": "yaree",
+      "parameters": [],
+      "returns": "qoraal",
+      "documentation": "Convert to Unicode lowercase.",
+      "aliases": [
+        "xarfaha_yaryar"
+      ]
+    },
+    {
+      "receiver": "qoraal",
+      "name": "masax",
+      "parameters": [
+        "direction?"
+      ],
+      "returns": "qoraal",
+      "documentation": "Trim both ends by default; use \"hore\" for leading or \"dambe\" for trailing whitespace.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "masax_bilow",
+      "parameters": [],
+      "returns": "qoraal",
+      "documentation": "Trim leading whitespace. Prefer masax(\"hore\").",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "masax_dhammaad",
+      "parameters": [],
+      "returns": "qoraal",
+      "documentation": "Trim trailing whitespace. Prefer masax(\"dambe\").",
+      "aliases": [
+        "masax_dhamaad"
+      ]
+    },
+    {
+      "receiver": "qoraal",
+      "name": "raadi",
+      "parameters": [
+        "substring",
+        "direction?"
+      ],
+      "returns": "door",
+      "documentation": "Return the Unicode character index of the first match, or -1. Use \"dambe\" for the last match.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "raadi_dambe",
+      "parameters": [
+        "substring"
+      ],
+      "returns": "door",
+      "documentation": "Return the last Unicode character index, or -1. Prefer raadi(substring, \"dambe\").",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "kuceli",
+      "parameters": [
+        "count"
+      ],
+      "returns": "qoraal",
+      "documentation": "Repeat a nonnegative integer number of times.",
+      "aliases": [
+        "ku_celi"
+      ]
+    },
+    {
+      "receiver": "qoraal",
+      "name": "tiri",
+      "parameters": [
+        "substring"
+      ],
+      "returns": "abn",
+      "documentation": "Count nonoverlapping substring matches.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "jar",
+      "parameters": [
+        "start?",
+        "end?"
+      ],
+      "returns": "qoraal",
+      "documentation": "Return a slice copy with exclusive end, negative bounds, and clamped endpoints.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "hore",
+      "parameters": [],
+      "returns": "qoraal",
+      "documentation": "First Unicode scalar value or empty string.",
+      "aliases": []
+    },
+    {
+      "receiver": "qoraal",
+      "name": "dambe",
+      "parameters": [],
+      "returns": "qoraal",
+      "documentation": "Last Unicode scalar value or empty string.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "geli",
+      "parameters": [
+        "valueOrIndex",
+        "value?"
+      ],
+      "returns": "teed",
+      "documentation": "Append exactly one value, including a nested list; with two arguments insert at index. Mutate and return receiver.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "saar",
+      "parameters": [
+        "index?"
+      ],
+      "returns": "door",
+      "documentation": "Remove and return an item. No index pops the last item; empty or out of range is an error.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "kasaar",
+      "parameters": [],
+      "returns": "door",
+      "documentation": "Pop and return the last item. Prefer saar().",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "ka_saar",
+      "parameters": [
+        "index"
+      ],
+      "returns": "door",
+      "documentation": "Remove and return the indexed item. Prefer saar(index).",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "kudar",
+      "parameters": [
+        "value"
+      ],
+      "returns": "teed",
+      "documentation": "Scalar values append in place; list arguments produce a concatenated copy. Prefer geli or midee for explicit behavior.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "raadi",
+      "parameters": [
+        "value"
+      ],
+      "returns": "door",
+      "documentation": "Return first equal item index, or maran.",
+      "aliases": [
+        "muuji"
+      ]
+    },
+    {
+      "receiver": "teed",
+      "name": "tiri",
+      "parameters": [
+        "value"
+      ],
+      "returns": "abn",
+      "documentation": "Count equal items.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "rog",
+      "parameters": [],
+      "returns": "teed",
+      "documentation": "Reverse in place and return receiver.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "habee",
+      "parameters": [],
+      "returns": "teed",
+      "documentation": "Sort in place and return receiver.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "aaddin",
+      "parameters": [
+        "callback"
+      ],
+      "returns": "teed",
+      "documentation": "Map callback(item) to a new list.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "shaandhee",
+      "parameters": [
+        "callback"
+      ],
+      "returns": "teed",
+      "documentation": "Keep items where callback(item) is truthy; return a new list.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "ururi",
+      "parameters": [
+        "callback",
+        "initial"
+      ],
+      "returns": "door",
+      "documentation": "Reduce with callback(accumulator, item), starting at initial.",
+      "aliases": [
+        "isku_gee"
+      ]
+    },
+    {
+      "receiver": "teed",
+      "name": "dhammaan",
+      "parameters": [
+        "callback"
+      ],
+      "returns": "bool",
+      "documentation": "Whether every callback(item) is truthy. True for an empty list.",
+      "aliases": []
+    },
+    {
+      "receiver": "teed",
+      "name": "qaar",
+      "parameters": [
+        "callback"
+      ],
+      "returns": "bool",
+      "documentation": "Whether any callback(item) is truthy. False for an empty list.",
+      "aliases": []
+    },
+    {
+      "receiver": "walax",
+      "name": "saar",
+      "parameters": [
+        "key"
+      ],
+      "returns": "door",
+      "documentation": "Remove and return a value, or maran if absent.",
+      "aliases": [
+        "ka_qaad"
+      ]
+    },
+    {
+      "receiver": "walax",
+      "name": "tir",
+      "parameters": [
+        "key"
+      ],
+      "returns": "walax",
+      "documentation": "Remove a key in place and return the receiver. This differs from saar.",
+      "aliases": []
+    },
+    {
+      "receiver": "walax",
+      "name": "furayaal",
+      "parameters": [],
+      "returns": "teed",
+      "documentation": "Return keys in sorted order.",
+      "aliases": [
+        "fure"
+      ]
+    },
+    {
+      "receiver": "walax",
+      "name": "qiimayaal",
+      "parameters": [],
+      "returns": "teed",
+      "documentation": "Return values ordered by sorted keys.",
+      "aliases": [
+        "qiime"
+      ]
+    },
+    {
+      "receiver": "walax",
+      "name": "lammaanayaal",
+      "parameters": [],
+      "returns": "teed",
+      "documentation": "Return [key, value] pairs ordered by sorted keys.",
+      "aliases": [
+        "lamaane"
+      ]
+    }
+  ]
+}

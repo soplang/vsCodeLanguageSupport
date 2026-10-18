@@ -1,139 +1,66 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Soplang",
-	"scopeName": "source.soplang",
-	"patterns": [
-		{
-			"include": "#comments"
-		},
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#numbers"
-		},
-		{
-			"include": "#operators"
-		},
-		{
-			"include": "#identifiers"
-		}
-	],
-	"repository": {
-		"comments": {
-			"patterns": [
-				{
-					"name": "comment.block.soplang",
-					"begin": "/\\*",
-					"end": "\\*/",
-					"captures": {
-						"0": {
-							"name": "punctuation.definition.comment.soplang"
-						}
-					}
-				},
-				{
-					"name": "comment.line.soplang",
-					"match": "//.*$"
-				}
-			]
-		},
-		"keywords": {
-			"patterns": [
-				{
-					"name": "keyword.control.soplang",
-					"match": "\\b(?:haddii|haddii_kale|ugudambeyn|dooro|xaalad|kuceli|ilaa|intay|jooji|soco|isku_day|qabo|throw)\\b"
-				},
-				{
-					"name": "keyword.declaration.soplang",
-					"match": "\\b(?:door|madoor|hawl|fasalka|ka_dhaxal|cusub|ka_keen)\\b"
-				},
-				{
-					"name": "keyword.type.soplang",
-					"match": "\\b(?:abn|jajab|qoraal|bool|liis|walax)\\b"
-				},
-				{
-					"name": "keyword.other.soplang",
-					"match": "\\b(?:celi|nafta|min|by)\\b"
-				},
-				{
-					"name": "constant.language.soplang",
-					"match": "\\b(?:run|been|maran|true|false|null)\\b"
-				},
-				{
-					"name": "support.function.builtin.soplang",
-					"match": "\\b(?:qor|gelin|nooc|abn|jajab|qoraal|bool|liis|walax|daji|kor|dherer|xul)\\b"
-				},
-				{
-					"name": "support.function.method.soplang",
-					"match": "\\b(?:kudar|kasaar|leeyahay|nuqul|nadiifi|rog|habee|jar|aaddin|shaandhee|muuji|fure|qiime|lamaane|tir|qeybi|dhamaad|bilow|beddel)\\b"
-				}
-			]
-		},
-		"strings": {
-			"patterns": [
-				{
-					"name": "string.quoted.double.soplang",
-					"begin": "\"",
-					"end": "\"",
-					"patterns": [
-						{
-							"name": "constant.character.escape.soplang",
-							"match": "\\\\."
-						}
-					]
-				},
-				{
-					"name": "string.quoted.single.soplang",
-					"begin": "'",
-					"end": "'",
-					"patterns": [
-						{
-							"name": "constant.character.escape.soplang",
-							"match": "\\\\."
-						}
-					]
-				}
-			]
-		},
-		"numbers": {
-			"patterns": [
-				{
-					"name": "constant.numeric.soplang",
-					"match": "\\b\\d+(?:\\.\\d+)?\\b"
-				}
-			]
-		},
-		"operators": {
-			"patterns": [
-				{
-					"name": "keyword.operator.comparison.soplang",
-					"match": "==|!=|>=|<=|>|<"
-				},
-				{
-					"name": "keyword.operator.logical.soplang",
-					"match": "&&|\\|\\||!"
-				},
-				{
-					"name": "keyword.operator.arithmetic.soplang",
-					"match": "\\+|\\-|\\*|\\/|%"
-				},
-				{
-					"name": "keyword.operator.assignment.soplang",
-					"match": "="
-				}
-			]
-		},
-		"identifiers": {
-			"patterns": [
-				{
-					"name": "variable.other.soplang",
-					"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
-				}
-			]
-		}
-	}
+  "name": "Soplang",
+  "scopeName": "source.soplang",
+  "patterns": [
+    {
+      "name": "comment.line.double-slash.soplang",
+      "begin": "//",
+      "end": "$"
+    },
+    {
+      "name": "comment.block.soplang",
+      "begin": "/\\*",
+      "end": "\\*/"
+    },
+    {
+      "name": "string.quoted.soplang",
+      "begin": "\"",
+      "end": "\""
+    },
+    {
+      "name": "string.quoted.soplang",
+      "begin": "'",
+      "end": "'"
+    },
+    {
+      "name": "entity.name.function.soplang",
+      "match": "(?<=hawl)\\s+[\\p{L}_][\\p{L}\\p{N}_]*"
+    },
+    {
+      "name": "entity.name.type.class.soplang",
+      "match": "(?<=qaab)\\s+[\\p{L}_][\\p{L}\\p{N}_]*"
+    },
+    {
+      "name": "support.function.method.soplang",
+      "match": "(?<=\\.)\\s*(?:aaddin|dambe|dhammaan|dherer|dhig|geli|habee|hel|hore|isku_gee|jar|ka_saar|kasaar|koowaad|kudar|leeyahay|midee|muuji|nadiifi|nuqul|qaar|raadi|rog|saar|shaandhee|tiri|ugu_dambeeya|ururi|furayaal|fure|ka_qaad|lamaane|lammaanayaal|qiimayaal|qiime|tir|beddel|beddel_dhammaan|bilow|dhamaad|dhammaad|ku_celi|kuceli|masax|masax_bilow|masax_dhamaad|masax_dhammaad|qeybi|raadi_dambe|weynee|xarafaha_weyn|xarfaha_waaweyn|xarfaha_yaryar|xiriiri|yaree)(?![\\p{L}\\p{N}_])"
+    },
+    {
+      "name": "keyword.control.soplang",
+      "match": "(?<![\\p{L}\\p{N}_])(?:celi|cusub|dhaxal|door|dooro|fasax|haddii|haddii_kale|hawl|intay|jooji|keen|kuceli|madoor|nafta|qaab|qabo|soco|ugudambeyn|waalid|xaalad)(?![\\p{L}\\p{N}_])"
+    },
+    {
+      "name": "keyword.control.contextual.soplang",
+      "match": "(?<![\\p{L}\\p{N}_])(?:tijaabi)(?![\\p{L}\\p{N}_])(?=\\s*\\{)|(?<![\\p{L}\\p{N}_])(?:kale)(?![\\p{L}\\p{N}_])(?=\\s*\\{|\\s*\\([^{}]*\\)\\s*\\{)|(?<![\\p{L}\\p{N}_])(?:ilaa)(?![\\p{L}\\p{N}_])"
+    },
+    {
+      "name": "constant.language.soplang",
+      "match": "(?<![\\p{L}\\p{N}_])(?:run|been|maran|null)(?![\\p{L}\\p{N}_])"
+    },
+    {
+      "name": "support.function.soplang",
+      "match": "(?<![\\p{L}\\p{N}_])(?:abn|awood|baaxad|bool|daji|dhammeystir|dherer|duub|gelin|jajab|jibbaar|kor|nooc|qor|qoraal|sugan|teed|ugu_weyn|ugu_yar|walax|weyn|xidid|xul|yar)(?![\\p{L}\\p{N}_])"
+    },
+    {
+      "name": "constant.numeric.soplang",
+      "match": "(?<![\\p{L}\\p{N}_])\\d+(?:\\.\\d+)?"
+    },
+    {
+      "name": "keyword.operator.soplang",
+      "match": "==|!=|>=|<=|&&|\\|\\||[+*/%!=<>-]"
+    },
+    {
+      "name": "variable.other.soplang",
+      "match": "[\\p{L}_][\\p{L}\\p{N}_]*"
+    }
+  ]
 }

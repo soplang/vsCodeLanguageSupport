@@ -1,223 +1,149 @@
 {
-  "Print Statement": {
-    "prefix": "qor",
-    "body": [
-      "qor(${1:fariin})$0"
-    ],
-    "description": "Print statement - outputs text to console"
-  },
-  "Variable Declaration": {
+  "Variable": {
     "prefix": "door",
     "body": [
-      "door ${1:magac} = ${2:qiimo}$0"
+      "door ${1:name} = ${2:0}"
     ],
-    "description": "Dynamic variable declaration"
+    "description": "Variable"
   },
-  "Constant Declaration": {
+  "Constant": {
     "prefix": "madoor",
     "body": [
-      "madoor ${1:magac} = ${2:qiimo}$0"
+      "madoor ${1:name} = ${2:0}"
     ],
-    "description": "Constant variable declaration"
+    "description": "Constant"
   },
-  "Integer Type": {
-    "prefix": "abn",
-    "body": [
-      "abn ${1:magac} = ${2:10}$0"
-    ],
-    "description": "Integer type declaration"
-  },
-  "Decimal Type": {
-    "prefix": "jajab",
-    "body": [
-      "jajab ${1:magac} = ${2:3.14}$0"
-    ],
-    "description": "Decimal/float type declaration"
-  },
-  "String Type": {
-    "prefix": "qoraal",
-    "body": [
-      "qoraal ${1:magac} = \"${2:text}\"$0"
-    ],
-    "description": "String type declaration"
-  },
-  "Boolean Type": {
-    "prefix": "bool",
-    "body": [
-      "bool ${1:magac} = ${2|run,been|}$0"
-    ],
-    "description": "Boolean type declaration"
-  },
-  "List Type": {
-    "prefix": "liis",
-    "body": [
-      "liis ${1:magac} = [${2:qiimayaal}]$0"
-    ],
-    "description": "List/array type declaration"
-  },
-  "Object Type": {
-    "prefix": "walax",
-    "body": [
-      "walax ${1:magac} = {",
-      "\t${2:key}: ${3:value},$0",
-      "}"
-    ],
-    "description": "Object type declaration"
-  },
-  "If Statement": {
-    "prefix": "haddii",
-    "body": [
-      "haddii (${1:shuruud}) {",
-      "\t$2",
-      "}"
-    ],
-    "description": "If statement"
-  },
-  "Else If Statement": {
-    "prefix": "haddii_kale",
-    "body": [
-      "haddii_kale (${1:shuruud}) {",
-      "\t$2",
-      "}"
-    ],
-    "description": "Else if statement"
-  },
-  "Else Statement": {
-    "prefix": "ugudambeyn",
-    "body": [
-      "ugudambeyn {",
-      "\t$1",
-      "}"
-    ],
-    "description": "Else statement"
-  },
-  "Switch Statement": {
-    "prefix": "dooro",
-    "body": [
-      "dooro (${1:expression}) {",
-      "\txaalad ${2:value} {",
-      "\t\t$3",
-      "\t}",
-      "\tugudambeyn {",
-      "\t\t$4",
-      "\t}",
-      "}"
-    ],
-    "description": "Switch statement"
-  },
-  "Case Clause": {
-    "prefix": "xaalad",
-    "body": [
-      "xaalad ${1:value} {",
-      "\t$2",
-      "}"
-    ],
-    "description": "Case clause for switch statement"
-  },
-  "For Loop": {
-    "prefix": "kuceli",
-    "body": [
-      "kuceli (${1:i} ${2:1} ilaa ${3:10}) {",
-      "\t$4",
-      "}"
-    ],
-    "description": "For loop statement"
-  },
-  "While Loop": {
-    "prefix": "intay",
-    "body": [
-      "intay (${1:shuruud}) {",
-      "\t$2",
-      "}"
-    ],
-    "description": "While loop statement"
-  },
-  "Function Declaration": {
+  "Typed function": {
     "prefix": "hawl",
     "body": [
-      "hawl ${1:magac}(${2:parameters}) {",
-      "\t$3",
-      "\tceli ${4:value}",
+      "hawl ${1:add}(abn ${2:a}, abn ${3:b}): abn {",
+      "\tceli ${2:a} + ${3:b}",
       "}"
     ],
-    "description": "Function declaration"
+    "description": "Typed function"
   },
-  "Return Statement": {
-    "prefix": "celi",
+  "Closure": {
+    "prefix": "closure",
     "body": [
-      "celi ${1:qiimaha}$0"
-    ],
-    "description": "Return statement"
-  },
-  "Break Statement": {
-    "prefix": "jooji",
-    "body": [
-      "jooji$0"
-    ],
-    "description": "Break statement"
-  },
-  "Continue Statement": {
-    "prefix": "soco",
-    "body": [
-      "soco$0"
-    ],
-    "description": "Continue statement"
-  },
-  "Try-Catch": {
-    "prefix": "isku_day",
-    "body": [
-      "isku_day {",
-      "\t$1",
-      "} qabo (${2:khalad}) {",
-      "\t$3",
+      "door ${1:double} = hawl(abn ${2:x}): abn {",
+      "\tceli ${2:x} * 2",
       "}"
     ],
-    "description": "Try-catch statement"
+    "description": "Closure"
   },
-  "Throw Statement": {
-    "prefix": "throw",
+  "Conditional": {
+    "prefix": "haddii",
     "body": [
-      "throw ${1:\"error message\"}$0"
-    ],
-    "description": "Throw statement"
-  },
-  "Import Statement": {
-    "prefix": "ka_keen",
-    "body": [
-      "ka_keen \"${1:module_path}\"$0"
-    ],
-    "description": "Import statement"
-  },
-  "Class Declaration": {
-    "prefix": "fasalka",
-    "body": [
-      "fasalka ${1:ClassName} {",
-      "\t$2",
+      "haddii (${1:run}) {",
+      "\t${2:qor(\"yes\")}",
+      "} kale {",
+      "\t${3:qor(\"no\")}",
       "}"
     ],
-    "description": "Class declaration"
+    "description": "Conditional"
   },
-  "Class with Inheritance": {
-    "prefix": "fasalka_dhaxal",
+  "Numeric loop": {
+    "prefix": "kuceli",
     "body": [
-      "fasalka ${1:ClassName} ka_dhaxal ${2:ParentClass} {",
-      "\t$3",
+      "kuceli (${1:i} ${2:0} ilaa ${3:10}) {",
+      "\tqor(${1:i})",
       "}"
     ],
-    "description": "Class declaration with inheritance"
+    "description": "Numeric loop"
   },
-  "Input Statement": {
-    "prefix": "gelin",
+  "While": {
+    "prefix": "intay",
     "body": [
-      "gelin(\"${1:prompt}\")$0"
+      "intay (${1:been}) {",
+      "\t${2:jooji}",
+      "}"
     ],
-    "description": "Input statement - reads user input"
+    "description": "While"
   },
-  "Type Check": {
-    "prefix": "nooc",
+  "Class": {
+    "prefix": "qaab",
     "body": [
-      "nooc(${1:variable})$0"
+      "qaab ${1:Person} {",
+      "\thawl dhis(qoraal ${2:name}) {",
+      "\t\tnafta.${2:name} = ${2:name}",
+      "\t}",
+      "}"
     ],
-    "description": "Get type of variable"
+    "description": "Class"
+  },
+  "Inheritance": {
+    "prefix": "dhaxal",
+    "body": [
+      "qaab ${1:Child} dhaxal ${2:Parent} {",
+      "\thawl ${3:greet}(): qoraal {",
+      "\t\tceli waalid.${3:greet}()",
+      "\t}",
+      "}"
+    ],
+    "description": "Inheritance"
+  },
+  "Construction": {
+    "prefix": "cusub",
+    "body": [
+      "door ${1:person} = cusub ${2:Person}(${3:\"Asha\"})"
+    ],
+    "description": "Construction"
+  },
+  "Class annotation": {
+    "prefix": "class-type",
+    "body": [
+      "${1:Person} ${2:person} = cusub ${1:Person}(${3:\"Asha\"})"
+    ],
+    "description": "Class annotation"
+  },
+  "Try catch": {
+    "prefix": "tijaabi",
+    "body": [
+      "tijaabi {",
+      "\t${1:qor(1 / 0)}",
+      "} qabo (${2:error}) {",
+      "\tqor(${2:error})",
+      "}"
+    ],
+    "description": "Try catch"
+  },
+  "Import": {
+    "prefix": "keen",
+    "body": [
+      "keen \"${1:library.sop}\""
+    ],
+    "description": "Import"
+  },
+  "List map": {
+    "prefix": "aaddin",
+    "body": [
+      "teed ${1:result} = ${2:[1, 2]}.aaddin(hawl(abn ${3:item}): abn {",
+      "\tceli ${3:item} * 2",
+      "})"
+    ],
+    "description": "List map"
+  },
+  "List reduce": {
+    "prefix": "ururi",
+    "body": [
+      "door ${1:total} = ${2:[1, 2]}.ururi(hawl(${3:sum}, ${4:item}) {",
+      "\tceli ${3:sum} + ${4:item}",
+      "}, 0)"
+    ],
+    "description": "List reduce"
+  },
+  "List": {
+    "prefix": "teed",
+    "body": [
+      "teed ${1:items} = [${2:1, 2, 3}]"
+    ],
+    "description": "List"
+  },
+  "Object": {
+    "prefix": "walax",
+    "body": [
+      "walax ${1:record} = {${2:name}: ${3:\"Asha\"}}"
+    ],
+    "description": "Object"
   }
 }

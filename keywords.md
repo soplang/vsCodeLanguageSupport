@@ -1,140 +1,102 @@
-# Soplang Keywords Reference
+# Soplang 3 editor reference
 
-This document provides a reference for all keywords in the Soplang programming language, along with their meanings and examples of usage.
+Generated from language/catalog.json. Compiler revision: e72c6668276fa801691ddb1c753ebbe2f73a417c.
 
-## Variable Declaration Keywords
-
-| Keyword  | Meaning                       | English Equivalent | Example                                |
-| -------- | ----------------------------- | ------------------ | -------------------------------------- |
-| `door`   | Dynamic variable declaration  | `var`/`let`        | `door magac = "Sharafdin"`             |
-| `madoor` | Constant variable declaration | `const`            | `madoor PI = 3.14159`                  |
-| `abn`   | Integer type                  | `int`              | `abn da = 25`                         |
-| `jajab`  | Decimal/float type            | `float`/`double`   | `jajab qiimo = 3.14`                   |
-| `qoraal` | String type                   | `string`           | `qoraal magac = "Sharafdin"`           |
-| `bool`   | Boolean type                  | `bool`             | `bool waaRun = run`                    |
-| `walax`  | Object type                   | `object`           | `walax person = { name: "Sharafdin" }` |
-| `teed`   | List/array type               | `array`            | `teed numbers = [1, 2, 3]`             |
-| `maran`  | Null value                    | `null`             | `door a = maran`                       |
-
-## Control Flow Keywords
-
-| Keyword       | Meaning            | English Equivalent | Example                                      |
-| ------------- | ------------------ | ------------------ | -------------------------------------------- |
-| `haddii`      | If statement       | `if`               | `haddii (x > 10) { qor("Weyn") }`        |
-| `haddii_kale` | Else if statement  | `else if`          | `haddii_kale (x == 10) { qor("Dhexe") }` |
-| `ugudambeyn`  | Else statement     | `else`             | `ugudambeyn { qor("Yar") }`              |
-| `dooro`       | Switch statement   | `switch`           | `dooro (x) { xaalad 1 { qor("Hal") } }`  |
-| `xaalad`      | Case clause        | `case`             | `xaalad "A" { qor("Case A") }`           |
-| `kuceli`      | For loop           | `for`              | `kuceli (i 1 ilaa 5) { qor(i) }`         |
-| `ilaa`        | Loop range end     | `to`               | `kuceli (i 1 ilaa 5) { qor(i) }`         |
-| `::`          | Loop increment     | `step`             | `kuceli (i 1 ilaa 10 :: 2) { qor(i) }`   |
-| `intay`       | While loop         | `while`            | `intay (x < 5) { qor(x) }`               |
-| `jooji`       | Break statement    | `break`            | `haddii (x == 3) { jooji }`                  |
-| `soco`        | Continue statement | `continue`         | `haddii (x == 3) { soco }`                   |
-
-## Function Keywords
-
-| Keyword | Meaning              | English Equivalent | Example                            |
-| ------- | -------------------- | ------------------ | ---------------------------------- |
-| `hawl`  | Function declaration | `function`         | `hawl isuGee(a, b) { celi a + b }` |
-| `celi`  | Return statement     | `return`           | `celi x * 2`                       |
-
-## Special Values
-
-| Somali Value | English Equivalent | Description         | Example                  |
-| ------------ | ------------------ | ------------------- | ------------------------ |
-| `run`        | `true`             | Boolean true value  | `haddii (run) { ... }`   |
-| `been`       | `false`            | Boolean false value | `haddii (!been) { ... }` |
-| `maran`      | `null`             | Empty/null value    | `door val = maran`       |
-
-## Data Types
-
-| Somali Type | English Equivalent | Description     | Example                          |
-| ----------- | ------------------ | --------------- | -------------------------------- |
-| `abn`      | `int`/`number`     | Integer numbers | `abn age = 25`                  |
-| `jajab`     | `float`/`decimal`  | Decimal numbers | `jajab pi = 3.14`                |
-| `qoraal`    | `string`           | Text values     | `qoraal name = "Ahmed"`          |
-| `bool`      | `boolean`          | Truth values    | `bool isValid = run`             |
-| `teed`      | `list`/`array`     | List of items   | `teed numbers = [1, 2, 3]`       |
-| `walax`     | `object`           | Key-value pairs | `walax person = { name: "Ali" }` |
-
-## Operators
-
-| Somali Operator | English Equivalent | Description              | Example                   |
-| --------------- | ------------------ | ------------------------ | ------------------------- |
-| `+`             | `+`                | Addition                 | `x = a + b`               |
-| `-`             | `-`                | Subtraction              | `x = a - b`               |
-| `*`             | `*`                | Multiplication           | `x = a * b`               |
-| `/`             | `/`                | Division                 | `x = a / b`               |
-| `%`             | `%`                | Modulo                   | `x = a % b`               |
-| `==`            | `==`               | Equal to                 | `haddii (a == b) {...}`   |
-| `!=`            | `!=`               | Not equal to             | `haddii (a != b) {...}`   |
-| `>`             | `>`                | Greater than             | `haddii (a > b) {...}`    |
-| `<`             | `<`                | Less than                | `haddii (a < b) {...}`    |
-| `>=`            | `>=`               | Greater than or equal to | `haddii (a >= b) {...}`   |
-| `<=`            | `<=`               | Less than or equal to    | `haddii (a <= b) {...}`   |
-| `&&`            | `&&`               | Logical AND              | `haddii (a && b) {...}`   |
-| `\|\|`          | `\|\|`             | Logical OR               | `haddii (a \|\| b) {...}` |
-| `!`             | `!`                | Logical NOT              | `haddii (!a) {...}`       |
-
-> **Note:** Soplang supports the use of comparison operators directly in expressions without requiring additional parentheses. For example, `door x = a > b` is valid syntax to store the result of a comparison in a variable.
-
-## Built-in Functions
-
-| Function  | Meaning               | English Equivalent | Example                                  |
-| --------- | --------------------- | ------------------ | ---------------------------------------- |
-| `qor` | Print to console      | `print`            | `qor("Salaan, Adduunka!")`           |
-| `gelin`   | Read input from user  | `input`            | `door magac = gelin("Magacaaga geli: ")` |
-| `nooc`    | Get type of variable  | `typeof`           | `qor(nooc(magac))`                   |
-| `abn`    | Convert to number     | `int`/`float`      | `door n = abn("5")`                     |
-| `qoraal`  | Convert to string     | `str`              | `door s = qoraal(25)`                    |
-| `bool`    | Convert to boolean    | `bool`             | `door b = bool(1)`                       |
-| `teed`    | Create a list         | `list/array`       | `door list = teed(1, 2, 3)`              |
-| `walax`   | Create an object      | `object/dict`      | `door obj = walax(name: "Ali", age: 25)` |
-| `daji`    | Round down to integer | `Math.floor()`     | `door n = daji(4.7)`                     |
-| `kor`     | Round up to integer   | `Math.ceil()`      | `door n = kor(4.2)`                      |
-| `dherer`  | Get length of value   | `len()`/`.length`  | `door n = dherer(qoraal)`                |
-| `xul`     | Get random value      | `random()`         | `door n = xul(1, 6)`                     |
-
-## List Methods
-
-| Method            | English Equivalent        | Description                   | Example                                 |
-| ----------------- | ------------------------- | ----------------------------- | --------------------------------------- |
-| `dherer()`        | `length()`                | Get list length               | `numbers.dherer()`                      |
-| `kudar()`         | `push()` or `append()`    | Add item to end               | `numbers.kudar(5)`                      |
-| `kasaar()`        | `pop()`                   | Remove and return last item   | `door last = numbers.kasaar()`          |
-| `kudar(teed)`     | `concat()`                | Concatenate lists             | `door all = list1.kudar(list2)`         |
-| `leeyahay(x)`     | `contains()`/`includes()` | Check if item exists          | `haddii (list.leeyahay(x)) {...}`       |
-| `nuqul()`         | `copy()`                  | Create a shallow copy         | `door copy = list.nuqul()`              |
-| `nadiifi()`       | `clear()`                 | Remove all items from list    | `list.nadiifi()`                        |
-| `rog()`           | `reverse()`               | Reverse the list in-place     | `list.rog()`                            |
-| `habee()`         | `sort()`                  | Sort the list in-place        | `list.habee()`                          |
-| `jar(a, b)`       | `slice(a, b)`             | Return sublist from a to b    | `door subset = numbers.jar(1, 3)`       |
-| `aaddin(func)`    | `map(func)`               | Transform items with function | `door doubled = nums.aaddin("laban")`   |
-| `shaandhee(func)` | `filter(func)`            | Filter items with function    | `door evens = nums.shaandhee("isEven")` |
-| `muuji(item)`    | `indexOf(item)`           | Find index of item            | `door idx = nums.muuji(5)`             |
-
-## Object Methods
-
-| Method        | English Equivalent   | Description           | Example                               |
-| ------------- | -------------------- | --------------------- | ------------------------------------- |
-| `fure()`      | `keys()`             | Get all keys          | `door keys = obj.fure()`              |
-| `qiime()`     | `values()`           | Get all values        | `door values = obj.qiime()`           |
-| `lamaane()`   | `entries()`          | Get key-value pairs   | `door pairs = obj.lamaane()`          |
-| `leeyahay(x)` | `hasOwnProperty()`   | Check if key exists   | `haddii (obj.leeyahay("name")) {...}` |
-| `tir(x)`   | `delete property`    | Delete a property     | `obj.tir("oldProp")`               |
-| `kudar(obj)`  | `merge()`/`assign()` | Merge/copy properties | `door merged = obj1.kudar(obj2)`      |
-| `nuqul()`     | `copy()`             | Create a shallow copy | `door copy = obj.nuqul()`             |
-| `nadiifi()`   | `clear()`            | Remove all properties | `obj.nadiifi()`                       |
-
-## String Methods
-
-| Method            | English Equivalent | Description                           | Example                                  |
-| ----------------- | ------------------ | ------------------------------------- | ---------------------------------------- |
-| `qeybi(xad)`      | `split()`          | Split string by delimiter             | `door parts = text.qeybi(",")`           |
-| `leeyahay(sub)`   | `includes()`       | Check if string contains substring    | `haddii (text.leeyahay("search")) {...}` |
-| `dhamaad(sub)`    | `endsWith()`       | Check if string ends with substring   | `haddii (text.dhamaad("ing")) {...}`     |
-| `bilow(sub)`      | `startsWith()`     | Check if string starts with substring | `haddii (text.bilow("http")) {...}`      |
-| `beddel(x, y)`    | `replace()`        | Replace substring x with y            | `door new = text.beddel("old", "new")`   |
-| `kudar(teed)`     | `join()`           | Join list of strings with separator   | `door text = ", ".kudar(names)`          |
-| `jar(start, end)` | `slice()`          | Extract substring from start to end   | `door sub = text.jar(0, 3)`              |
+- `door`: Declare a dynamic variable.
+- `madoor`: Declare a constant.
+- `hawl`: Define a function or closure. At most eight ABI parameters, including an implicit receiver or capture environment.
+- `celi`: Return from a function.
+- `haddii`: Start a conditional branch.
+- `kale`: Contextual conditional or switch fallback; otherwise an identifier. Supported aliases: `haddii_kale`, `ugudambeyn`.
+- `dooro`: Select a matching case.
+- `xaalad`: Start a switch case.
+- `kuceli`: Numeric loop: kuceli (i 0 ilaa 10) { ... }. Also accepted as a member name.
+- `ilaa`: Upper bound of a numeric loop.
+- `intay`: Repeat while the condition is true.
+- `jooji`: Break out of a loop.
+- `soco`: Continue the loop.
+- `tijaabi`: Contextual try block before {; otherwise an identifier. Supported aliases: `fasax`.
+- `qabo`: Catch a runtime error.
+- `keen`: Flatten a source import relative to this file, in program order.
+- `qaab`: Define a class.
+- `dhaxal`: Inherit from a class.
+- `cusub`: Construct an instance. The nearest dhis or dhaw constructor is called.
+- `nafta`: Current method receiver.
+- `waalid`: Call an ancestor method using waalid.method(...).
+- `abn(value)` → abn: Convert to integer. Floating point values are truncated.
+- `jajab(value)` → jajab: Convert to floating point.
+- `qoraal(value)` → qoraal: Convert a value to its string representation.
+- `bool(value)` → bool: Convert to truth value.
+- `teed()` → teed: Create an empty list.
+- `walax()` → walax: Create an empty object.
+- `qor(value)` → qoraal: Print one value and return its string representation.
+- `gelin(prompt?)` → qoraal: Read a line from interactive input, optionally printing a prompt.
+- `nooc(value)` → qoraal: Return the runtime type name.
+- `daji(value)` → abn: Round down.
+- `kor(value)` → abn: Round up.
+- `dherer(value)` → abn: Return collection length; string length counts Unicode scalar values.
+- `xul(listOrStart?, end?)` → door: Random float with no arguments, random item from a nonempty list, or random number in a numeric interval.
+- `baaxad(startOrStop, stop?, step?)` → teed: Create an integer range with an exclusive stop. Step must be nonzero.
+- `duub(value)` → abn: Round to the nearest integer. Supported aliases: `dhammeystir`.
+- `sugan(value)` → door: Absolute value, preserving integer or float type.
+- `yar(value, values...)` → door: Smallest numeric argument; at least one argument. Supported aliases: `ugu_yar`.
+- `weyn(value, values...)` → door: Largest numeric argument; at least one argument. Supported aliases: `ugu_weyn`.
+- `jibbaar(base, exponent)` → jajab: Raise a number to a power. Supported aliases: `awood`.
+- `xidid(value)` → jajab: Square root of a nonnegative number.
+- `teed.dherer()` → abn: Return length. Strings count Unicode scalar values.
+- `teed.hel(indexOrKey, default?)` → door: Return the item or default (maran when omitted). List and string indices allow negative offsets.
+- `teed.leeyahay(value)` → bool: Test membership.
+- `teed.dhig(indexOrKey, value)` → teed: Replace an existing list item or set an object key; mutate and return the receiver.
+- `teed.midee(other)` → teed: Return a combined copy; preserve the receiver. Object keys from other override matching keys.
+- `teed.nuqul()` → teed: Return a shallow copy.
+- `teed.nadiifi()` → teed: Remove all entries in place and return the receiver.
+- `teed.jar(start?, end?)` → teed: Return a slice copy with exclusive end, negative bounds, and clamped endpoints.
+- `teed.hore()` → door: First item or maran. Supported aliases: `koowaad`.
+- `teed.dambe()` → door: Last item or maran. Supported aliases: `ugu_dambeeya`.
+- `walax.dherer()` → abn: Return length. Strings count Unicode scalar values.
+- `walax.hel(indexOrKey, default?)` → door: Return the item or default (maran when omitted). List and string indices allow negative offsets.
+- `walax.leeyahay(value)` → bool: Test whether the key exists.
+- `walax.dhig(indexOrKey, value)` → walax: Replace an existing list item or set an object key; mutate and return the receiver.
+- `walax.midee(other)` → walax: Return a combined copy; preserve the receiver. Object keys from other override matching keys. Supported aliases: `kudar`.
+- `walax.nuqul()` → walax: Return a shallow copy.
+- `walax.nadiifi()` → walax: Remove all entries in place and return the receiver.
+- `qoraal.dherer()` → abn: Return length. Strings count Unicode scalar values.
+- `qoraal.hel(indexOrKey, default?)` → door: Return the item or default (maran when omitted). List and string indices allow negative offsets.
+- `qoraal.leeyahay(value)` → bool: Test whether the substring occurs.
+- `qoraal.qeybi(separator)` → teed: Split by a separator.
+- `qoraal.dhammaad(suffix)` → bool: Test a suffix. Supported aliases: `dhamaad`.
+- `qoraal.bilow(prefix)` → bool: Test a prefix.
+- `qoraal.beddel(old, new, count?)` → qoraal: Replace the first occurrence by default. A nonnegative count limits replacements; maran replaces all.
+- `qoraal.beddel_dhammaan(old, new)` → qoraal: Replace all occurrences. Prefer beddel(old, new, maran).
+- `qoraal.xiriiri(list)` → qoraal: Use this string as separator to join the string representations of list values. Supported aliases: `kudar`.
+- `qoraal.weynee()` → qoraal: Convert to Unicode uppercase. Supported aliases: `xarfaha_waaweyn`, `xarafaha_weyn`.
+- `qoraal.yaree()` → qoraal: Convert to Unicode lowercase. Supported aliases: `xarfaha_yaryar`.
+- `qoraal.masax(direction?)` → qoraal: Trim both ends by default; use "hore" for leading or "dambe" for trailing whitespace.
+- `qoraal.masax_bilow()` → qoraal: Trim leading whitespace. Prefer masax("hore").
+- `qoraal.masax_dhammaad()` → qoraal: Trim trailing whitespace. Prefer masax("dambe"). Supported aliases: `masax_dhamaad`.
+- `qoraal.raadi(substring, direction?)` → door: Return the Unicode character index of the first match, or -1. Use "dambe" for the last match.
+- `qoraal.raadi_dambe(substring)` → door: Return the last Unicode character index, or -1. Prefer raadi(substring, "dambe").
+- `qoraal.kuceli(count)` → qoraal: Repeat a nonnegative integer number of times. Supported aliases: `ku_celi`.
+- `qoraal.tiri(substring)` → abn: Count nonoverlapping substring matches.
+- `qoraal.jar(start?, end?)` → qoraal: Return a slice copy with exclusive end, negative bounds, and clamped endpoints.
+- `qoraal.hore()` → qoraal: First Unicode scalar value or empty string.
+- `qoraal.dambe()` → qoraal: Last Unicode scalar value or empty string.
+- `teed.geli(valueOrIndex, value?)` → teed: Append exactly one value, including a nested list; with two arguments insert at index. Mutate and return receiver.
+- `teed.saar(index?)` → door: Remove and return an item. No index pops the last item; empty or out of range is an error.
+- `teed.kasaar()` → door: Pop and return the last item. Prefer saar().
+- `teed.ka_saar(index)` → door: Remove and return the indexed item. Prefer saar(index).
+- `teed.kudar(value)` → teed: Scalar values append in place; list arguments produce a concatenated copy. Prefer geli or midee for explicit behavior.
+- `teed.raadi(value)` → door: Return first equal item index, or maran. Supported aliases: `muuji`.
+- `teed.tiri(value)` → abn: Count equal items.
+- `teed.rog()` → teed: Reverse in place and return receiver.
+- `teed.habee()` → teed: Sort in place and return receiver.
+- `teed.aaddin(callback)` → teed: Map callback(item) to a new list.
+- `teed.shaandhee(callback)` → teed: Keep items where callback(item) is truthy; return a new list.
+- `teed.ururi(callback, initial)` → door: Reduce with callback(accumulator, item), starting at initial. Supported aliases: `isku_gee`.
+- `teed.dhammaan(callback)` → bool: Whether every callback(item) is truthy. True for an empty list.
+- `teed.qaar(callback)` → bool: Whether any callback(item) is truthy. False for an empty list.
+- `walax.saar(key)` → door: Remove and return a value, or maran if absent. Supported aliases: `ka_qaad`.
+- `walax.tir(key)` → walax: Remove a key in place and return the receiver. This differs from saar.
+- `walax.furayaal()` → teed: Return keys in sorted order. Supported aliases: `fure`.
+- `walax.qiimayaal()` → teed: Return values ordered by sorted keys. Supported aliases: `qiime`.
+- `walax.lammaanayaal()` → teed: Return [key, value] pairs ordered by sorted keys. Supported aliases: `lamaane`.

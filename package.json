@@ -1,7 +1,7 @@
 {
   "name": "soplang",
   "displayName": "Soplang",
-  "description": "VS Code syntax highlighting for Soplang",
+  "description": "Soplang 3 language tools, compiler diagnostics, navigation, formatting, and execution.",
   "version": "1.0.0",
   "publisher": "soplang",
   "license": "MIT",
@@ -26,8 +26,60 @@
       "properties": {
         "soplang.enableDiagnostics": {
           "type": "boolean",
+          "default": true,
+          "description": "Report compiler frontend diagnostics without executing source.",
+          "scope": "resource"
+        },
+        "soplang.strict": {
+          "type": "boolean",
           "default": false,
-          "description": "Enable/disable diagnostic error detection for Soplang files"
+          "description": "Use the compiler strict static type mode.",
+          "scope": "resource"
+        },
+        "soplang.compilerPath": {
+          "type": "string",
+          "default": "soplang",
+          "scope": "resource",
+          "restricted": true,
+          "description": "Soplang 3 executable path or command on the extension host PATH."
+        },
+        "soplang.serverPath": {
+          "type": "string",
+          "default": "",
+          "restricted": true,
+          "description": "Optional native language server path. Restart the language server after changing this setting."
+        },
+        "soplang.workingDirectory": {
+          "type": "string",
+          "default": "",
+          "scope": "resource",
+          "restricted": true,
+          "description": "Task working directory. Relative paths use the selected workspace folder; default is that folder or the source directory."
+        },
+        "soplang.build.output": {
+          "type": "string",
+          "default": "",
+          "scope": "resource",
+          "description": "Build output path relative to the working directory. Empty uses the compiler default."
+        },
+        "soplang.build.optimization": {
+          "type": "integer",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "default": 2,
+          "scope": "resource",
+          "description": "LLVM build optimization level."
+        },
+        "soplang.analysis.maxFileBytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 4194304,
+          "default": 1048576,
+          "description": "Maximum source bytes per analyzed document or import."
         }
       }
     },
@@ -93,23 +145,6 @@
         "path": "./snippets/soplang.json"
       }
     ],
-    "configurationDefaults": {
-      "cSpell.enableFiletypes": [
-        "soplang"
-      ],
-      "cSpell.enabled": true,
-      "cSpell.languageSettings": [
-        {
-          "languageId": "soplang",
-          "dictionaries": [
-            "soplang"
-          ]
-        }
-      ],
-      "[soplang]": {
-        "editor.formatOnSave": true
-      }
-    },
     "cSpell.dictionaries": [
       {
         "name": "soplang",
@@ -119,36 +154,91 @@
     ],
     "commands": [
       {
-        "command": "soplang.formatDocument",
-        "title": "Format Soplang Document"
+        "command": "soplang.runFile",
+        "title": "Soplang: Run File"
       },
       {
-        "command": "soplang.runFile",
-        "title": "Run Soplang File",
-        "icon": {
-          "light": "./images/run-light.svg",
-          "dark": "./images/run-dark.svg"
+        "command": "soplang.buildFile",
+        "title": "Soplang: Build File"
+      },
+      {
+        "command": "soplang.openRepl",
+        "title": "Soplang: Open REPL"
+      },
+      {
+        "command": "soplang.stop",
+        "title": "Soplang: Stop"
+      },
+      {
+        "command": "soplang.compilerStatus",
+        "title": "Soplang: Compiler Status"
+      },
+      {
+        "command": "soplang.restartServer",
+        "title": "Soplang: Restart Language Server"
+      },
+      {
+        "command": "soplang.formatDocument",
+        "title": "Soplang: Format Document"
+      }
+    ],
+    "problemMatchers": [
+      {
+        "name": "soplang",
+        "owner": "soplang",
+        "fileLocation": "absolute",
+        "pattern": {
+          "regexp": "^\\s*--> (.+):(\\d+):(\\d+)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "message": 0
         }
       }
     ]
   },
-  "extensionPack": [
-    "streetsidesoftware.code-spell-checker"
-  ],
   "scripts": {
-    "package": "vsce package",
-    "publish": "vsce publish"
+    "clean": "node scripts/clean.cjs",
+    "build": "tsc -p . --noEmit && node scripts/build.cjs",
+    "check": "tsc -p . --noEmit",
+    "build:server": "node scripts/build-server.cjs",
+    "test": "npm run build && node --test tests/*.test.cjs",
+    "test:server": "cargo test --locked --manifest-path server/Cargo.toml",
+    "test:host": "node tests/run-host.cjs",
+    "generate": "node scripts/generate.cjs",
+    "vscode:prepublish": "npm run build && node scripts/check-assets.cjs",
+    "package": "vsce package --no-dependencies",
+    "verify:package": "node scripts/verify-package.cjs",
+    "lint": "npm run check && cargo clippy --locked --manifest-path server/Cargo.toml -- -D warnings"
   },
   "devDependencies": {
-    "vsce": "^1.97.0",
-    "vscode": "^1.1.34"
+    "@types/node": "^22.0.0",
+    "@types/vscode": "1.95.0",
+    "@vscode/test-electron": "^2.5.0",
+    "@vscode/vsce": "^4.0.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.2.0"
   },
   "activationEvents": [
     "onLanguage:soplang"
   ],
   "main": "./out/extension.js",
-  "files": [
-    "dictionaries/**",
-    "src/**"
-  ]
+  "extensionKind": [
+    "workspace"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "Execution and external server paths require Workspace Trust. Bundled analysis does not execute source."
+    },
+    "virtualWorkspaces": {
+      "supported": false,
+      "description": "Native analysis and compiler tasks require a filesystem workspace."
+    }
+  },
+  "dependencies": {
+    "vscode-languageclient": "9.0.1"
+  }
 }

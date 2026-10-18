@@ -1,39 +1,17 @@
-# Change Log
+# Changelog
 
-All notable changes to the "soplang" extension will be documented in this file.
+## 1.0.0 (unreleased)
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+- Replace duplicate client implementations with one generated TypeScript entry.
+- Add a bundled Rust language server using the pinned Soplang 3 frontend.
+- Replace heuristic diagnostics and obsolete language tables with compiler
+  analysis, current syntax, canonical snippets, and a reviewed API catalog.
+- Add semantic editor providers and conservative symbol-based rename.
+- Replace text-rewriting formatting with source-preserving indentation edits.
+- Add real compiler discovery and process tasks for Run, Build, REPL, and Stop.
+- Remove forced format-on-save and global spell-check changes.
+- Add package inspection, provider tests, native CI, and installed VSIX tests.
 
-## [0.2.0] - 2025-04-25
-### Minor Release Improvements
-
-### Added
-- Added hover documentation support for the `bool` (boolean) keyword
-
-### Changed
-- Updated execution command from `sop run` to `soplang` for better consistency
-- Updated file icons to use Soplang logo for .so and .sop files
-- Fixed missing keyword documentation
-
-## [0.1.0] - 2025-04-11
-### Beta Release
-
-### Added
-- Soplang code execution feature with multiple activation methods:
-  - Keyboard shortcut (Ctrl+Shift+R / Cmd+Shift+R)
-  - Context menu option
-  - Editor title button
-  - Command palette command
-- Official Soplang logo integration
-- Comprehensive README documentation
-- Auto-save before code execution
-- Support for both .sop and .so file extensions
-- VS Code tasks for packaging the extension
-
-### Changed
-- Updated VS Code engine requirement to v1.95.0
-- Improved icon handling for extension and language
-- Enhanced error detection and validation system
-
-## [0.0.1] - 2025-03-09
-- Initial release with basic syntax highlighting
+Marketplace history checked on 2026-10-18 reports 0.2.0 as the latest published
+version. The existing 1.0.0 manifest is retained for this next release. This
+working tree has not been published.

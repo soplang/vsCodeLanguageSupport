@@ -1,115 +1,57 @@
-# Soplang for VS Code
+# Soplang for Visual Studio Code
 
-![Soplang Logo](images/soplang-icon.png)
+Editor tools for the implemented Soplang 3 language. `.sop` is recommended;
+`.so` remains associated for existing source files. Change the language mode
+when opening a binary shared library with that extension.
 
-VS Code language support for [Soplang](https://github.com/soplang/soplang), a programming language designed for Somali speakers.
+The extension bundles a native Rust analysis server with a pinned compiler
+frontend. Analysis uses unsaved buffers and imports without running source,
+reading interactive input, compiling native code, or invoking LLVM.
 
-## Features
+Available tools include syntax highlighting, canonical snippets, compiler
+frontend diagnostics, visible-symbol and typed-receiver completion, English
+hover documentation, signature help, definitions, references, symbols,
+highlights, conservative rename, folding, selection ranges, import links,
+semantic highlighting, and indentation formatting.
 
-This extension provides comprehensive language support for Soplang in Visual Studio Code:
+Run, Build, Open REPL, Stop, Compiler Status, and Restart Language Server are
+available in the command palette. Run also works from Explorer and the editor
+context menu. `Ctrl+Shift+R` (`Cmd+Shift+R` on macOS) runs the selected file.
+Compiler tasks have interactive terminals and use executable/argument arrays.
 
-- **Syntax Highlighting**: Full syntax highlighting for Soplang keywords, strings, comments, and operators
-- **Code Execution**: Run Soplang files directly from VS Code
-- **Formatting**: Automatic code formatting for Soplang files
-- **Hover Information**: Documentation for Soplang keywords when hovering
-- **Spell Checking**: Integration with Code Spell Checker for Soplang keywords
-- **Snippets**: Common code snippets for faster development
-- **Error Detection**: (Optional) Diagnostics for common syntax errors
-
-## Installation
-
-1. Open VS Code
-2. Go to Extensions (Ctrl+Shift+X)
-3. Search for "Soplang"
-4. Click Install
-
-## Running Soplang Files
-
-You can run Soplang files (`.sop` or `.so` extensions) in multiple ways:
-
-- **Context Menu**: Right-click on a file and select "Run Soplang File"
-- **Keyboard Shortcut**: Press `Ctrl+Shift+R` (or `Cmd+Shift+R` on Mac)
-- **Command Palette**: Press `Ctrl+Shift+P` and type "Run Soplang File"
-- **Editor Title**: Click the Soplang icon in the top-right of the editor
-
-The file will be automatically saved before running.
-
-## Configuration
-
-This extension provides several configuration options:
-
-### Error Detection
-
-By default, error detection is disabled. To enable it:
-
-1. Open Settings (`Ctrl+,`)
-2. Search for "soplang"
-3. Check the "Enable Diagnostics" option
+Install a real Soplang 3 compiler on the extension host for execution. Set
+`soplang.compilerPath` to its executable path if it is absent from `PATH`.
+The extension does not install a compiler. Standalone builds also need the
+compiler's clang, rustc, and matching Soplang runtime libraries. A source debugger
+requires compiler debug information and a debug adapter; neither is included.
 
 ```json
-"soplang.enableDiagnostics": true
-```
-
-### Formatting
-
-Automatic formatting on save is enabled by default for Soplang files. You can disable it in the settings:
-
-```json
-"[soplang]": {
-  "editor.formatOnSave": false
+{
+  "soplang.compilerPath": "soplang",
+  "soplang.enableDiagnostics": true,
+  "soplang.strict": false,
+  "soplang.build.optimization": 2,
+  "soplang.build.output": "",
+  "soplang.workingDirectory": ""
 }
 ```
 
-## Language Features
+The default working directory is the selected file's workspace folder, or its
+source directory outside a workspace. Relative configuration paths use that
+working directory. Save cancellation or failure prevents execution. Workspace
+Trust is required for compiler tasks and custom server executables. Bundled
+analysis works in restricted mode, with disk imports restricted to workspace
+roots. Execution and analysis run on the workspace extension host, including
+SSH, WSL, and containers when a matching native server is present.
 
-### Syntax Highlighting
+No settings are changed when the extension activates. Formatting on save is
+opt-in. The formatter changes leading indentation only, preserves strings,
+comments, operators and EOLs, and returns no edits for malformed source. Range
+formatting touches only indentation wholly inside the selected range.
 
-All Soplang keywords are properly highlighted:
+Code Spell Checker is optional. The contributed `soplang` dictionary can be
+enabled through its language settings; no global spelling settings are changed.
 
-- `door` - Variable declaration
-- `hawl` - Function declaration
-- `qor` - Print statement
-- `gelin` - Read input
-- `haddii`, `haddii_kale`, `ugudambeyn` - Conditionals
-- `kuceli`, `intay` - Loops
-- ...and many more
-
-### Hover Documentation
-
-Hover over any Soplang keyword to see documentation, examples, and usage tips.
-
-### Code Snippets
-
-Type these prefixes and press Tab to use code snippets:
-
-- `door` - Variable declaration
-- `hawl` - Function declaration
-- `if` - If statement
-- `for` - For loop
-- `while` - While loop
-
-## Requirements
-
-- Visual Studio Code v1.95.0 or higher
-- The [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) extension (automatically installed)
-
-## Troubleshooting
-
-### Soplang files not running
-
-Make sure the `soplang` command is available in your PATH. If not, you can install it by following the instructions at [Soplang GitHub repository](https://github.com/soplang/soplang).
-
-### Syntax highlighting not working
-
-If syntax highlighting is not working, try:
-
-1. Reload VS Code window (Ctrl+Shift+P > "Reload Window")
-2. Ensure the file has `.sop` or `.so` extension
-
-## Contributing
-
-The source code for this extension is available on [GitHub](https://github.com/soplang/vsCodeLanguageSupport). Contributions are welcome!
-
-## License
-
-This extension is licensed under the [MIT License](LICENSE).  
+See [the support matrix](docs/SUPPORT.md) for verification status and limits,
+[the language catalog](keywords.md) for signatures and contracts, and
+[development instructions](docs/DEVELOPMENT.md) for builds and tests.

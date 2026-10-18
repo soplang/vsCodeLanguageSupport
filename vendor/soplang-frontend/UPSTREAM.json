@@ -1,0 +1,25 @@
+{
+  "repository": "https://github.com/soplang/soplang",
+  "revision": "e72c6668276fa801691ddb1c753ebbe2f73a417c",
+  "version": "3.0.0",
+  "files": {
+    "src/error/format.rs": "7c5cf5993810dae350efe2fb660d6d90cc92cbd60770eee9b89dddb6deba7e14",
+    "src/error/mod.rs": "65f3988f8aa6dbebb9f7d4ccc4509dc51c0bad6104781ba4064459ce77b27e06",
+    "src/frontend/ast.rs": "1937f3446d5bb77f3c22a2d15dde5699b68fb6e893d29be4044046157a1f0e77",
+    "src/frontend/imports.rs": "2dfad28fa6aac8bb5c394976a40627ce92acc5dc34e68ba0d7d28aa98a2c2f91",
+    "src/frontend/lexer.rs": "6ee876e0fa5699de67979ea08a6a1d3edff1256c406cc2ad3eed2ce9f8eb13b6",
+    "src/frontend/mod.rs": "f746b44a1d1b8e4fffbd01330867dd34ee8910f95476a9c96777661901ed1e1c",
+    "src/frontend/parser.rs": "33942d9d9c1964a8c9d5a23611f92ec352411187662d833b40a90f3298939234",
+    "src/frontend/token.rs": "164fe49bf3fb648f67ec269d7caf5d222f67960faeeb677190dc5aa559b740a2",
+    "src/semantic/analyze.rs": "efd554405f639b9004deb1430d72b0d484c97ce46edb99329c4918bbe0bb9e08"
+  },
+  "editor_changes": [
+    "src/analysis.rs",
+    "src/analysis/index.rs",
+    "src/frontend/trivia.rs",
+    "src/frontend/parser.rs: partial parsing and contextual keyword source offsets",
+    "src/frontend/mod.rs: parse_partial recovery and trivia export",
+    "src/semantic/mod.rs: analyzer-only exports",
+    "src/lib.rs: backend-free wrapper"
+  ]
+}

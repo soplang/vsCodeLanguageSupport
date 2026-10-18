@@ -1,0 +1,9 @@
+[package]
+name = "soplang-frontend"
+version = "3.0.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+colored = "2"
+unicode-width = "0.1.14"

@@ -1,5 +1,5 @@
 const {runTests, downloadAndUnzipVSCode, resolveCliArgsFromVSCodeExecutablePath} = require('@vscode/test-electron');
-const {execFile, spawn} = require('child_process');
+const {execFile, execFileSync, spawn} = require('child_process');
 const exec = require('util').promisify(execFile);
 const fs = require('fs');
 const path = require('path');
@@ -8,7 +8,17 @@ const os = require('os');
 (async () => {
     const vsix = path.resolve(process.env.SOPLANG_VSIX || 'artifacts/soplang-linux-x64.vsix');
     if (!fs.existsSync(vsix)) throw Error('Package the VSIX before running installed extension tests.');
-    const executable = process.env.VSCODE_EXECUTABLE || await downloadAndUnzipVSCode(process.env.VSCODE_VERSION || 'stable');
+    let executable = process.env.VSCODE_EXECUTABLE || await downloadAndUnzipVSCode(process.env.VSCODE_VERSION || 'stable');
+    if (process.platform === 'darwin' && !fs.existsSync(executable)) {
+        // Recent editors renamed Electron to the CFBundleExecutable value.
+        // Older editors still use Electron, which test-electron already resolves.
+        const contents = path.dirname(path.dirname(executable));
+        const name = execFileSync('/usr/bin/plutil', [
+            '-extract', 'CFBundleExecutable', 'raw', '-o', '-', path.join(contents, 'Info.plist')
+        ], {encoding:'utf8'}).trim();
+        if (!name || path.basename(name) !== name) throw Error('Invalid editor bundle executable');
+        executable = path.join(contents, 'MacOS', name);
+    }
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'soplang-host-'));
     const extensions = path.join(dir, 'extensions');
     const user = path.join(dir, 'user');

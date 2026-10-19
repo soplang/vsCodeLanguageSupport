@@ -74,6 +74,7 @@ jobs:
         with:
           name: soplang-${{ matrix.target }}
           path: artifacts/*
+          if-no-files-found: error
   compiler-parity:
     runs-on: ubuntu-24.04
     steps:
@@ -107,3 +108,23 @@ jobs:
           for editor in 1.95.0 stable; do
             VSCODE_VERSION="$editor" xvfb-run -a npm run test:host
           done
+  release-bundle:
+    needs: [native, compiler-parity]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: soplang-*
+          merge-multiple: true
+          path: artifacts/targets
+      - name: Verify all targets and assemble manual upload bundle
+        run: node scripts/release-bundle.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: soplang-platform-release
+          path: artifacts/release/*
+          if-no-files-found: error

@@ -35,6 +35,17 @@ target for native builds. Build on each target host. Do not put one host's nativ
 binary in another host's package. The artifact contains a single bundled JS
 entry, grammar, snippets, dictionary, native server, images, and licenses.
 
+The `Verify extension` Actions workflow builds all six native targets and tests
+each installed VSIX in the minimum and current stable editor, including
+Restricted Mode. After all native and compiler parity jobs pass, the
+`release-bundle` job verifies each package's target and native architecture,
+checks its checksum and version, and uploads `soplang-platform-release`.
+That artifact contains the six VSIX files, checksums, provenance, upload
+instructions, and a ZIP containing the complete set. Upload the individual
+VSIX files to the same Marketplace extension version. The ZIP is for download
+and storage, not Marketplace upload. No publisher credential is needed to build
+or download these artifacts.
+
 The vendored frontend contains upstream lexer/parser/AST/import/semantic/error
 sources, plus `analysis.rs`, `analysis/index.rs`, partial-parser support, and a
 backend-free crate wrapper. The same editor APIs live in the compiler checkout.

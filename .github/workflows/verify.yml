@@ -96,8 +96,11 @@ jobs:
       - run: npm test
         env:
           SOPLANG_COMPILER: ${{ github.workspace }}/.compiler/target/debug/soplang
-      - run: node tests/performance.cjs
       - run: npm run build:server
+      - name: Check release-server performance
+        run: node tests/performance.cjs
+        env:
+          SOPLANG_SERVER: ${{ github.workspace }}/bin/linux-x64/soplang-lsp
       - run: mkdir -p artifacts
       - run: npm run package -- --target linux-x64 --out artifacts/soplang-linux-x64.vsix
       - run: npm run verify:package -- artifacts/soplang-linux-x64.vsix

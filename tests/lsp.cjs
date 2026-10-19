@@ -9,7 +9,7 @@ class Lsp {
  async initialize(root){const result=await this.request('initialize',{capabilities:{general:{positionEncodings:['utf-16']}},workspaceFolders:root?[{uri:pathToFileURL(root).href,name:'test'}]:[],initializationOptions:{trusted:true}});this.send('initialized',{});return result;}
  open(uri,text,version=1){this.send('textDocument/didOpen',{textDocument:{uri,languageId:'soplang',version,text}});}
  change(uri,text,version){this.send('textDocument/didChange',{textDocument:{uri,version},contentChanges:[{text}]});}
- async diagnostics(uri,version){for(let i=0;i<300;i++){const found=this.messages.findLast(m=>m.method==='textDocument/publishDiagnostics'&&m.params.uri===uri&&(version===undefined||m.params.version===version));if(found)return found.params.diagnostics;await new Promise(r=>setTimeout(r,10));}throw Error(`No diagnostics for ${uri}: ${this.stderr}`);}
+ async diagnostics(uri,version,predicate=()=>true,after=0){const deadline=Date.now()+15000;while(Date.now()<deadline){const found=this.messages.slice(after).findLast(m=>m.method==='textDocument/publishDiagnostics'&&m.params.uri===uri&&(version===undefined||m.params.version===version)&&predicate(m.params.diagnostics));if(found)return found.params.diagnostics;await new Promise(r=>setTimeout(r,10));}throw Error(`No matching diagnostics for ${uri}: ${this.stderr}`);}
  async close(){if(this.process.exitCode!==null)return;await this.request('shutdown');this.send('exit',{});await new Promise(resolve=>this.process.once('exit',resolve));}
 }
 function position(text,needle,delta=0){const offset=text.indexOf(needle)+delta;if(offset<0)throw Error(`Missing ${needle}`);const prefix=text.slice(0,offset);return {line:prefix.split('\n').length-1,character:prefix.slice(prefix.lastIndexOf('\n')+1).length};}

@@ -39,7 +39,15 @@ const os = require('os');
     const [cli, ...args] = resolveCliArgsFromVSCodeExecutablePath(executable);
     const windows = process.platform === 'win32';
     const cliExecutable = windows ? executable : cli;
-    const cliArgs = windows ? [path.join(path.dirname(executable), 'resources', 'app', 'out', 'cli.js')] : [];
+    let cliArgs = [];
+    if (windows) {
+        // Use the entry shipped in this editor's launcher instead of assuming
+        // that every editor release keeps the same resources/app layout.
+        const launcher = path.join(path.dirname(executable), 'bin', 'code.cmd');
+        const entry = /"(%~dp0[^"\r\n]*resources[\\/][^"\r\n]+)"/i.exec(fs.readFileSync(launcher, 'utf8'))?.[1];
+        if (!entry) throw Error(`Cannot resolve the editor CLI from ${launcher}`);
+        cliArgs = [path.resolve(path.dirname(launcher), entry.slice('%~dp0'.length))];
+    }
     await exec(cliExecutable, [...cliArgs, ...args, '--user-data-dir', user, '--extensions-dir', extensions, '--install-extension', vsix, '--force'], {
         env:{...process.env, ELECTRON_RUN_AS_NODE:'1'}, timeout:60000
     });

@@ -50,6 +50,6 @@ test('compiler-backed LSP, editor providers, imports, and lifecycle',async t=>{
  });
  await t.test('rapid edits publish only the final document version and disable clears diagnostics',async()=>{
   const uri=await open('qor(1)');for(let version=2;version<=40;version++)lsp.change(uri,version===40?'qor(1)':'missing = 1',version);assert.deepEqual(await lsp.diagnostics(uri,40),[]);const published=lsp.messages.filter(m=>m.method==='textDocument/publishDiagnostics'&&m.params.uri===uri&&m.params.version>1);assert(published.every(m=>m.params.version===40));
-  lsp.change(uri,'missing = 1',41);assert((await lsp.diagnostics(uri,41)).length);lsp.send('workspace/didChangeConfiguration',{settings:{soplang:{enableDiagnostics:false}}});await new Promise(r=>setTimeout(r,250));assert.deepEqual(lsp.messages.findLast(m=>m.params?.uri===uri).params.diagnostics,[]);
+  lsp.change(uri,'missing = 1',41);assert((await lsp.diagnostics(uri,41)).length);const disabled=lsp.messages.length;lsp.send('workspace/didChangeConfiguration',{settings:{soplang:{enableDiagnostics:false}}});assert.deepEqual(await lsp.diagnostics(uri,41,ds=>ds.length===0,disabled),[]);
  });
 });

@@ -21,6 +21,10 @@ exports.run=async()=>{
  if(process.env.SOPLANG_RESTRICTED){assert.equal(vscode.workspace.isTrusted,false);let tasks=0;const listener=vscode.tasks.onDidStartTask(()=>tasks++);void vscode.commands.executeCommand('soplang.runFile',doc.uri);await sleep(400);assert.equal(tasks,0);listener.dispose();await vscode.commands.executeCommand('notifications.clearAll');}
  if(process.env.SOPLANG_COMPILER&&!process.env.SOPLANG_RESTRICTED){
   await vscode.workspace.getConfiguration('soplang').update('compilerPath',process.env.SOPLANG_COMPILER,vscode.ConfigurationTarget.Workspace);
+  const schemaFile=path.join(root,'schema.sop');fs.writeFileSync(schemaFile,'jadwal qof { aqoonsi abn furaha }');
+  const schemaDoc=await vscode.workspace.openTextDocument(schemaFile);assert.equal(schemaDoc.languageId,'soplang-schema');
+  let schemaHover=[];for(let i=0;i<100;i++){schemaHover=await vscode.commands.executeCommand('vscode.executeHoverProvider',schemaDoc.uri,new vscode.Position(0,2));if(schemaHover?.length)break;await sleep(100);}
+  assert(schemaHover?.length,'The installed 3.6 compiler LSP did not analyze schema.sop');
   const selected=path.join(root,process.platform==='win32'?"Élan 'selected' & file.sop":"Élan 'selected'; $(literal) & file.sop");fs.writeFileSync(selected,'qor("selected")');
   let started;const begin=vscode.tasks.onDidStartTask(e=>{if(e.execution.task.source==='Soplang')started=e.execution;});
   const finished=new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Compiler task did not finish')),30000);const listener=vscode.tasks.onDidEndTaskProcess(e=>{if(e.execution.task.source==='Soplang'){clearTimeout(timer);listener.dispose();resolve(e.exitCode);}});});

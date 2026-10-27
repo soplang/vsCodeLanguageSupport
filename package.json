@@ -1,8 +1,8 @@
 {
   "name": "soplang",
   "displayName": "Soplang",
-  "description": "Soplang 3 language tools, compiler diagnostics, navigation, formatting, and execution.",
-  "version": "1.0.0",
+  "description": "Soplang 3.6 language tools, compiler diagnostics, schema support, and execution.",
+  "version": "1.1.0",
   "publisher": "soplang",
   "license": "MIT",
   "repository": {
@@ -47,7 +47,7 @@
           "type": "string",
           "default": "",
           "restricted": true,
-          "description": "Optional native language server path. Restart the language server after changing this setting."
+          "description": "Optional path to a legacy bundled-compatible analysis server. Leave empty to use the installed Soplang 3.6 language server when available."
         },
         "soplang.workingDirectory": {
           "type": "string",
@@ -99,6 +99,16 @@
           "light": "images/soplang-logo.svg",
           "dark": "images/soplang-logo.svg"
         }
+      },
+      {
+        "id": "soplang-schema",
+        "aliases": [
+          "Soplang Schema"
+        ],
+        "filenames": [
+          "schema.sop"
+        ],
+        "configuration": "./schema-configuration.json"
       }
     ],
     "grammars": [
@@ -106,6 +116,11 @@
         "language": "soplang",
         "scopeName": "source.soplang",
         "path": "./syntaxes/soplang.tmLanguage.json"
+      },
+      {
+        "language": "soplang-schema",
+        "scopeName": "source.soplang-schema",
+        "path": "./syntaxes/schema.tmLanguage.json"
       }
     ],
     "keybindings": [
@@ -143,6 +158,10 @@
       {
         "language": "soplang",
         "path": "./snippets/soplang.json"
+      },
+      {
+        "language": "soplang-schema",
+        "path": "./snippets/schema.json"
       }
     ],
     "cSpell.dictionaries": [
@@ -222,7 +241,8 @@
     "vscode-textmate": "^9.2.0"
   },
   "activationEvents": [
-    "onLanguage:soplang"
+    "onLanguage:soplang",
+    "onLanguage:soplang-schema"
   ],
   "main": "./out/extension.js",
   "extensionKind": [

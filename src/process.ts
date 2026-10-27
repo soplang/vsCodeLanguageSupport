@@ -12,6 +12,10 @@ export function compilerVersion(executable: string, cwd: string): Promise<string
         });
     });
 }
+export function versionMeets(version: string, major: number, minor: number): boolean {
+    const [foundMajor, foundMinor] = version.split('.').map(Number);
+    return foundMajor > major || (foundMajor === major && foundMinor >= minor);
+}
 export function resolveCompiler(configured: string, cwd: string, mockPath: string): string {
     const candidates = path.isAbsolute(configured) || configured.includes('/') || configured.includes('\\')
         ? [path.resolve(cwd, configured)]
@@ -25,6 +29,7 @@ export function resolveCompiler(configured: string, cwd: string, mockPath: strin
 export function taskArgs(mode: 'run'|'build'|'repl', file: string|undefined, strict: boolean, output: string, optimization: number): string[] {
     const args = ['--no-color', ...(strict ? ['--strict'] : [])];
     if (mode === 'build') args.push('--build', '--quiet', '--opt-level', String(optimization), ...(output ? ['-o', output] : []));
+    if (mode === 'repl') args.push('isdhexgal');
     if (file) args.push('--', file);
     return args;
 }

@@ -2,32 +2,60 @@ import * as vscode from 'vscode';
 import * as path from 'node:path';
 import * as fs from 'node:fs';
 import {LanguageClient, LanguageClientOptions, ServerOptions} from 'vscode-languageclient/node';
-import {compilerVersion, resolveCompiler, taskArgs} from './process';
+import {compilerVersion, resolveCompiler, taskArgs, versionMeets} from './process';
 
 let client: LanguageClient | undefined;
+let compilerAnalysis = false;
 const running = new Set<vscode.TaskExecution>();
 let watcher: vscode.FileSystemWatcher | undefined;
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     const log = vscode.window.createOutputChannel('Soplang');
     const status = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 20);
     status.text = 'Soplang 3'; status.command = 'soplang.compilerStatus';
-    const visibility = () => vscode.window.activeTextEditor?.document.languageId === 'soplang' ? status.show() : status.hide();
+    const visibility = () => ['soplang', 'soplang-schema'].includes(vscode.window.activeTextEditor?.document.languageId || '') ? status.show() : status.hide();
     context.subscriptions.push(log, status, vscode.window.onDidChangeActiveTextEditor(visibility)); visibility();
+    context.subscriptions.push(vscode.workspace.registerTextDocumentContentProvider('soplang-stdlib', {
+        provideTextDocumentContent: async uri => {
+            if (!compilerAnalysis || !client?.isRunning()) throw new Error('The Soplang 3.6 language server is not running.');
+            return (await client.sendRequest<string>('soplang/source', {uri:uri.toString()})) || '';
+        }
+    }));
     async function startServer(): Promise<void> {
         watcher?.dispose(); watcher = undefined;
         if (client) { const old = client; client = undefined; await old.stop(); }
-        const custom = vscode.workspace.isTrusted ? vscode.workspace.getConfiguration('soplang').get<string>('serverPath', '') : '';
+        const config = vscode.workspace.getConfiguration('soplang');
+        const custom = vscode.workspace.isTrusted ? config.get<string>('serverPath', '') : '';
         const platform = `${process.platform}-${process.arch}`;
-        const command = custom || context.asAbsolutePath(`bin/${platform}/soplang-lsp${process.platform === 'win32' ? '.exe' : ''}`);
+        let command = custom || context.asAbsolutePath(`bin/${platform}/soplang-lsp${process.platform === 'win32' ? '.exe' : ''}`);
+        compilerAnalysis = false;
+        if (vscode.workspace.isTrusted && !custom) {
+            const cwd = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath || process.cwd();
+            try {
+                const executable = resolveCompiler(config.get<string>('compilerPath', 'soplang'), cwd, context.asAbsolutePath('soplang'));
+                const version = await compilerVersion(executable, cwd);
+                if (versionMeets(version, 3, 6)) {
+                    command = executable;
+                    compilerAnalysis = true;
+                } else {
+                    log.appendLine(`Compiler ${version} predates the 3.6 language server; using bundled 3.0 analysis.`);
+                }
+            } catch (error) {
+                log.appendLine(`Compiler analysis unavailable: ${error instanceof Error ? error.message : String(error)}. Using bundled 3.0 analysis.`);
+            }
+        }
         if (!fs.existsSync(command)) {
             log.appendLine(`Native analysis unavailable: ${command}. Syntax highlighting and snippets remain available.`);
             status.tooltip = 'Native server unavailable on this host'; return;
         }
-        watcher = vscode.workspace.createFileSystemWatcher('**/*.{sop,so}');
+        watcher = vscode.workspace.createFileSystemWatcher(compilerAnalysis ? '**/*.{sop,toml,lock}' : '**/*.{sop,so}');
         context.subscriptions.push(watcher);
-        const server: ServerOptions = {command, args:[], options:{env:{...process.env, RUST_BACKTRACE:'1'}}};
+        const server: ServerOptions = {command, args:compilerAnalysis ? ['lsp'] : [], options:{env:{...process.env, RUST_BACKTRACE:'1'}}};
         const options: LanguageClientOptions = {
-            documentSelector:[{scheme:'file', language:'soplang'}, {scheme:'untitled', language:'soplang'}],
+            documentSelector:compilerAnalysis ? [
+                {scheme:'file', language:'soplang'}, {scheme:'untitled', language:'soplang'},
+                {scheme:'soplang-stdlib', language:'soplang'},
+                {scheme:'file', language:'soplang-schema'}, {scheme:'untitled', language:'soplang-schema'}
+            ] : [{scheme:'file', language:'soplang'}, {scheme:'untitled', language:'soplang'}],
             synchronize:{configurationSection:'soplang', fileEvents:watcher},
             outputChannel:log, initializationOptions:{trusted:vscode.workspace.isTrusted},
             markdown:{isTrusted:false, supportHtml:false}
@@ -35,11 +63,11 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
         client = new LanguageClient('soplang', 'Soplang 3', server, options);
         await client.start();
         await sendConfiguration();
-        status.tooltip = 'Soplang 3 frontend analysis';
+        status.tooltip = compilerAnalysis ? 'Soplang 3.6 compiler analysis' : 'Bundled Soplang 3.0 analysis';
     }
     async function sendConfiguration(): Promise<void> {
         if (!client?.isRunning()) return;
-        const resources = [...(vscode.workspace.workspaceFolders || []).map(f => f.uri), ...vscode.workspace.textDocuments.filter(d => d.languageId === 'soplang').map(d => d.uri)];
+        const resources = [...(vscode.workspace.workspaceFolders || []).map(f => f.uri), ...vscode.workspace.textDocuments.filter(d => ['soplang', 'soplang-schema'].includes(d.languageId)).map(d => d.uri)];
         await client.sendNotification('workspace/didChangeConfiguration', {settings:{soplang:vscode.workspace.getConfiguration('soplang')}});
         await client.sendNotification('soplang/documentConfiguration', {resources:resources.map(uri => {
             const config = vscode.workspace.getConfiguration('soplang', uri);
@@ -94,8 +122,11 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
             await vscode.window.showInformationMessage(`Soplang ${await compilerVersion(executable, cwd)}: ${executable}`);
         })),
         vscode.workspace.onDidGrantWorkspaceTrust(guarded(startServer)),
-        vscode.workspace.onDidChangeConfiguration(event => { if (event.affectsConfiguration('soplang')) void guarded(sendConfiguration)(); }),
-        vscode.workspace.onDidOpenTextDocument(document => { if (document.languageId === 'soplang') void guarded(sendConfiguration)(); }),
+        vscode.workspace.onDidChangeConfiguration(event => {
+            if (event.affectsConfiguration('soplang.compilerPath') || event.affectsConfiguration('soplang.serverPath')) void guarded(startServer)();
+            else if (event.affectsConfiguration('soplang')) void guarded(sendConfiguration)();
+        }),
+        vscode.workspace.onDidOpenTextDocument(document => { if (['soplang', 'soplang-schema'].includes(document.languageId)) void guarded(sendConfiguration)(); }),
         vscode.workspace.onDidChangeWorkspaceFolders(() => { void guarded(sendConfiguration)(); }),
         {dispose:() => { for (const execution of running) execution.terminate(); }}
     );

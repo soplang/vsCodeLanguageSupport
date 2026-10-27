@@ -1,6 +1,10 @@
 # Support and limits
 
-The bundled analysis frontend is Soplang 3.0.0 at compiler revision
+With Soplang 3.6 or later installed, the extension uses the compiler's `lsp`
+command for current diagnostics, completion, navigation, formatting, and
+`schema.sop` support. Its native definitions open through the compiler's
+read-only `soplang-stdlib` source provider. The bundled fallback analysis
+frontend is Soplang 3.0.0 at compiler revision
 `e72c6668276fa801691ddb1c753ebbe2f73a417c`. Its source and license are vendored,
 with upstream file hashes and local editor changes recorded in
 `vendor/soplang-frontend`. Packages never require a sibling checkout.
@@ -14,8 +18,11 @@ or compiler tasks. Virtual filesystem workspaces are unsupported.
 
 The minimum declared VS Code version is 1.95.0. Basic grammar and snippets do
 not need a compiler or network connection. Run/Build/REPL support real 3.x CLI
-flags. The pinned frontend remains a 3.0 baseline when using a newer compiler;
-newer language syntax needs an updated server and catalog.
+flags. The bundled fallback remains a 3.0 baseline; install Soplang 3.6 for
+current language and schema analysis. `soplang.serverPath` explicitly selects
+a bundled-compatible legacy analysis server and bypasses compiler discovery.
+
+## Bundled fallback behavior
 
 Diagnostics retain the compiler's first-error behavior and Somali messages.
 Only lexer, parser, and semantic analyzer errors are reported. Failures that
@@ -46,5 +53,7 @@ indexed workspace files and imports; rename cannot claim completeness beyond
 these limits. Large projects need a larger-project indexing design before
 broad refactoring can be advertised.
 
-No file IO, HTTP, async, package manager, or test runner APIs are offered as
-implemented language features. Source debugging is a separate project.
+Soplang 3.6 includes files, networking, tasks, packages, web, and data APIs.
+Those APIs are analyzed by the installed compiler server; the fallback server
+does not understand all new syntax or native APIs. Source debugging is a
+separate project.

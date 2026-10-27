@@ -4,6 +4,7 @@
 !CHANGELOG.md
 !LICENSE
 !language-configuration.json
+!schema-configuration.json
 !out/extension.js
 !syntaxes/**
 !snippets/**

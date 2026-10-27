@@ -1,4 +1,4 @@
-# Soplang 3 editor reference
+# Bundled Soplang 3.0 fallback reference
 
 Generated from language/catalog.json. Compiler revision: e72c6668276fa801691ddb1c753ebbe2f73a417c.
 

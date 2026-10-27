@@ -3,64 +3,446 @@
   "scopeName": "source.soplang",
   "patterns": [
     {
-      "name": "comment.line.double-slash.soplang",
-      "begin": "//",
-      "end": "$"
-    },
-    {
-      "name": "comment.block.soplang",
-      "begin": "/\\*",
-      "end": "\\*/"
-    },
-    {
-      "name": "string.quoted.soplang",
-      "begin": "\"",
-      "end": "\""
-    },
-    {
-      "name": "string.quoted.soplang",
-      "begin": "'",
-      "end": "'"
-    },
-    {
-      "name": "entity.name.function.soplang",
-      "match": "(?<=hawl)\\s+[\\p{L}_][\\p{L}\\p{N}_]*"
-    },
-    {
-      "name": "entity.name.type.class.soplang",
-      "match": "(?<=qaab)\\s+[\\p{L}_][\\p{L}\\p{N}_]*"
-    },
-    {
-      "name": "support.function.method.soplang",
-      "match": "(?<=\\.)\\s*(?:aaddin|dambe|dhammaan|dherer|dhig|geli|habee|hel|hore|isku_gee|jar|ka_saar|kasaar|koowaad|kudar|leeyahay|midee|muuji|nadiifi|nuqul|qaar|raadi|rog|saar|shaandhee|tiri|ugu_dambeeya|ururi|furayaal|fure|ka_qaad|lamaane|lammaanayaal|qiimayaal|qiime|tir|beddel|beddel_dhammaan|bilow|dhamaad|dhammaad|ku_celi|kuceli|masax|masax_bilow|masax_dhamaad|masax_dhammaad|qeybi|raadi_dambe|weynee|xarafaha_weyn|xarfaha_waaweyn|xarfaha_yaryar|xiriiri|yaree)(?![\\p{L}\\p{N}_])"
-    },
-    {
-      "name": "keyword.control.soplang",
-      "match": "(?<![\\p{L}\\p{N}_])(?:celi|cusub|dhaxal|door|dooro|fasax|haddii|haddii_kale|hawl|intay|jooji|keen|kuceli|madoor|nafta|qaab|qabo|soco|ugudambeyn|waalid|xaalad)(?![\\p{L}\\p{N}_])"
-    },
-    {
-      "name": "keyword.control.contextual.soplang",
-      "match": "(?<![\\p{L}\\p{N}_])(?:tijaabi)(?![\\p{L}\\p{N}_])(?=\\s*\\{)|(?<![\\p{L}\\p{N}_])(?:kale)(?![\\p{L}\\p{N}_])(?=\\s*\\{|\\s*\\([^{}]*\\)\\s*\\{)|(?<![\\p{L}\\p{N}_])(?:ilaa)(?![\\p{L}\\p{N}_])"
-    },
-    {
-      "name": "constant.language.soplang",
-      "match": "(?<![\\p{L}\\p{N}_])(?:run|been|maran|null)(?![\\p{L}\\p{N}_])"
-    },
-    {
-      "name": "support.function.soplang",
-      "match": "(?<![\\p{L}\\p{N}_])(?:abn|awood|baaxad|bool|daji|dhammeystir|dherer|duub|gelin|jajab|jibbaar|kor|nooc|qor|qoraal|sugan|teed|ugu_weyn|ugu_yar|walax|weyn|xidid|xul|yar)(?![\\p{L}\\p{N}_])"
-    },
-    {
-      "name": "constant.numeric.soplang",
-      "match": "(?<![\\p{L}\\p{N}_])\\d+(?:\\.\\d+)?"
-    },
-    {
-      "name": "keyword.operator.soplang",
-      "match": "==|!=|>=|<=|&&|\\|\\||[+*/%!=<>-]"
-    },
-    {
-      "name": "variable.other.soplang",
-      "match": "[\\p{L}_][\\p{L}\\p{N}_]*"
+      "include": "#code"
     }
-  ]
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.soplang",
+          "begin": "//",
+          "end": "$"
+        },
+        {
+          "name": "comment.block.soplang",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "escape": {
+      "patterns": [
+        {
+          "name": "constant.character.escape.soplang",
+          "match": "\\\\(?:[nrt0\\\\'\\\"]|\\r?\\n|u\\{[0-9A-Fa-f]{1,6}\\})"
+        },
+        {
+          "name": "invalid.illegal.escape.soplang",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "interpolation": {
+      "begin": "\\{(?!\\{)",
+      "end": "\\}",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.interpolation.begin.soplang"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.interpolation.end.soplang"
+        }
+      },
+      "name": "meta.interpolation.soplang",
+      "contentName": "meta.embedded.expression.soplang",
+      "patterns": [
+        {
+          "include": "#code"
+        }
+      ]
+    },
+    "braces": {
+      "begin": "\\{",
+      "end": "\\}",
+      "name": "meta.brace.soplang",
+      "patterns": [
+        {
+          "include": "#code"
+        }
+      ]
+    },
+    "numbers": {
+      "match": "\\b[0-9]+(?:\\.[0-9]+)?\\b",
+      "name": "constant.numeric.soplang"
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(?:abn|jajab|qoraal|bool|teed|walax)\\b",
+          "name": "storage.type.soplang"
+        },
+        {
+          "match": "\\b(?:run|been|maran|null)\\b",
+          "name": "constant.language.soplang"
+        },
+        {
+          "match": "\\b(?:door|madoor|hawl|celi|qor|gelin|haddii|haddii_kale|ugudambeyn|dooro|xaalad|kuceli|intay|jooji|soco|fasax|qabo|keen|qaab|dhaxal|cusub|nafta|waalid)\\b",
+          "name": "keyword.control.soplang"
+        },
+        {
+          "match": "\\b(?:tijaabi|dhammee|diyaar|nadiifi)\\b(?=\\s*\\{)",
+          "name": "keyword.control.soplang"
+        },
+        {
+          "match": "\\bkale\\b(?=\\s*(?:haddii\\b|\\{))",
+          "name": "keyword.control.soplang"
+        },
+        {
+          "match": "\\btijaabo\\b(?=\\s*[\"'])",
+          "name": "keyword.control.soplang"
+        },
+        {
+          "match": "\\bqalad\\b(?=\\s*(?:\\(|\\{))",
+          "name": "keyword.control.soplang"
+        },
+        {
+          "match": "\\btuur\\b(?!\\s*\\()",
+          "name": "keyword.control.soplang"
+        },
+        {
+          "match": "\\b(?:soosaar|sida|ka|ku|ilaa)\\b",
+          "name": "keyword.control.soplang"
+        },
+        {
+          "match": "\\b(?:baytyo|xirmo|urur)\\b(?=\\s*(?:[\\[\\p{L}_]))",
+          "name": "storage.type.soplang"
+        }
+      ]
+    },
+    "functions": {
+      "match": "[\\p{L}_][\\p{L}\\p{N}_]*(?=\\s*\\()",
+      "name": "entity.name.function.soplang"
+    },
+    "operators": {
+      "match": "\\*\\*|\\.\\.\\.|==|!=|<=|>=|&&|\\|\\||[+*/%=<>!&|?:-]",
+      "name": "keyword.operator.soplang"
+    },
+    "punctuation": {
+      "match": "[()\\[\\],;.]",
+      "name": "punctuation.soplang"
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.f.multiline.soplang",
+          "begin": "(?<![\\p{L}\\p{N}_])(f)(\"\"\")",
+          "end": "\"\"\"",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#escape"
+            },
+            {
+              "name": "constant.character.escape.soplang",
+              "match": "\\{\\{|\\}\\}"
+            },
+            {
+              "include": "#interpolation"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.f.multiline.soplang",
+          "begin": "(?<![\\p{L}\\p{N}_])(f)(''')",
+          "end": "'''",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#escape"
+            },
+            {
+              "name": "constant.character.escape.soplang",
+              "match": "\\{\\{|\\}\\}"
+            },
+            {
+              "include": "#interpolation"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.e.multiline.soplang",
+          "begin": "(?<![\\p{L}\\p{N}_])(e)(\"\"\")",
+          "end": "\"\"\"",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#escape"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.e.multiline.soplang",
+          "begin": "(?<![\\p{L}\\p{N}_])(e)(''')",
+          "end": "'''",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#escape"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.r.multiline.soplang",
+          "begin": "(?:(?<![\\p{L}\\p{N}_])(r))?(\"\"\")",
+          "end": "\"\"\"",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": []
+        },
+        {
+          "name": "string.quoted.single.r.multiline.soplang",
+          "begin": "(?:(?<![\\p{L}\\p{N}_])(r))?(''')",
+          "end": "'''",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": []
+        },
+        {
+          "name": "string.quoted.double.f.soplang",
+          "begin": "(?<![\\p{L}\\p{N}_])(f)(\")",
+          "end": "\"",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#escape"
+            },
+            {
+              "name": "constant.character.escape.soplang",
+              "match": "\\{\\{|\\}\\}"
+            },
+            {
+              "include": "#interpolation"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.f.soplang",
+          "begin": "(?<![\\p{L}\\p{N}_])(f)(')",
+          "end": "'",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#escape"
+            },
+            {
+              "name": "constant.character.escape.soplang",
+              "match": "\\{\\{|\\}\\}"
+            },
+            {
+              "include": "#interpolation"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.e.soplang",
+          "begin": "(?<![\\p{L}\\p{N}_])(e)(\")",
+          "end": "\"",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#escape"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.e.soplang",
+          "begin": "(?<![\\p{L}\\p{N}_])(e)(')",
+          "end": "'",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#escape"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.r.soplang",
+          "begin": "(?:(?<![\\p{L}\\p{N}_])(r))?(\")",
+          "end": "\"",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": []
+        },
+        {
+          "name": "string.quoted.single.r.soplang",
+          "begin": "(?:(?<![\\p{L}\\p{N}_])(r))?(')",
+          "end": "'",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.string.soplang"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.soplang"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.soplang"
+            }
+          },
+          "patterns": []
+        }
+      ]
+    },
+    "code": {
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#strings"
+        },
+        {
+          "include": "#keywords"
+        },
+        {
+          "include": "#numbers"
+        },
+        {
+          "include": "#functions"
+        },
+        {
+          "include": "#braces"
+        },
+        {
+          "include": "#operators"
+        },
+        {
+          "include": "#punctuation"
+        }
+      ]
+    }
+  }
 }

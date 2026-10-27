@@ -6,7 +6,7 @@ exports.run=async()=>{
  const root=vscode.workspace.workspaceFolders[0].uri.fsPath;const file=path.join(root,'host.sop');const source='teed items=[1,2]\nhawl add(abn a, abn b): abn { celi a+b }\nqor(items.hore())';fs.writeFileSync(file,source);let doc=await vscode.workspace.openTextDocument(file);await vscode.window.showTextDocument(doc);
  for(let i=0;i<100;i++){const h=await vscode.commands.executeCommand('vscode.executeHoverProvider',doc.uri,new vscode.Position(2,12));if(h?.length)break;await sleep(100);}
  assert(ext.isActive,'Opening a Soplang file did not activate the installed extension');
- const completions=await vscode.commands.executeCommand('vscode.executeCompletionItemProvider',doc.uri,new vscode.Position(2,12));assert(completions.items.some(i=>i.label==='geli'));
+ let completions;for(let i=0;i<100;i++){completions=await vscode.commands.executeCommand('vscode.executeCompletionItemProvider',doc.uri,new vscode.Position(2,12));if(completions?.items?.some(item=>item.label==='geli'))break;await sleep(100);}assert(completions?.items?.some(item=>item.label==='geli'),'Completion provider did not become ready');
  const definitions=await vscode.commands.executeCommand('vscode.executeDefinitionProvider',doc.uri,new vscode.Position(2,6));assert.equal(definitions[0].range.start.line,0);
  const signatures=await vscode.commands.executeCommand('vscode.executeSignatureHelpProvider',doc.uri,new vscode.Position(2,15));assert(signatures.signatures.length);
  const symbols=await vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider',doc.uri);assert(symbols.some(s=>s.name==='add'));

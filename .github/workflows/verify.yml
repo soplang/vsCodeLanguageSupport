@@ -79,23 +79,25 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with:
-          repository: soplang/soplang
-          ref: v3.6.0
-          path: .compiler
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - uses: dtolnay/rust-toolchain@stable
       - run: npm ci
-      - run: cargo test --locked --manifest-path .compiler/Cargo.toml
-      - run: cargo build --locked --manifest-path .compiler/Cargo.toml
+      - name: Download verified Soplang 3.6 package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .compiler
+          gh release download v3.6.0 --repo soplang/soplang --pattern SHA256SUMS --pattern soplang-3.6.0-linux-x86_64.tar.gz --dir .compiler
+          cd .compiler
+          sha256sum --ignore-missing -c SHA256SUMS
+          tar -xzf soplang-3.6.0-linux-x86_64.tar.gz
       - run: cargo build --locked --manifest-path server/Cargo.toml
       - run: npm test
         env:
-          SOPLANG_COMPILER: ${{ github.workspace }}/.compiler/target/debug/soplang
+          SOPLANG_COMPILER: ${{ github.workspace }}/.compiler/soplang/soplang
       - run: npm run build:server
       - name: Check release-server performance
         run: node tests/performance.cjs
@@ -106,7 +108,7 @@ jobs:
       - run: npm run verify:package -- artifacts/soplang-linux-x64.vsix
       - name: Test compiler commands in installed packages
         env:
-          SOPLANG_COMPILER: ${{ github.workspace }}/.compiler/target/debug/soplang
+          SOPLANG_COMPILER: ${{ github.workspace }}/.compiler/soplang/soplang
         run: |
           for editor in 1.95.0 stable; do
             VSCODE_VERSION="$editor" xvfb-run -a npm run test:host

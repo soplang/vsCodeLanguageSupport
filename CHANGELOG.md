@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 (unreleased)
+## 1.1.0 (2026-10-27)
 
 - Use the installed Soplang 3.6 language server for current source and schema analysis.
 - Add `schema.sop` highlighting and snippets and update the Soplang grammar.

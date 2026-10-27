@@ -1,6 +1,6 @@
 const vscode=require('vscode');const assert=require('assert/strict');const fs=require('fs');const path=require('path');
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const waitFor=async(label,probe,ready)=>{for(let i=0;i<100;i++){const result=await probe();if(ready(result))return result;await sleep(100);}throw Error(`${label} did not become ready`);};
+const waitFor=async(label,probe,ready)=>{let last;for(let i=0;i<100;i++){last=await probe();if(ready(last))return last;await sleep(100);}throw Error(`${label} did not become ready: ${JSON.stringify(last)}`);};
 exports.run=async()=>{
  const ext=vscode.extensions.getExtension('soplang.soplang');assert(ext,'Installed extension was not found');assert(!ext.extensionPath.includes('vsCodeLanguageSupport'),'Test must load the installed VSIX');
  const before=vscode.workspace.getConfiguration().get('cSpell.enabled');
@@ -10,7 +10,7 @@ exports.run=async()=>{
  const completions=await waitFor('Completion provider',()=>vscode.commands.executeCommand('vscode.executeCompletionItemProvider',doc.uri,new vscode.Position(2,12)),result=>result?.items?.some(item=>item.label==='geli'));assert(completions.items.some(item=>item.label==='geli'));
  const definitions=await waitFor('Definition provider',()=>vscode.commands.executeCommand('vscode.executeDefinitionProvider',doc.uri,new vscode.Position(2,6)),result=>result?.length);assert.equal(definitions[0].range.start.line,0);
  const signatures=await waitFor('Signature help',()=>vscode.commands.executeCommand('vscode.executeSignatureHelpProvider',doc.uri,new vscode.Position(2,15)),result=>result?.signatures?.length);assert(signatures.signatures.length);
- const symbols=await waitFor('Document symbols',()=>vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider',doc.uri),result=>result?.some(symbol=>symbol.name==='add'));assert(symbols.some(symbol=>symbol.name==='add'));
+ let symbols;try{symbols=await waitFor('Document symbols',()=>vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider',doc.uri),result=>result?.some(symbol=>symbol.name==='add'));}catch(error){const workspace=await vscode.commands.executeCommand('vscode.executeWorkspaceSymbolProvider','add');throw Error(`${error.message}; workspace symbols: ${JSON.stringify(workspace)}; diagnostics: ${JSON.stringify(vscode.languages.getDiagnostics(doc.uri))}`);}assert(symbols.some(symbol=>symbol.name==='add'));
  const rename=await waitFor('Rename provider',()=>vscode.commands.executeCommand('vscode.executeDocumentRenameProvider',doc.uri,new vscode.Position(0,7),'numbers'),result=>result?.entries().length);assert(rename.entries().length);
  const edit=new vscode.WorkspaceEdit();edit.replace(doc.uri,new vscode.Range(0,0,doc.lineCount,0),'missing = 1');await vscode.workspace.applyEdit(edit);
  for(let i=0;i<100&&!vscode.languages.getDiagnostics(doc.uri).length;i++)await sleep(50);assert.equal(vscode.languages.getDiagnostics(doc.uri)[0].code,'E021');

@@ -1,20 +1,21 @@
 const vscode=require('vscode');const assert=require('assert/strict');const fs=require('fs');const path=require('path');
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const waitFor=async(label,probe,ready)=>{for(let i=0;i<100;i++){const result=await probe();if(ready(result))return result;await sleep(100);}throw Error(`${label} did not become ready`);};
 exports.run=async()=>{
  const ext=vscode.extensions.getExtension('soplang.soplang');assert(ext,'Installed extension was not found');assert(!ext.extensionPath.includes('vsCodeLanguageSupport'),'Test must load the installed VSIX');
  const before=vscode.workspace.getConfiguration().get('cSpell.enabled');
  const root=vscode.workspace.workspaceFolders[0].uri.fsPath;const file=path.join(root,'host.sop');const source='teed items=[1,2]\nhawl add(abn a, abn b): abn { celi a+b }\nqor(items.hore())';fs.writeFileSync(file,source);let doc=await vscode.workspace.openTextDocument(file);await vscode.window.showTextDocument(doc);
- for(let i=0;i<100;i++){const h=await vscode.commands.executeCommand('vscode.executeHoverProvider',doc.uri,new vscode.Position(2,12));if(h?.length)break;await sleep(100);}
+ await waitFor('Hover provider',()=>vscode.commands.executeCommand('vscode.executeHoverProvider',doc.uri,new vscode.Position(2,12)),result=>result?.length);
  assert(ext.isActive,'Opening a Soplang file did not activate the installed extension');
- let completions;for(let i=0;i<100;i++){completions=await vscode.commands.executeCommand('vscode.executeCompletionItemProvider',doc.uri,new vscode.Position(2,12));if(completions?.items?.some(item=>item.label==='geli'))break;await sleep(100);}assert(completions?.items?.some(item=>item.label==='geli'),'Completion provider did not become ready');
- const definitions=await vscode.commands.executeCommand('vscode.executeDefinitionProvider',doc.uri,new vscode.Position(2,6));assert.equal(definitions[0].range.start.line,0);
- const signatures=await vscode.commands.executeCommand('vscode.executeSignatureHelpProvider',doc.uri,new vscode.Position(2,15));assert(signatures.signatures.length);
- const symbols=await vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider',doc.uri);assert(symbols.some(s=>s.name==='add'));
- const rename=await vscode.commands.executeCommand('vscode.executeDocumentRenameProvider',doc.uri,new vscode.Position(0,7),'numbers');assert(rename.entries().length);
+ const completions=await waitFor('Completion provider',()=>vscode.commands.executeCommand('vscode.executeCompletionItemProvider',doc.uri,new vscode.Position(2,12)),result=>result?.items?.some(item=>item.label==='geli'));assert(completions.items.some(item=>item.label==='geli'));
+ const definitions=await waitFor('Definition provider',()=>vscode.commands.executeCommand('vscode.executeDefinitionProvider',doc.uri,new vscode.Position(2,6)),result=>result?.length);assert.equal(definitions[0].range.start.line,0);
+ const signatures=await waitFor('Signature help',()=>vscode.commands.executeCommand('vscode.executeSignatureHelpProvider',doc.uri,new vscode.Position(2,15)),result=>result?.signatures?.length);assert(signatures.signatures.length);
+ const symbols=await waitFor('Document symbols',()=>vscode.commands.executeCommand('vscode.executeDocumentSymbolProvider',doc.uri),result=>result?.some(symbol=>symbol.name==='add'));assert(symbols.some(symbol=>symbol.name==='add'));
+ const rename=await waitFor('Rename provider',()=>vscode.commands.executeCommand('vscode.executeDocumentRenameProvider',doc.uri,new vscode.Position(0,7),'numbers'),result=>result?.entries().length);assert(rename.entries().length);
  const edit=new vscode.WorkspaceEdit();edit.replace(doc.uri,new vscode.Range(0,0,doc.lineCount,0),'missing = 1');await vscode.workspace.applyEdit(edit);
  for(let i=0;i<100&&!vscode.languages.getDiagnostics(doc.uri).length;i++)await sleep(50);assert.equal(vscode.languages.getDiagnostics(doc.uri)[0].code,'E021');
  const restore=new vscode.WorkspaceEdit();restore.replace(doc.uri,new vscode.Range(0,0,doc.lineCount,0),'haddii (1 == 1) {\nqoraal text="a+b"\nqor(text)\n}\n');await vscode.workspace.applyEdit(restore);
- const formatting=await vscode.commands.executeCommand('vscode.executeFormatDocumentProvider',doc.uri,{tabSize:2,insertSpaces:true});assert(formatting.length);const apply=new vscode.WorkspaceEdit();apply.set(doc.uri,formatting);await vscode.workspace.applyEdit(apply);assert(doc.getText().includes('"a+b"'));assert(doc.getText().includes('1 == 1'));
+ const formatting=await waitFor('Formatter',()=>vscode.commands.executeCommand('vscode.executeFormatDocumentProvider',doc.uri,{tabSize:2,insertSpaces:true}),result=>result?.length);assert(formatting.length);const apply=new vscode.WorkspaceEdit();apply.set(doc.uri,formatting);await vscode.workspace.applyEdit(apply);assert(doc.getText().includes('"a+b"'));assert(doc.getText().includes('1 == 1'));
  assert.equal(vscode.workspace.getConfiguration().get('cSpell.enabled'),before);assert(doc.isDirty);assert.equal(fs.readFileSync(file,'utf8'),source,'Opening or analyzing a file wrote to disk');
  const second=vscode.workspace.workspaceFolders[1];assert(second,'Multi-root workspace missing');
  const secondFile=vscode.Uri.joinPath(second.uri,'strict.sop');fs.writeFileSync(secondFile.fsPath,'door local=1');await vscode.workspace.getConfiguration('soplang',second.uri).update('strict',true,vscode.ConfigurationTarget.WorkspaceFolder);const secondDoc=await vscode.workspace.openTextDocument(secondFile);for(let i=0;i<100&&!vscode.languages.getDiagnostics(secondFile).length;i++)await sleep(50);assert.equal(vscode.languages.getDiagnostics(secondFile)[0].code,'E022');assert(!vscode.languages.getDiagnostics(doc.uri).some(d=>d.code==='E022'));
@@ -23,8 +24,8 @@ exports.run=async()=>{
   await vscode.workspace.getConfiguration('soplang').update('compilerPath',process.env.SOPLANG_COMPILER,vscode.ConfigurationTarget.Workspace);
   const schemaFile=path.join(root,'schema.sop');fs.writeFileSync(schemaFile,'jadwal qof { aqoonsi abn furaha }');
   const schemaDoc=await vscode.workspace.openTextDocument(schemaFile);assert.equal(schemaDoc.languageId,'soplang-schema');
-  let schemaHover=[];for(let i=0;i<100;i++){schemaHover=await vscode.commands.executeCommand('vscode.executeHoverProvider',schemaDoc.uri,new vscode.Position(0,2));if(schemaHover?.length)break;await sleep(100);}
-  assert(schemaHover?.length,'The installed 3.6 compiler LSP did not analyze schema.sop');
+  const schemaHover=await waitFor('3.6 schema hover',()=>vscode.commands.executeCommand('vscode.executeHoverProvider',schemaDoc.uri,new vscode.Position(0,2)),result=>result?.length);
+  assert(schemaHover.length);
   const selected=path.join(root,process.platform==='win32'?"Élan 'selected' & file.sop":"Élan 'selected'; $(literal) & file.sop");fs.writeFileSync(selected,'qor("selected")');
   let started;const begin=vscode.tasks.onDidStartTask(e=>{if(e.execution.task.source==='Soplang')started=e.execution;});
   const finished=new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Compiler task did not finish')),30000);const listener=vscode.tasks.onDidEndTaskProcess(e=>{if(e.execution.task.source==='Soplang'){clearTimeout(timer);listener.dispose();resolve(e.exitCode);}});});
